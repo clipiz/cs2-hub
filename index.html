@@ -5,10 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelpStrike - CS2 Resources</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .disclaimer-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .disclaimer-modal.active {
+            display: flex;
+        }
+
+        .disclaimer-content {
+            background-color: #1a1a1a;
+            border: 2px solid #ff6b35;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+        }
+
+        .disclaimer-content h2 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .disclaimer-content p {
+            color: #e0e0e0;
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .disclaimer-btn {
+            background-color: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .disclaimer-btn:hover {
+            background-color: #ff5a1f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+        }
+    </style>
 </head>
 <body>
     <!-- Top Logo -->
     <div class="top-logo">HelpStrike</div>
+
+    <!-- Disclaimer Modal -->
+    <div class="disclaimer-modal active" id="disclaimerModal">
+        <div class="disclaimer-content">
+            <h2>⚠️ Avis Important</h2>
+            <p>Certaines vidéos sont en français et d'autres en anglais !</p>
+            <button class="disclaimer-btn" onclick="closeDisclaimer()">OK</button>
+        </div>
+    </div>
 
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
@@ -132,6 +200,13 @@
 
     <script src="script.js"></script>
     <script>
+        // Close disclaimer and save to localStorage
+        function closeDisclaimer() {
+            const modal = document.getElementById('disclaimerModal');
+            modal.classList.remove('active');
+            localStorage.setItem('disclaimerClosed', 'true');
+        }
+
         // Load only esport data on home page
         async function loadHomePage() {
             try {
@@ -141,6 +216,13 @@
                 loadProMatches();
             } catch (error) {
                 console.error('Error loading home page:', error);
+            }
+
+            // Check if disclaimer was already closed
+            const disclaimerClosed = localStorage.getItem('disclaimerClosed');
+            if (disclaimerClosed === 'true') {
+                const modal = document.getElementById('disclaimerModal');
+                modal.classList.remove('active');
             }
         }
 
