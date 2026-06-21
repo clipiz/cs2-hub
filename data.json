@@ -36,7 +36,8 @@
       "type": "Map Guide",
       "description": "Learn Ancient's unique positions and callout system.",
       "links": [
-        { "text": "Visual Guide", "url": "https://www.youtube.com/" }
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" },
+        { "text": "Guide", "url": "https://csnades.gg/ancient/callouts" }
       ]
     },
     {
@@ -55,7 +56,38 @@
       "type": "Map Guide",
       "description": "Vertical callout system for Vertigo map.",
       "links": [
-        { "text": "Guide", "url": "https://www.youtube.com/" }
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" },
+        { "text": "Guide", "url": "https://csnades.gg/vertigo/callouts" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Train Callouts",
+      "type": "Map Guide",
+      "description": "Master the complex Train map callouts and positions.",
+      "links": [
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" },
+        { "text": "Guide", "url": "https://csnades.gg/train/callouts" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Overpass Callouts",
+      "type": "Map Guide",
+      "description": "Learn Overpass positions and callout system.",
+      "links": [
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" },
+        { "text": "Guide", "url": "https://profilerr.net/explanation-for-all-overpass-map-callouts/" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Anubis Callouts",
+      "type": "Map Guide",
+      "description": "Anubis map callouts and strategic positions guide.",
+      "links": [
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" },
+        { "text": "Guide", "url": "https://profilerr.net/cs2-anubis-callouts/" }
       ]
     }
   ],
