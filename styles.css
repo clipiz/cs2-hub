@@ -152,6 +152,9 @@ body {
     cursor: pointer;
     overflow: hidden;
     position: relative;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
 }
 
 .item-card::before {
@@ -165,6 +168,7 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
+    z-index: 1;
 }
 
 .item-card:hover {
@@ -177,40 +181,26 @@ body {
     opacity: 1;
 }
 
-/* Map Logo */
+/* Map Logo Background */
 .map-logo {
-    width: 100%;
-    height: 180px;
-    background: linear-gradient(135deg, rgba(77, 179, 255, 0.1) 0%, rgba(254, 192, 6, 0.05) 100%);
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4em;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.map-logo::before {
-    content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(254, 192, 6, 0.3), transparent);
-    transition: left 0.6s ease;
+    bottom: -80px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.08;
+    transition: all 0.4s ease;
+    z-index: 0;
 }
 
 .item-card:hover .map-logo {
-    transform: scale(1.1) rotateZ(5deg);
-    background: linear-gradient(135deg, rgba(77, 179, 255, 0.2) 0%, rgba(254, 192, 6, 0.1) 100%);
-}
-
-.item-card:hover .map-logo::before {
-    left: 100%;
+    opacity: 0.15;
+    transform: scale(1.1) rotate(5deg);
+    bottom: -60px;
+    right: -60px;
 }
 
 .item-card h3 {
@@ -218,7 +208,7 @@ body {
     margin-bottom: 10px;
     font-size: 1.3em;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .item-type {
@@ -232,7 +222,8 @@ body {
     margin-bottom: 15px;
     transition: all 0.3s ease;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: fit-content;
 }
 
 .item-card:hover .item-type {
@@ -245,7 +236,8 @@ body {
     margin-bottom: 20px;
     font-size: 0.95em;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    flex-grow: 1;
 }
 
 .item-links {
@@ -253,7 +245,8 @@ body {
     gap: 10px;
     flex-wrap: wrap;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    margin-top: auto;
 }
 
 .item-link {
