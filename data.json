@@ -103,11 +103,11 @@
     },
     {
       "id": 2,
-      "name": "Site Takes & Holds",
+      "name": "Retakes",
       "type": "Strategy",
-      "description": "In-depth guide on executing bomb sites effectively.",
+      "description": "Master les retakes et regagner le terrain grâce à une stratégie efficace.",
       "links": [
-        { "text": "Strategy Guide", "url": "https://www.youtube.com/" }
+        { "text": "Regarde le Tutoriel", "url": "https://www.youtube.com/watch?v=2hfxssHVYr0" }
       ]
     }
   ],
