@@ -10,23 +10,22 @@ async function loadData() {
         renderItems('tutorials', data.tutorials);
         renderTeams(data.teams);
         loadProMatches();
-        initializeSidebarNavigation();
     } catch (error) {
         console.error('Error loading data:', error);
     }
 }
 
-// Map logo image paths
+// Map logo image paths with correct capitalization
 const mapLogosImages = {
-    'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/mirage.png',
-    'Inferno': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/inferno.png',
-    'Dust2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/dust2.png',
-    'Ancient': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/ancient.png',
-    'Nuke': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/nuke.png',
-    'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/vertigo.png',
-    'Train': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/train.png',
-    'Overpass': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/overpass.png',
-    'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/anubis.png'
+    'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Mirage.png',
+    'Inferno': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Inferno.png',
+    'Dust2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Dust2.png',
+    'Ancient': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Ancient.png',
+    'Nuke': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Nuke.png',
+    'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Vertigo.png',
+    'Train': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Train.png',
+    'Overpass': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Overpass.png',
+    'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Anubis.png'
 };
 
 // Render items in grid
@@ -101,6 +100,8 @@ function extractYouTubeId(url) {
 function renderTeams(teams) {
     const teamsList = document.getElementById('teams-list');
     
+    if (!teamsList) return;
+    
     teamsList.innerHTML = teams.map((team, index) => `
         <div class="team-item">
             <div>
@@ -115,6 +116,8 @@ function renderTeams(teams) {
 // Load Pro Matches from HLTV-inspired data (June 2026)
 function loadProMatches() {
     const matchesList = document.getElementById('matches-list');
+    
+    if (!matchesList) return;
     
     const matches = [
         {
@@ -188,52 +191,17 @@ function loadProMatches() {
     `).join('');
 }
 
-// Initialize sidebar navigation
-function initializeSidebarNavigation() {
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
-    
-    // Set home as active by default
-    document.querySelector('[data-section="home"]')?.classList.add('active');
-    
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all links
-            sidebarLinks.forEach(l => l.classList.remove('active'));
-            
-            // Add active class to clicked link
-            link.classList.add('active');
-            
-            // Smooth scroll to section
-            const section = link.getAttribute('data-section');
-            const element = document.getElementById(section);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
+// Smooth scroll for navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('href');
+        const element = document.querySelector(target);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
     });
-    
-    // Update active link on scroll
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const sections = document.querySelectorAll('.category-section, #home');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        sidebarLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-section') === current) {
-                link.classList.add('active');
-            }
-        });
-    });
-}
+});
 
 // Load everything when page is ready
 document.addEventListener('DOMContentLoaded', loadData);
