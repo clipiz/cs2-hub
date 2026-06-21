@@ -3,90 +3,90 @@
     {
       "id": 1,
       "name": "Mirage Callouts",
-      "type": "Map Guide",
-      "description": "Complete callout guide for Mirage with detailed position names.",
+      "type": "Guide de Carte",
+      "description": "Guide complet des callouts de Mirage avec les noms détaillés des positions.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" },
         { "text": "Guide", "url": "https://profilerr.net/all-mirage-callouts/" }
       ]
     },
     {
       "id": 2,
       "name": "Inferno Callouts",
-      "type": "Map Guide",
-      "description": "Master the callouts of Inferno with visual guides.",
+      "type": "Guide de Carte",
+      "description": "Maîtrise les callouts d'Inferno avec des guides visuels.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" },
         { "text": "Guide", "url": "https://profilerr.net/inferno-callouts-explanation-for-all-inferno-map-callouts/" }
       ]
     },
     {
       "id": 3,
       "name": "Dust 2 Callouts",
-      "type": "Map Guide",
-      "description": "Essential Dust 2 callouts for communication.",
+      "type": "Guide de Carte",
+      "description": "Callouts essentiels de Dust 2 pour la communication.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" },
         { "text": "Guide", "url": "https://profilerr.net/dust-2-callouts-explanation-for-all-dust-2-callouts-in-csgo/" }
       ]
     },
     {
       "id": 4,
       "name": "Ancient Callouts",
-      "type": "Map Guide",
-      "description": "Learn Ancient's unique positions and callout system.",
+      "type": "Guide de Carte",
+      "description": "Apprends les positions uniques et le système de callouts d'Ancient.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" },
         { "text": "Guide", "url": "https://csnades.gg/ancient/callouts" }
       ]
     },
     {
       "id": 5,
       "name": "Nuke Callouts",
-      "type": "Map Guide",
-      "description": "Complex Nuke callouts explained with diagrams.",
+      "type": "Guide de Carte",
+      "description": "Callouts complexes de Nuke expliqués avec des diagrammes.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" },
         { "text": "Guide", "url": "https://profilerr.net/nuke-callouts-explanation-for-all-nuke-map-callouts/" }
       ]
     },
     {
       "id": 6,
       "name": "Vertigo Callouts",
-      "type": "Map Guide",
-      "description": "Vertical callout system for Vertigo map.",
+      "type": "Guide de Carte",
+      "description": "Système de callouts vertical pour la carte Vertigo.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" },
         { "text": "Guide", "url": "https://csnades.gg/vertigo/callouts" }
       ]
     },
     {
       "id": 7,
       "name": "Train Callouts",
-      "type": "Map Guide",
-      "description": "Master the complex Train map callouts and positions.",
+      "type": "Guide de Carte",
+      "description": "Maîtrise les callouts complexes de Train et les positions.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" },
         { "text": "Guide", "url": "https://csnades.gg/train/callouts" }
       ]
     },
     {
       "id": 8,
       "name": "Overpass Callouts",
-      "type": "Map Guide",
-      "description": "Learn Overpass positions and callout system.",
+      "type": "Guide de Carte",
+      "description": "Apprends les positions d'Overpass et le système de callouts.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" },
         { "text": "Guide", "url": "https://profilerr.net/explanation-for-all-overpass-map-callouts/" }
       ]
     },
     {
       "id": 9,
       "name": "Anubis Callouts",
-      "type": "Map Guide",
-      "description": "Anubis map callouts and strategic positions guide.",
+      "type": "Guide de Carte",
+      "description": "Guide des callouts et positions stratégiques de la carte Anubis.",
       "links": [
-        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" },
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" },
         { "text": "Guide", "url": "https://profilerr.net/cs2-anubis-callouts/" }
       ]
     }
@@ -94,9 +94,9 @@
   "guides": [
     {
       "id": 1,
-      "name": "Beginner's Guide to CS2",
+      "name": "Guide Débutant de CS2",
       "type": "Guide",
-      "description": "Master the basics of Counter-Strike 2 with comprehensive coverage of Recoil Control, Economy Management, Utility Usage, and Positioning & Angles.",
+      "description": "Maîtrise les bases de Counter-Strike 2 avec une couverture complète du Recoil Control, Economy Management, Utility Usage et Positioning & Angles.",
       "links": [
         { "text": "Regarder la vidéo", "url": "https://www.youtube.com/watch?v=2ssBLr8i52E&list=LL&index=1&t=652s" }
       ]
