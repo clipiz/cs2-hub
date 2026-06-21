@@ -28,6 +28,15 @@ const mapLogosImages = {
     'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Anubis.png'
 };
 
+// Extract map name from item name (handles both "MapName" and "Map Name" formats)
+function getMapName(itemName) {
+    // Check for two-word maps first
+    if (itemName.includes('Dust 2')) return 'Dust 2';
+    
+    // Otherwise, get the first word
+    return itemName.split(' ')[0];
+}
+
 // Render items in grid
 function renderItems(category, items) {
     const gridId = `${category}-grid`;
@@ -36,7 +45,7 @@ function renderItems(category, items) {
     if (!grid) return;
     
     grid.innerHTML = items.map(item => {
-        const mapName = item.name.split(' ')[0];
+        const mapName = getMapName(item.name);
         const logoUrl = category === 'callouts' ? mapLogosImages[mapName] : '';
         
         return `
@@ -64,7 +73,7 @@ function renderUtilities(utilities) {
     if (!grid) return;
     
     grid.innerHTML = utilities.map(utility => {
-        const mapName = utility.name.split(' ')[0];
+        const mapName = getMapName(utility.name);
         const logoUrl = mapLogosImages[mapName] || '';
         const videoId = extractYouTubeId(utility.videoUrl);
         
