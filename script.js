@@ -25,12 +25,16 @@ const mapLogosImages = {
     'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Vertigo.png',
     'Train': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Train.png',
     'Overpass': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Overpass.png',
-    'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Anubis.png'
+    'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Anubis.png',
+    'Yprac': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/ypraclogo.png'
 };
 
 // Extract map name from item name (handles both "MapName" and "Map Name" formats)
 function getMapName(itemName) {
-    // Check for two-word maps first
+    // Check for Yprac first
+    if (itemName.includes('Yprac')) return 'Yprac';
+    
+    // Check for two-word maps
     if (itemName.includes('Dust 2')) return 'Dust 2';
     
     // Otherwise, get the first word
@@ -46,11 +50,11 @@ function renderItems(category, items) {
     
     grid.innerHTML = items.map(item => {
         const mapName = getMapName(item.name);
-        const logoUrl = category === 'callouts' ? mapLogosImages[mapName] : '';
+        const logoUrl = (category === 'callouts' || category === 'widgets') ? mapLogosImages[mapName] : '';
         
         return `
             <div class="item-card">
-                ${category === 'callouts' ? `<div class="map-logo" style="background-image: url('${logoUrl}')"></div>` : ''}
+                ${logoUrl ? `<div class="map-logo" style="background-image: url('${logoUrl}')"></div>` : ''}
                 <span class="item-type">${item.type}</span>
                 <h3>${item.name}</h3>
                 <p>${item.description}</p>
