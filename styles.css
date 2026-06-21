@@ -45,6 +45,7 @@ body {
     padding: 20px;
     border-bottom: 2px solid var(--hs-highlight);
     margin-bottom: 20px;
+    display: none;
 }
 
 .sidebar-logo-container {
@@ -56,9 +57,7 @@ body {
 }
 
 .sidebar-logo-img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
+    display: none;
 }
 
 .sidebar-logo {
@@ -114,6 +113,12 @@ body {
     flex: 1;
     margin-left: 250px;
     min-height: 100vh;
+}
+
+.main-content.home-page {
+    background: radial-gradient(circle at 20% 50%, rgba(254, 192, 6, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(77, 179, 255, 0.03) 0%, transparent 50%),
+                linear-gradient(135deg, var(--hs-bg) 0%, var(--hs-bg-alt) 100%);
 }
 
 .container {
