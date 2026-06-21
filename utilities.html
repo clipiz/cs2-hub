@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilities - HelpStrike</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Logo -->
+    <div class="top-logo">HelpStrike</div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <h1 class="sidebar-logo">HelpStrike</h1>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link" data-section="home">
+                <span class="icon">🏠</span>
+                <span class="label">Home</span>
+            </a>
+            <a href="callouts.html" class="sidebar-link" data-section="callouts">
+                <span class="icon">📍</span>
+                <span class="label">Callouts</span>
+            </a>
+            <a href="guides.html" class="sidebar-link" data-section="guides">
+                <span class="icon">📖</span>
+                <span class="label">Guides</span>
+            </a>
+            <a href="utilities.html" class="sidebar-link active" data-section="utilities">
+                <span class="icon">⚙️</span>
+                <span class="label">Utilities</span>
+            </a>
+            <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport">
+                <span class="icon">🏆</span>
+                <span class="label">eSport Results</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Navigation Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1>HelpStrike</h1>
+                    <p class="tagline">Les aides essentiels de CS2</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="utilities">
+            <div class="hero-content">
+                <h2>⚙️ Utilities Essentielles</h2>
+                <p>Maîtrise les lineups et utility des cartes compétitives</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- UTILITIES Section -->
+            <section class="category-section">
+                <h2 class="category-title">⚙️ UTILITIES</h2>
+                <p class="category-desc">Utility setups et lineups essentielles par cartes</p>
+                
+                <!-- Utilities Subsection -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Utilities avec Vidéos</h3>
+                    <div class="items-grid" id="utilities-grid">
+                        <!-- Utilities will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
+                <p class="disclaimer">Ce site a été créer par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Load utilities only
+        async function loadUtilitiesPage() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                renderUtilities(data.utilities);
+            } catch (error) {
+                console.error('Error loading utilities:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadUtilitiesPage);
+    </script>
+</body>
+</html>
