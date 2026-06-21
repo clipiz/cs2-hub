@@ -109,6 +109,15 @@
       "links": [
         { "text": "Regarde le Tutoriel", "url": "https://www.youtube.com/watch?v=2hfxssHVYr0" }
       ]
+    },
+    {
+      "id": 3,
+      "name": "Yprac - Mod d'Entraînement",
+      "type": "Outil d'Entraînement",
+      "description": "Entraîne-toi avec Yprac, le mod CS2 d'entraînement ultime pour améliorer ton aim, spray control et gestion des nades.",
+      "links": [
+        { "text": "Aller sur Yprac", "url": "https://yprac.com/" }
+      ]
     }
   ],
   "utilities": [
