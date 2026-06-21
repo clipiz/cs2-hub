@@ -19,7 +19,7 @@ async function loadData() {
 const mapLogosImages = {
     'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Mirage.png',
     'Inferno': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Inferno.png',
-    'Dust2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Dust2.png',
+    'Dust 2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Dust 2.png',
     'Ancient': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Ancient.png',
     'Nuke': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Nuke.png',
     'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Vertigo.png',
@@ -134,7 +134,7 @@ function loadProMatches() {
             team2: 'Vitality',
             score1: 2,
             score2: 1,
-            map: 'Dust2',
+            map: 'Dust 2',
             date: 'IEM Cologne 2026',
             event: 'BO3'
         },
