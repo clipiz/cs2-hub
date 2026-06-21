@@ -1,16 +1,3 @@
-// Map logo emojis
-const mapLogos = {
-    'Mirage': '🏜️',
-    'Inferno': '🔥',
-    'Dust2': '🪖',
-    'Ancient': '🏛️',
-    'Nuke': '💣',
-    'Vertigo': '🌆',
-    'Train': '🚂',
-    'Overpass': '🌉',
-    'Anubis': '👑'
-};
-
 // Load and render items from data.json
 async function loadData() {
     try {
@@ -27,6 +14,19 @@ async function loadData() {
     }
 }
 
+// Map logo image paths
+const mapLogosImages = {
+    'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/mirage.png',
+    'Inferno': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/inferno.png',
+    'Dust2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/dust2.png',
+    'Ancient': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/ancient.png',
+    'Nuke': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/nuke.png',
+    'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/vertigo.png',
+    'Train': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/train.png',
+    'Overpass': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/overpass.png',
+    'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/anubis.png'
+};
+
 // Render items in grid
 function renderItems(category, items) {
     const gridId = `${category}-grid`;
@@ -35,13 +35,12 @@ function renderItems(category, items) {
     if (!grid) return;
     
     grid.innerHTML = items.map(item => {
-        // Get map logo if it's a callout item
-        const mapName = item.name.split(' ')[0]; // Get first word (map name)
-        const logo = category === 'callouts' ? (mapLogos[mapName] || '📍') : '';
+        const mapName = item.name.split(' ')[0];
+        const logoUrl = category === 'callouts' ? mapLogosImages[mapName] : '';
         
         return `
             <div class="item-card">
-                ${category === 'callouts' ? `<div class="map-logo">${logo}</div>` : ''}
+                ${category === 'callouts' ? `<div class="map-logo" style="background-image: url('${logoUrl}')"></div>` : ''}
                 <span class="item-type">${item.type}</span>
                 <h3>${item.name}</h3>
                 <p>${item.description}</p>
@@ -76,7 +75,6 @@ function renderTeams(teams) {
 function loadProMatches() {
     const matchesList = document.getElementById('matches-list');
     
-    // Real matches from HLTV June 2026
     const matches = [
         {
             team1: 'Spirit',
