@@ -6,9 +6,11 @@ async function loadData() {
         
         renderItems('callouts', data.callouts);
         renderItems('guides', data.guides);
+        renderUtilities(data.utilities);
         renderItems('tutorials', data.tutorials);
         renderTeams(data.teams);
         loadProMatches();
+        initializeSidebarNavigation();
     } catch (error) {
         console.error('Error loading data:', error);
     }
@@ -54,6 +56,45 @@ function renderItems(category, items) {
             </div>
         `;
     }).join('');
+}
+
+// Render utilities with video embeds
+function renderUtilities(utilities) {
+    const grid = document.getElementById('utilities-grid');
+    
+    if (!grid) return;
+    
+    grid.innerHTML = utilities.map(utility => {
+        const mapName = utility.name.split(' ')[0];
+        const logoUrl = mapLogosImages[mapName] || '';
+        const videoId = extractYouTubeId(utility.videoUrl);
+        
+        return `
+            <div class="item-card utility-card">
+                ${logoUrl ? `<div class="map-logo" style="background-image: url('${logoUrl}')"></div>` : ''}
+                <span class="item-type">${utility.type}</span>
+                <h3>${utility.name}</h3>
+                ${videoId ? `
+                    <div class="utility-video">
+                        <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                    </div>
+                ` : ''}
+                <p>${utility.description}</p>
+                <div class="item-links">
+                    <a href="${utility.videoUrl}" target="_blank" rel="noopener noreferrer" class="item-link">
+                        📹 Watch Video
+                    </a>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Extract YouTube video ID from URL
+function extractYouTubeId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? match[2] : null;
 }
 
 // Render pro teams
@@ -147,17 +188,52 @@ function loadProMatches() {
     `).join('');
 }
 
-// Smooth scroll for navigation links
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = link.getAttribute('href');
-        const element = document.querySelector(target);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+// Initialize sidebar navigation
+function initializeSidebarNavigation() {
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    
+    // Set home as active by default
+    document.querySelector('[data-section="home"]')?.classList.add('active');
+    
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Remove active class from all links
+            sidebarLinks.forEach(l => l.classList.remove('active'));
+            
+            // Add active class to clicked link
+            link.classList.add('active');
+            
+            // Smooth scroll to section
+            const section = link.getAttribute('data-section');
+            const element = document.getElementById(section);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     });
-});
+    
+    // Update active link on scroll
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const sections = document.querySelectorAll('.category-section, #home');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-section') === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
 
 // Load everything when page is ready
 document.addEventListener('DOMContentLoaded', loadData);
