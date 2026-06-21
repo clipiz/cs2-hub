@@ -151,18 +151,74 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
     overflow: hidden;
+    position: relative;
+}
+
+.item-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(254, 192, 6, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .item-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.05);
     border-color: var(--lp-highlight);
-    box-shadow: 0 15px 40px rgba(254, 192, 6, 0.2);
+    box-shadow: 0 15px 40px rgba(254, 192, 6, 0.3), 0 0 30px rgba(254, 192, 6, 0.2);
+}
+
+.item-card:hover::before {
+    opacity: 1;
+}
+
+/* Map Logo */
+.map-logo {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, rgba(77, 179, 255, 0.1) 0%, rgba(254, 192, 6, 0.05) 100%);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(254, 192, 6, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.item-card:hover .map-logo {
+    transform: scale(1.1) rotateZ(5deg);
+    background: linear-gradient(135deg, rgba(77, 179, 255, 0.2) 0%, rgba(254, 192, 6, 0.1) 100%);
+}
+
+.item-card:hover .map-logo::before {
+    left: 100%;
 }
 
 .item-card h3 {
     color: var(--lp-link);
     margin-bottom: 10px;
     font-size: 1.3em;
+    position: relative;
+    z-index: 1;
 }
 
 .item-type {
@@ -174,18 +230,30 @@ body {
     font-size: 0.75em;
     font-weight: 600;
     margin-bottom: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.item-card:hover .item-type {
+    transform: scale(1.1);
+    background-color: #ffd700;
 }
 
 .item-card p {
     color: #95afc7;
     margin-bottom: 20px;
     font-size: 0.95em;
+    position: relative;
+    z-index: 1;
 }
 
 .item-links {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 .item-link {
@@ -254,6 +322,7 @@ body {
 .match-card:hover {
     background-color: rgba(35, 47, 52, 0.8);
     border-left-color: var(--lp-highlight);
+    transform: translateX(5px);
 }
 
 .match-header {
@@ -299,6 +368,7 @@ body {
 
 .team-item:hover {
     background-color: rgba(254, 192, 6, 0.1);
+    transform: translateX(5px);
 }
 
 .team-name {
