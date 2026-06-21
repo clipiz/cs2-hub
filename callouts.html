@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callouts - CS2 Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="sidebar-logo">CS2 HUB</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link" data-section="home">
+                <span class="icon">🏠</span>
+                <span class="label">Home</span>
+            </a>
+            <a href="callouts.html" class="sidebar-link active" data-section="callouts">
+                <span class="icon">📍</span>
+                <span class="label">Callouts</span>
+            </a>
+            <a href="guides.html" class="sidebar-link" data-section="guides">
+                <span class="icon">📖</span>
+                <span class="label">Guides</span>
+            </a>
+            <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport">
+                <span class="icon">🏆</span>
+                <span class="label">Recent eSport result</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Navigation Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1>CS2 HUB</h1>
+                    <p class="tagline">Your ultimate Counter-Strike 2 resource center</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="callouts">
+            <div class="hero-content">
+                <h2>📍 Map Callouts</h2>
+                <p>Master all the callouts for every competitive map</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- CALLOUTS Section -->
+            <section class="category-section">
+                <h2 class="category-title">📍 CALLOUTS</h2>
+                <p class="category-desc">Map callouts and positioning guides</p>
+                <div class="items-grid" id="callouts-grid">
+                    <!-- Items will be loaded here by JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 CS2 Hub - All rights reserved | Built for the CS2 Community</p>
+                <p class="disclaimer">This site is fan-made and not affiliated with Valve or Counter-Strike</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Load callouts specifically
+        async function loadCalloutsPage() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                renderItems('callouts', data.callouts);
+            } catch (error) {
+                console.error('Error loading callouts:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCalloutsPage);
+    </script>
+</body>
+</html>
