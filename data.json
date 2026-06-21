@@ -22,9 +22,9 @@
     },
     {
       "id": 3,
-      "name": "Dust2 Callouts",
+      "name": "Dust 2 Callouts",
       "type": "Map Guide",
-      "description": "Essential Dust2 callouts for communication.",
+      "description": "Essential Dust 2 callouts for communication.",
       "links": [
         { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" },
         { "text": "Guide", "url": "https://profilerr.net/dust-2-callouts-explanation-for-all-dust-2-callouts-in-csgo/" }
@@ -164,9 +164,9 @@
     },
     {
       "id": 3,
-      "name": "Dust2 Utilities",
+      "name": "Dust 2 Utilities",
       "type": "Utility",
-      "description": "Dust2 utility guide with all essential lineups.",
+      "description": "Dust 2 utility guide with all essential lineups.",
       "videoUrl": "https://www.youtube.com/embed/f4RI4MbvcVQ"
     },
     {
