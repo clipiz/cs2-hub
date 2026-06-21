@@ -96,54 +96,18 @@
       "id": 1,
       "name": "Beginner's Guide to CS2",
       "type": "Guide",
-      "description": "Learn the basics of Counter-Strike 2 and competitive gameplay.",
+      "description": "Master the basics of Counter-Strike 2 with comprehensive coverage of Recoil Control, Economy Management, Utility Usage, and Positioning & Angles.",
       "links": [
-        { "text": "Read Full Guide", "url": "https://www.youtube.com/" }
+        { "text": "Regarder la vidéo", "url": "https://www.youtube.com/watch?v=2ssBLr8i52E&list=LL&index=1&t=652s" }
       ]
     },
     {
       "id": 2,
-      "name": "Economy Guide",
-      "type": "Guide",
-      "description": "Master the buy system and economic management.",
-      "links": [
-        { "text": "Learn Economy", "url": "https://www.youtube.com/" }
-      ]
-    },
-    {
-      "id": 3,
       "name": "Site Takes & Holds",
       "type": "Strategy",
       "description": "In-depth guide on executing bomb sites effectively.",
       "links": [
         { "text": "Strategy Guide", "url": "https://www.youtube.com/" }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Recoil Control",
-      "type": "Guide",
-      "description": "Master spray control and recoil management for each weapon.",
-      "links": [
-        { "text": "Spray Guide", "url": "https://www.youtube.com/" }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Positioning & Angles",
-      "type": "Strategy",
-      "description": "Learn optimal positioning and clearing angles.",
-      "links": [
-        { "text": "Advanced Positions", "url": "https://www.youtube.com/" }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Utility Usage",
-      "type": "Guide",
-      "description": "Comprehensive guide on using utility effectively.",
-      "links": [
-        { "text": "Utility Guide", "url": "https://www.youtube.com/" }
       ]
     }
   ],
