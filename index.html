@@ -13,15 +13,15 @@
             <h1 class="sidebar-logo">CS2 HUB</h1>
         </div>
         <nav class="sidebar-nav">
-            <a href="#home" class="sidebar-link active" data-section="home">
+            <a href="index.html" class="sidebar-link active" data-section="home">
                 <span class="icon">🏠</span>
                 <span class="label">Home</span>
             </a>
-            <a href="#callouts" class="sidebar-link" data-section="callouts">
+            <a href="callouts.html" class="sidebar-link" data-section="callouts">
                 <span class="icon">📍</span>
                 <span class="label">Callouts</span>
             </a>
-            <a href="#guides" class="sidebar-link" data-section="guides">
+            <a href="guides.html" class="sidebar-link" data-section="guides">
                 <span class="icon">📖</span>
                 <span class="label">Guides</span>
             </a>
@@ -53,33 +53,36 @@
         </section>
 
         <div class="container">
-            <!-- CALLOUTS Section -->
-            <section id="callouts" class="category-section">
-                <h2 class="category-title">📍 CALLOUTS</h2>
-                <p class="category-desc">Map callouts and positioning guides</p>
-                <div class="items-grid" id="callouts-grid">
-                    <!-- Items will be loaded here by JavaScript -->
-                </div>
-            </section>
-
-            <!-- GUIDES Section -->
-            <section id="guides" class="category-section">
-                <h2 class="category-title">📖 GUIDES</h2>
-                <p class="category-desc">Comprehensive guides to improve your gameplay</p>
-                
-                <!-- Guides Subsection -->
-                <div class="subsection">
-                    <h3 class="subsection-title">General Guides</h3>
-                    <div class="items-grid" id="guides-grid">
-                        <!-- Items will be loaded here by JavaScript -->
+            <!-- Quick Links Section -->
+            <section class="category-section">
+                <h2 class="category-title">🚀 Quick Access</h2>
+                <p class="category-desc">Jump to your favorite resources</p>
+                <div class="items-grid">
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>📍 Map Callouts</h3>
+                        <p>Master all callouts for every competitive map</p>
+                        <div class="item-links">
+                            <a href="callouts.html" class="item-link">View All Callouts</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Utilities Subsection -->
-                <div class="subsection">
-                    <h3 class="subsection-title">Utilities</h3>
-                    <div class="items-grid" id="utilities-grid">
-                        <!-- Utilities will be loaded here by JavaScript -->
+                    
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>📖 Guides & Utilities</h3>
+                        <p>Learn strategies, spray control, and utility lineups</p>
+                        <div class="item-links">
+                            <a href="guides.html" class="item-link">View All Guides</a>
+                        </div>
+                    </div>
+                    
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>🏆 Pro Scene</h3>
+                        <p>Follow the latest competitive matches and team rankings</p>
+                        <div class="item-links">
+                            <a href="#recent-esport" class="item-link">View Results</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -117,5 +120,20 @@
     </main>
 
     <script src="script.js"></script>
+    <script>
+        // Load only esport data on home page
+        async function loadHomePage() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                renderTeams(data.teams);
+                loadProMatches();
+            } catch (error) {
+                console.error('Error loading home page:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadHomePage);
+    </script>
 </body>
 </html>
