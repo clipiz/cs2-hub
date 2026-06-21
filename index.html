@@ -390,7 +390,7 @@
             <!-- Quick Links Section -->
             <section class="category-section">
                 <h2 class="category-title">🚀 Accès Rapide</h2>
-                <p class="category-desc">Accède à tes ressources favories</p>
+                <p class="category-desc">Accède à tes ressources favorites</p>
                 <div class="items-grid">
                     <div class="item-card quick-link">
                         <span class="item-type">Navigation</span>
@@ -474,13 +474,17 @@
             localStorage.setItem('disclaimerClosed', 'true');
         }
 
-        // Fetch CS2 matches from PandaScore API
+        // Fetch CS2 matches from PandaScore API for today (22 June 2026)
         async function fetchCS2Matches() {
             const matchesList = document.getElementById('matches-list');
             
             try {
-                // PandaScore API endpoint for CS2 matches
-                const response = await fetch('https://api.pandascore.co/csgo/matches?filter[status]=finished,running,not_started&sort=-scheduled_at&page[size]=15&with_odds=false', {
+                // Filter for matches on 22 June 2026
+                // PandaScore uses ISO 8601 format
+                const startDate = '2026-06-22T00:00:00Z';
+                const endDate = '2026-06-22T23:59:59Z';
+                
+                const response = await fetch(`https://api.pandascore.co/csgo/matches?filter[scheduled_at_from]=${startDate}&filter[scheduled_at_to]=${endDate}&sort=-scheduled_at&page[size]=20`, {
                     headers: {
                         'accept': 'application/json'
                     }
@@ -495,14 +499,12 @@
                 if (matches && matches.length > 0) {
                     matchesList.innerHTML = '';
                     
-                    // Filter and sort by most recent
-                    const sortedMatches = matches.slice(0, 10);
-                    
-                    sortedMatches.forEach(match => {
+                    matches.forEach(match => {
                         const matchCard = createMatchCardFromAPI(match);
                         matchesList.appendChild(matchCard);
                     });
                 } else {
+                    // If no matches today, show demo
                     displayDemoMatches();
                 }
             } catch (error) {
@@ -545,9 +547,7 @@
             const matchDate = new Date(match.scheduled_at);
             const timeString = matchDate.toLocaleString('fr-FR', { 
                 hour: '2-digit', 
-                minute: '2-digit',
-                day: '2-digit',
-                month: '2-digit'
+                minute: '2-digit'
             });
             
             card.innerHTML = `
@@ -582,7 +582,7 @@
             return card;
         }
 
-        // Display demo matches if API fails
+        // Display demo matches if API fails or no matches for today
         function displayDemoMatches() {
             const matchesList = document.getElementById('matches-list');
             const demoMatches = [
@@ -594,7 +594,7 @@
                     status: 'finished',
                     statusText: 'TERMINÉ',
                     league: 'ESL Pro League',
-                    time: 'Aujourd\'hui 20:30'
+                    time: '20:30'
                 },
                 { 
                     team1: 'Vitality', 
@@ -614,7 +614,7 @@
                     status: 'upcoming',
                     statusText: '⏰ À VENIR',
                     league: 'Perfect World Pro Series',
-                    time: 'Demain 18:00'
+                    time: '18:00'
                 }
             ];
             
