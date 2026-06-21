@@ -1,3 +1,16 @@
+// Map logo emojis
+const mapLogos = {
+    'Mirage': '🏜️',
+    'Inferno': '🔥',
+    'Dust2': '🪖',
+    'Ancient': '🏛️',
+    'Nuke': '💣',
+    'Vertigo': '🌆',
+    'Train': '🚂',
+    'Overpass': '🌉',
+    'Anubis': '👑'
+};
+
 // Load and render items from data.json
 async function loadData() {
     try {
@@ -21,20 +34,27 @@ function renderItems(category, items) {
     
     if (!grid) return;
     
-    grid.innerHTML = items.map(item => `
-        <div class="item-card">
-            <span class="item-type">${item.type}</span>
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <div class="item-links">
-                ${item.links.map(link => `
-                    <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="item-link">
-                        ${link.text}
-                    </a>
-                `).join('')}
+    grid.innerHTML = items.map(item => {
+        // Get map logo if it's a callout item
+        const mapName = item.name.split(' ')[0]; // Get first word (map name)
+        const logo = category === 'callouts' ? (mapLogos[mapName] || '📍') : '';
+        
+        return `
+            <div class="item-card">
+                ${category === 'callouts' ? `<div class="map-logo">${logo}</div>` : ''}
+                <span class="item-type">${item.type}</span>
+                <h3>${item.name}</h3>
+                <p>${item.description}</p>
+                <div class="item-links">
+                    ${item.links.map(link => `
+                        <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="item-link">
+                            ${link.text}
+                        </a>
+                    `).join('')}
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // Render pro teams
