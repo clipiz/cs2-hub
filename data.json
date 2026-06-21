@@ -147,60 +147,69 @@
       ]
     }
   ],
-  "tutorials": [
+  "utilities": [
     {
       "id": 1,
-      "name": "Aim & Sensitivity Guide",
-      "type": "Video",
-      "description": "How to find the perfect sensitivity and improve aim consistency.",
-      "links": [
-        { "text": "Watch", "url": "https://www.youtube.com/" }
-      ]
+      "name": "Mirage Utilities",
+      "type": "Utility",
+      "description": "Essential utility lineups and executes for Mirage.",
+      "videoUrl": "https://www.youtube.com/embed/cMEJ7j-GNWw"
     },
     {
       "id": 2,
-      "name": "Pro Player Analysis",
-      "type": "Video",
-      "description": "Break down and learn from professional player demos.",
-      "links": [
-        { "text": "Watch", "url": "https://www.youtube.com/" }
-      ]
+      "name": "Inferno Utilities",
+      "type": "Utility",
+      "description": "Key utility setups and smokes for Inferno.",
+      "videoUrl": "https://www.youtube.com/embed/pzhNnZsYwWw"
     },
     {
       "id": 3,
-      "name": "Smoke & Flash Lineups",
-      "type": "Video",
-      "description": "Essential smoke and flash lineups for competitive play.",
-      "links": [
-        { "text": "Learn Lineups", "url": "https://www.youtube.com/" }
-      ]
+      "name": "Dust2 Utilities",
+      "type": "Utility",
+      "description": "Dust2 utility guide with all essential lineups.",
+      "videoUrl": "https://www.youtube.com/embed/f4RI4MbvcVQ"
     },
     {
       "id": 4,
-      "name": "First Bullet Accuracy",
-      "type": "Video",
-      "description": "Mastering first bullet accuracy mechanics in CS2.",
-      "links": [
-        { "text": "Tutorial", "url": "https://www.youtube.com/" }
-      ]
+      "name": "Ancient Utilities",
+      "type": "Utility",
+      "description": "Utility setups and positioning for Ancient.",
+      "videoUrl": "https://www.youtube.com/embed/clZQGmx88Yc"
     },
     {
       "id": 5,
-      "name": "Clutch Situations",
-      "type": "Video",
-      "description": "How to handle and win critical 1v5 situations.",
-      "links": [
-        { "text": "Watch", "url": "https://www.youtube.com/" }
-      ]
+      "name": "Nuke Utilities",
+      "type": "Utility",
+      "description": "Complex utility lineups for Nuke executes.",
+      "videoUrl": "https://www.youtube.com/embed/5EEeP37HX5g"
     },
     {
       "id": 6,
-      "name": "Stream Setup Guide",
-      "type": "Video",
-      "description": "Complete setup guide for streaming CS2 on Twitch.",
-      "links": [
-        { "text": "Full Setup", "url": "https://www.youtube.com/" }
-      ]
+      "name": "Vertigo Utilities",
+      "type": "Utility",
+      "description": "Vertigo utility guide and smoke lineups.",
+      "videoUrl": "https://www.youtube.com/embed/ZxgAXDOsStk"
+    },
+    {
+      "id": 7,
+      "name": "Train Utilities",
+      "type": "Utility",
+      "description": "Train utility setups and strategic executes.",
+      "videoUrl": "https://www.youtube.com/embed/ovFPUg3Jq_0"
+    },
+    {
+      "id": 8,
+      "name": "Overpass Utilities",
+      "type": "Utility",
+      "description": "Overpass utility guide with key lineups.",
+      "videoUrl": "https://www.youtube.com/embed/aLslZ96TIVI"
+    },
+    {
+      "id": 9,
+      "name": "Anubis Utilities",
+      "type": "Utility",
+      "description": "Anubis utility setups and execute lineups.",
+      "videoUrl": "https://www.youtube.com/embed/roO0Ipz0UjE"
     }
   ],
   "teams": [
