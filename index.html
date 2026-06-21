@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS2 Hub - Counter-Strike 2 Resources</title>
+    <title>HelpStrike - CS2 Resources</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
         <div class="sidebar-header">
-            <h1 class="sidebar-logo">CS2 HUB</h1>
+            <div class="sidebar-logo-container">
+                <img src="https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/helpstrike-logo.png" alt="HelpStrike Logo" class="sidebar-logo-img">
+                <h1 class="sidebar-logo">HelpStrike</h1>
+            </div>
         </div>
         <nav class="sidebar-nav">
             <a href="index.html" class="sidebar-link active" data-section="home">
@@ -27,7 +30,7 @@
             </a>
             <a href="#recent-esport" class="sidebar-link" data-section="recent-esport">
                 <span class="icon">🏆</span>
-                <span class="label">Recent eSport result</span>
+                <span class="label">eSport Results</span>
             </a>
         </nav>
     </aside>
@@ -38,50 +41,54 @@
         <header class="header">
             <div class="container">
                 <div class="logo">
-                    <h1>CS2 HUB</h1>
-                    <p class="tagline">Your ultimate Counter-Strike 2 resource center</p>
+                    <img src="https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/helpstrike-logo.png" alt="HelpStrike Logo" class="header-logo-img">
+                    <h1>HelpStrike</h1>
+                    <p class="tagline">Les aides essentiels de CS2</p>
                 </div>
             </div>
         </header>
 
-        <!-- Hero Section -->
+        <!-- Hero Section with Banner -->
         <section class="hero" id="home">
+            <div class="hero-banner">
+                <img src="https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/helpstrike-banner.png" alt="HelpStrike Banner" class="banner-img">
+            </div>
             <div class="hero-content">
-                <h2>Master Counter-Strike 2</h2>
-                <p>Everything you need to improve your gameplay and stay updated with the pro scene</p>
+                <h2>Apprends. Maîtrise. Domine.</h2>
+                <p>Tous les outils essentiels pour dominer sur CS2</p>
             </div>
         </section>
 
         <div class="container">
             <!-- Quick Links Section -->
             <section class="category-section">
-                <h2 class="category-title">🚀 Quick Access</h2>
-                <p class="category-desc">Jump to your favorite resources</p>
+                <h2 class="category-title">🚀 Accès Rapide</h2>
+                <p class="category-desc">Accède à tes ressources favories</p>
                 <div class="items-grid">
                     <div class="item-card quick-link">
                         <span class="item-type">Navigation</span>
-                        <h3>📍 Map Callouts</h3>
-                        <p>Master all callouts for every competitive map</p>
+                        <h3>📍 Callouts des Cartes</h3>
+                        <p>Maîtrise tous les callouts de chaque carte compétitive</p>
                         <div class="item-links">
-                            <a href="callouts.html" class="item-link">View All Callouts</a>
+                            <a href="callouts.html" class="item-link">Voir Tous les Callouts</a>
                         </div>
                     </div>
                     
                     <div class="item-card quick-link">
                         <span class="item-type">Navigation</span>
                         <h3>📖 Guides & Utilities</h3>
-                        <p>Learn strategies, spray control, and utility lineups</p>
+                        <p>Apprends les stratégies, le spray control et les lineups</p>
                         <div class="item-links">
-                            <a href="guides.html" class="item-link">View All Guides</a>
+                            <a href="guides.html" class="item-link">Voir Tous les Guides</a>
                         </div>
                     </div>
                     
                     <div class="item-card quick-link">
                         <span class="item-type">Navigation</span>
-                        <h3>🏆 Pro Scene</h3>
-                        <p>Follow the latest competitive matches and team rankings</p>
+                        <h3>🏆 Scène Pro</h3>
+                        <p>Suis les derniers matchs compétitifs et classements</p>
                         <div class="item-links">
-                            <a href="#recent-esport" class="item-link">View Results</a>
+                            <a href="#recent-esport" class="item-link">Voir les Résultats</a>
                         </div>
                     </div>
                 </div>
@@ -89,19 +96,19 @@
 
             <!-- RECENT ESPORT RESULT Section -->
             <section id="recent-esport" class="category-section">
-                <h2 class="category-title">🏆 RECENT ESPORT RESULT</h2>
-                <p class="category-desc">Follow the latest pro scene results and standings</p>
+                <h2 class="category-title">🏆 RÉSULTATS ESPORT</h2>
+                <p class="category-desc">Suis les derniers résultats et classements de la scène pro</p>
                 
                 <div class="pro-teams-container">
                     <div class="matches-section">
-                        <h3>Recent Matches</h3>
+                        <h3>Derniers Matchs</h3>
                         <div class="matches-list" id="matches-list">
-                            <div class="loading">Loading matches...</div>
+                            <div class="loading">Chargement des matchs...</div>
                         </div>
                     </div>
                     
                     <div class="teams-section">
-                        <h3>Top Teams</h3>
+                        <h3>Meilleures Équipes</h3>
                         <div class="teams-list" id="teams-list">
                             <!-- Teams will be loaded here -->
                         </div>
@@ -113,8 +120,8 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <p>&copy; 2024 CS2 Hub - All rights reserved | Built for the CS2 Community</p>
-                <p class="disclaimer">This site is fan-made and not affiliated with Valve or Counter-Strike</p>
+                <p>&copy; 2024 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
+                <p class="disclaimer">Ce site est un fan-made et n'est pas affilié à Valve ou Counter-Strike</p>
             </div>
         </footer>
     </main>
