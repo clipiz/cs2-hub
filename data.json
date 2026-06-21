@@ -6,8 +6,8 @@
       "type": "Map Guide",
       "description": "Complete callout guide for Mirage with detailed position names.",
       "links": [
-        { "text": "Interactive Map", "url": "https://www.youtube.com/" },
-        { "text": "Guide", "url": "https://www.youtube.com/" }
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" },
+        { "text": "Guide", "url": "https://profilerr.net/all-mirage-callouts/" }
       ]
     },
     {
@@ -16,8 +16,8 @@
       "type": "Map Guide",
       "description": "Master the callouts of Inferno with visual guides.",
       "links": [
-        { "text": "Interactive Map", "url": "https://www.youtube.com/" },
-        { "text": "Video", "url": "https://www.youtube.com/" }
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" },
+        { "text": "Guide", "url": "https://profilerr.net/inferno-callouts-explanation-for-all-inferno-map-callouts/" }
       ]
     },
     {
@@ -26,7 +26,8 @@
       "type": "Map Guide",
       "description": "Essential Dust2 callouts for communication.",
       "links": [
-        { "text": "Map", "url": "https://www.youtube.com/" }
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" },
+        { "text": "Guide", "url": "https://profilerr.net/dust-2-callouts-explanation-for-all-dust-2-callouts-in-csgo/" }
       ]
     },
     {
@@ -44,7 +45,8 @@
       "type": "Map Guide",
       "description": "Complex Nuke callouts explained with diagrams.",
       "links": [
-        { "text": "Detailed Map", "url": "https://www.youtube.com/" }
+        { "text": "Video Tutorial", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" },
+        { "text": "Guide", "url": "https://profilerr.net/nuke-callouts-explanation-for-all-nuke-map-callouts/" }
       ]
     },
     {
