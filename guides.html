@@ -30,6 +30,10 @@
                 <span class="icon">📖</span>
                 <span class="label">Guides</span>
             </a>
+            <a href="utilities.html" class="sidebar-link" data-section="utilities">
+                <span class="icon">⚙️</span>
+                <span class="label">Utilities</span>
+            </a>
             <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport">
                 <span class="icon">🏆</span>
                 <span class="label">eSport Results</span>
@@ -52,8 +56,8 @@
         <!-- Hero Section -->
         <section class="hero" id="guides">
             <div class="hero-content">
-                <h2>📖 Guides & Utilities</h2>
-                <p>Améliore ton gameplay avec des guides complets et des vidéos d'utility</p>
+                <h2>📖 Guides</h2>
+                <p>Améliore ton gameplay avec des guides complets</p>
             </div>
         </section>
 
@@ -70,14 +74,6 @@
                         <!-- Items will be loaded here by JavaScript -->
                     </div>
                 </div>
-
-                <!-- Utilities Subsection -->
-                <div class="subsection">
-                    <h3 class="subsection-title">Utilities Essentielles</h3>
-                    <div class="items-grid" id="utilities-grid">
-                        <!-- Utilities will be loaded here by JavaScript -->
-                    </div>
-                </div>
             </section>
         </div>
 
@@ -92,13 +88,12 @@
 
     <script src="script.js"></script>
     <script>
-        // Load guides and utilities specifically
+        // Load guides only
         async function loadGuidesPage() {
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
                 renderItems('guides', data.guides);
-                renderUtilities(data.utilities);
             } catch (error) {
                 console.error('Error loading guides:', error);
             }
