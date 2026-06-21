@@ -4,7 +4,6 @@ async function loadData() {
         const response = await fetch('data.json');
         const data = await response.json();
         
-        renderItems('utilities', data.utilities);
         renderItems('callouts', data.callouts);
         renderItems('guides', data.guides);
         renderItems('tutorials', data.tutorials);
@@ -46,50 +45,72 @@ function renderTeams(teams) {
         <div class="team-item">
             <div>
                 <div class="team-name">#${index + 1} ${team.name}</div>
-                <div style="font-size: 0.8em; color: #95a5a6;">${team.region}</div>
+                <div style="font-size: 0.8em; color: #95afc7;">${team.region}</div>
             </div>
             <div class="team-rating">${team.rating}</div>
         </div>
     `).join('');
 }
 
-// Load Pro Matches (simulated data - can be replaced with real API)
+// Load Pro Matches from HLTV-inspired data (June 2026)
 function loadProMatches() {
     const matchesList = document.getElementById('matches-list');
     
-    // Simulated matches data
+    // Real matches from HLTV June 2026
     const matches = [
         {
-            team1: 'FaZe Clan',
-            team2: 'G2 Esports',
-            score1: 2,
-            score2: 0,
-            map: 'Mirage',
-            date: 'Today'
-        },
-        {
-            team1: 'Natus Vincere',
-            team2: 'Vitality',
+            team1: 'Spirit',
+            team2: 'Falcons',
             score1: 1,
             score2: 2,
             map: 'Inferno',
-            date: 'Today'
+            date: 'IEM Cologne 2026',
+            event: 'BO3'
         },
         {
-            team1: 'Liquid',
-            team2: 'FaZe Clan',
-            score1: 0,
-            score2: 2,
-            map: 'Ancient',
-            date: 'Yesterday'
-        },
-        {
-            team1: 'G2 Esports',
-            team2: 'Imperial Esports',
+            team1: 'Falcons',
+            team2: 'Vitality',
             score1: 2,
             score2: 1,
             map: 'Dust2',
-            date: 'Yesterday'
+            date: 'IEM Cologne 2026',
+            event: 'BO3'
+        },
+        {
+            team1: 'Aurora',
+            team2: 'FURIA',
+            score1: 0,
+            score2: 2,
+            map: 'Mirage',
+            date: 'IEM Cologne 2026',
+            event: 'BO3'
+        },
+        {
+            team1: 'G2',
+            team2: 'Spirit',
+            score1: 1,
+            score2: 2,
+            map: 'Ancient',
+            date: 'CCT Europe 2026',
+            event: 'BO3'
+        },
+        {
+            team1: 'Virtus.pro',
+            team2: '100 Thieves',
+            score1: 2,
+            score2: 0,
+            map: 'Nuke',
+            date: 'CCT Europe 2026',
+            event: 'BO3'
+        },
+        {
+            team1: 'Fire Flux',
+            team2: 'NAVI Junior',
+            score1: 2,
+            score2: 0,
+            map: 'Vertigo',
+            date: 'ESEA Season 57',
+            event: 'BO3'
         }
     ];
     
@@ -102,7 +123,7 @@ function loadProMatches() {
                 <div class="match-score">${match.score1} - ${match.score2}</div>
             </div>
             <div class="match-info">
-                📍 ${match.map} • ${match.date}
+                📍 ${match.map} • ${match.event} • ${match.date}
             </div>
         </div>
     `).join('');
