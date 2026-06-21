@@ -1,60 +1,4 @@
 {
-  "utilities": [
-    {
-      "id": 1,
-      "name": "Aim Trainer",
-      "type": "Tool",
-      "description": "Improve your aim and muscle memory with professional aim training.",
-      "links": [
-        { "text": "Visit", "url": "https://www.aimtrainer.csgo.net/" }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Config Generator",
-      "type": "Tool",
-      "description": "Generate optimized CS2 configurations for your PC.",
-      "links": [
-        { "text": "Launch", "url": "https://www.configgenerator.net/" }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "DM Servers",
-      "type": "Tool",
-      "description": "Find and join community deathmatch servers for practice.",
-      "links": [
-        { "text": "Browse", "url": "https://www.game-servers.net/" }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Radar Maps",
-      "type": "Reference",
-      "description": "Detailed radar maps of all CS2 maps with positions.",
-      "links": [
-        { "text": "View Maps", "url": "https://wiki.teamfortress.com/wiki/Map_Compendium" }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Crosshair Codes",
-      "type": "Tool",
-      "description": "Share and import custom crosshair codes.",
-      "links": [
-        { "text": "Generator", "url": "https://www.crosshairdb.com/" }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Video Settings",
-      "type": "Guide",
-      "description": "Optimize your video settings for competitive play.",
-      "links": [
-        { "text": "Settings Guide", "url": "https://www.youtube.com/" }
-      ]
-    }
-  ],
   "callouts": [
     {
       "id": 1,
@@ -227,34 +171,34 @@
   ],
   "teams": [
     {
-      "name": "FaZe Clan",
-      "rating": "9.5/10",
-      "region": "International"
-    },
-    {
-      "name": "Natus Vincere",
-      "rating": "9.3/10",
+      "name": "Spirit",
+      "rating": "9.7/10",
       "region": "CIS"
     },
     {
-      "name": "G2 Esports",
-      "rating": "9.1/10",
-      "region": "Europe"
-    },
-    {
-      "name": "Liquid",
-      "rating": "8.9/10",
-      "region": "North America"
+      "name": "Falcons",
+      "rating": "9.5/10",
+      "region": "MENA"
     },
     {
       "name": "Vitality",
-      "rating": "8.7/10",
+      "rating": "9.3/10",
       "region": "Europe"
     },
     {
-      "name": "Imperial Esports",
-      "rating": "8.5/10",
-      "region": "Americas"
+      "name": "FURIA",
+      "rating": "9.1/10",
+      "region": "Brazil"
+    },
+    {
+      "name": "G2 Esports",
+      "rating": "8.9/10",
+      "region": "Europe"
+    },
+    {
+      "name": "Virtus.pro",
+      "rating": "8.7/10",
+      "region": "CIS"
     }
   ]
 }
