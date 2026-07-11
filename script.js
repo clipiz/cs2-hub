@@ -74,6 +74,26 @@ function renderItems(category, items) {
     }).join('');
 }
 
+// Extract YouTube video ID from URL
+function extractYouTubeId(url) {
+    // Handle different YouTube URL formats
+    let videoId = null;
+    
+    // Format: https://www.youtube.com/watch?v=VIDEO_ID
+    const watchMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
+    if (watchMatch && watchMatch[1]) {
+        videoId = watchMatch[1];
+    }
+    
+    // Format: https://www.youtube.com/embed/VIDEO_ID
+    const embedMatch = url.match(/youtube\.com\/embed\/([^&\n?#]+)/);
+    if (embedMatch && embedMatch[1]) {
+        videoId = embedMatch[1];
+    }
+    
+    return videoId;
+}
+
 // Render utilities with video embeds
 function renderUtilities(utilities) {
     const grid = document.getElementById('utilities-grid');
@@ -97,20 +117,13 @@ function renderUtilities(utilities) {
                 ` : ''}
                 <p>${utility.description}</p>
                 <div class="item-links">
-                    <a href="${utility.videoUrl}" target="_blank" rel="noopener noreferrer" class="item-link">
+                    <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer" class="item-link">
                         📹 Watch Video
                     </a>
                 </div>
             </div>
         `;
     }).join('');
-}
-
-// Extract YouTube video ID from URL
-function extractYouTubeId(url) {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return match && match[2].length === 11 ? match[2] : null;
 }
 
 // Render pro teams
