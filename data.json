@@ -89,6 +89,16 @@
         { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" },
         { "text": "Guide", "url": "https://profilerr.net/cs2-anubis-callouts/" }
       ]
+    },
+    {
+      "id": 10,
+      "name": "Cache Callouts",
+      "type": "Guide de Carte",
+      "description": "Guide complet des callouts de Cache avec les positions clés.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=DDNPT2Xb98c" },
+        { "text": "Guide", "url": "https://totalcsgo.com/callouts/cache" }
+      ]
     }
   ],
   "guides": [
