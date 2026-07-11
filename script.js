@@ -26,6 +26,7 @@ const mapLogosImages = {
     'Train': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Train.png',
     'Overpass': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Overpass.png',
     'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Anubis.png',
+    'Cache': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Set_cache_cs2.png',
     'Yprac': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/ypraclogo.png'
 };
 
@@ -33,6 +34,9 @@ const mapLogosImages = {
 function getMapName(itemName) {
     // Check for Yprac first
     if (itemName.includes('Yprac')) return 'Yprac';
+    
+    // Check for Cache
+    if (itemName.includes('Cache')) return 'Cache';
     
     // Check for two-word maps
     if (itemName.includes('Dust 2')) return 'Dust 2';
