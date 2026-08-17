@@ -16,6 +16,9 @@ async function loadData() {
     }
 }
 
+const sidebarNavHeightUpdaters = [];
+let hasSidebarNavResizeListener = false;
+
 // Map logo image paths with correct capitalization
 const mapLogosImages = {
     'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Mirage.png',
@@ -145,6 +148,8 @@ function renderTeams(teams) {
 }
 
 function initializeSidebarToggle() {
+    sidebarNavHeightUpdaters.length = 0;
+
     document.querySelectorAll('.sidebar-nav').forEach(sidebarNav => {
         const toggleButton = sidebarNav.querySelector('.sidebar-nav-toggle');
         const linksContainer = sidebarNav.querySelector('.sidebar-nav-links');
@@ -153,6 +158,8 @@ function initializeSidebarToggle() {
         const updateExpandedHeight = () => {
             sidebarNav.style.setProperty('--sidebar-nav-links-height', `${linksContainer.scrollHeight}px`);
         };
+
+        sidebarNavHeightUpdaters.push(updateExpandedHeight);
 
         const setExpanded = (expanded) => {
             if (expanded) {
@@ -164,13 +171,19 @@ function initializeSidebarToggle() {
 
         updateExpandedHeight();
         setExpanded(true);
-        window.addEventListener('resize', updateExpandedHeight);
 
         toggleButton.addEventListener('click', () => {
             const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
             setExpanded(!expanded);
         });
     });
+
+    if (!hasSidebarNavResizeListener) {
+        window.addEventListener('resize', () => {
+            sidebarNavHeightUpdaters.forEach(updateExpandedHeight => updateExpandedHeight());
+        });
+        hasSidebarNavResizeListener = true;
+    }
 }
 
 // Load Pro Matches from HLTV-inspired data (June 2026)
