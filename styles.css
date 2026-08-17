@@ -692,3 +692,100 @@ body {
         height: 35px;
     }
 }
+
+/* ===== Map Menu Grid (HelpViZion) ===== */
+.map-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.map-menu-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 16 / 9;
+    background: var(--hs-panel);
+    border: 2px solid var(--hs-border);
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.map-menu-item:hover {
+    transform: scale(1.04);
+    border-color: var(--hs-highlight);
+}
+
+.map-menu-item:hover .map-menu-bg {
+    filter: brightness(0.7);
+}
+
+.map-menu-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: filter 0.2s ease;
+}
+
+.map-menu-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 0.8rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+/* Map detail section */
+.map-detail-section {
+    display: none;
+    margin-top: 2rem;
+}
+
+.map-detail-section.active {
+    display: block;
+}
+
+.map-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+    background: none;
+    border: 2px solid var(--hs-border);
+    color: var(--hs-highlight);
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.map-detail-back:hover {
+    border-color: var(--hs-highlight);
+    background: rgba(254,192,6,0.08);
+}
+
+@media (max-width: 1024px) {
+    .map-menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .map-menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .map-menu-overlay {
+        font-size: 0.95rem;
+    }
+}
