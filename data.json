@@ -6,8 +6,7 @@
       "type": "Guide de Carte",
       "description": "Guide complet des callouts de Mirage avec les noms détaillés des positions.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" },
-        { "text": "Guide", "url": "https://profilerr.net/all-mirage-callouts/" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" }
       ]
     },
     {
@@ -16,8 +15,7 @@
       "type": "Guide de Carte",
       "description": "Maîtrise les callouts d'Inferno avec des guides visuels.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" },
-        { "text": "Guide", "url": "https://profilerr.net/inferno-callouts-explanation-for-all-inferno-map-callouts/" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" }
       ]
     },
     {
@@ -26,8 +24,7 @@
       "type": "Guide de Carte",
       "description": "Callouts essentiels de Dust 2 pour la communication.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" },
-        { "text": "Guide", "url": "https://profilerr.net/dust-2-callouts-explanation-for-all-dust-2-callouts-in-csgo/" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" }
       ]
     },
     {
@@ -36,8 +33,7 @@
       "type": "Guide de Carte",
       "description": "Apprends les positions uniques et le système de callouts d'Ancient.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" },
-        { "text": "Guide", "url": "https://csnades.gg/ancient/callouts" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" }
       ]
     },
     {
@@ -46,8 +42,7 @@
       "type": "Guide de Carte",
       "description": "Callouts complexes de Nuke expliqués avec des diagrammes.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" },
-        { "text": "Guide", "url": "https://profilerr.net/nuke-callouts-explanation-for-all-nuke-map-callouts/" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" }
       ]
     },
     {
@@ -56,8 +51,7 @@
       "type": "Guide de Carte",
       "description": "Système de callouts vertical pour la carte Vertigo.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" },
-        { "text": "Guide", "url": "https://csnades.gg/vertigo/callouts" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" }
       ]
     },
     {
@@ -66,8 +60,7 @@
       "type": "Guide de Carte",
       "description": "Maîtrise les callouts complexes de Train et les positions.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" },
-        { "text": "Guide", "url": "https://csnades.gg/train/callouts" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" }
       ]
     },
     {
@@ -76,8 +69,7 @@
       "type": "Guide de Carte",
       "description": "Apprends les positions d'Overpass et le système de callouts.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" },
-        { "text": "Guide", "url": "https://profilerr.net/explanation-for-all-overpass-map-callouts/" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" }
       ]
     },
     {
@@ -86,8 +78,7 @@
       "type": "Guide de Carte",
       "description": "Guide des callouts et positions stratégiques de la carte Anubis.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" },
-        { "text": "Guide", "url": "https://profilerr.net/cs2-anubis-callouts/" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" }
       ]
     },
     {
@@ -96,8 +87,7 @@
       "type": "Guide de Carte",
       "description": "Guide complet des callouts de Cache avec les positions clés.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=DDNPT2Xb98c" },
-        { "text": "Guide", "url": "https://totalcsgo.com/callouts/cache" }
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=DDNPT2Xb98c" }
       ]
     }
   ],
@@ -200,6 +190,98 @@
       "type": "Utility",
       "description": "Cache utility setups and execute lineups.",
       "videoUrl": "https://www.youtube.com/watch?v=RYfNzitAeOY"
+    }
+  ],
+  "helpvizion": [
+    {
+      "id": 1,
+      "name": "Mirage HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Mirage.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Inferno HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Inferno.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Dust 2 HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Dust 2.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Ancient HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Ancient.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Nuke HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Nuke.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Vertigo HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Vertigo.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Train HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Train.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Overpass HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Overpass.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Anubis HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Anubis.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Cache HelpViZion",
+      "type": "HelpViZion",
+      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Cache.",
+      "links": [
+        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=DDNPT2Xb98c" }
+      ]
     }
   ],
   "teams": [

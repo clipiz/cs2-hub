@@ -5,6 +5,7 @@ async function loadData() {
         const data = await response.json();
         
         renderItems('callouts', data.callouts);
+        renderItems('helpvizion', data.helpvizion);
         renderItems('guides', data.guides);
         renderUtilities(data.utilities);
         renderItems('tutorials', data.tutorials);
@@ -14,6 +15,9 @@ async function loadData() {
         console.error('Error loading data:', error);
     }
 }
+
+const sidebarNavHeightUpdaters = [];
+let hasSidebarNavResizeListener = false;
 
 // Map logo image paths with correct capitalization
 const mapLogosImages = {
@@ -54,7 +58,7 @@ function renderItems(category, items) {
     
     grid.innerHTML = items.map(item => {
         const mapName = getMapName(item.name);
-        const logoUrl = (category === 'callouts' || category === 'widgets') ? mapLogosImages[mapName] : '';
+        const logoUrl = (category === 'callouts' || category === 'helpvizion' || category === 'widgets') ? mapLogosImages[mapName] : '';
         
         return `
             <div class="item-card">
@@ -141,6 +145,45 @@ function renderTeams(teams) {
             <div class="team-rating">${team.rating}</div>
         </div>
     `).join('');
+}
+
+function initializeSidebarToggle() {
+    sidebarNavHeightUpdaters.length = 0;
+
+    document.querySelectorAll('.sidebar-nav').forEach(sidebarNav => {
+        const toggleButton = sidebarNav.querySelector('.sidebar-nav-toggle');
+        const linksContainer = sidebarNav.querySelector('.sidebar-nav-links');
+        if (!toggleButton || !linksContainer) return;
+
+        const updateExpandedHeight = () => {
+            sidebarNav.style.setProperty('--sidebar-nav-links-height', `${linksContainer.scrollHeight}px`);
+        };
+
+        sidebarNavHeightUpdaters.push(updateExpandedHeight);
+
+        const setExpanded = (expanded) => {
+            if (expanded) {
+                updateExpandedHeight();
+            }
+            sidebarNav.classList.toggle('collapsed', !expanded);
+            toggleButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        };
+
+        updateExpandedHeight();
+        setExpanded(true);
+
+        toggleButton.addEventListener('click', () => {
+            const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
+            setExpanded(!expanded);
+        });
+    });
+
+    if (!hasSidebarNavResizeListener) {
+        window.addEventListener('resize', () => {
+            sidebarNavHeightUpdaters.forEach(updateExpandedHeight => updateExpandedHeight());
+        });
+        hasSidebarNavResizeListener = true;
+    }
 }
 
 // Load Pro Matches from HLTV-inspired data (June 2026)
@@ -234,7 +277,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // Load everything when page is ready
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', () => {
+    initializeSidebarToggle();
+    loadData();
+});
 
 // Optional: Refresh matches every 5 minutes
 setInterval(loadProMatches, 5 * 60 * 1000);
