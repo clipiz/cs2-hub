@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utilities - HelpStrike</title>
+    <title>HelpViZion - HelpStrike</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,7 +31,7 @@
                     <span class="icon">📍</span>
                     <span class="label">Callouts</span>
                 </a>
-                <a href="helpvizion.html" class="sidebar-link" data-section="helpvizion">
+                <a href="helpvizion.html" class="sidebar-link active" data-section="helpvizion">
                     <span class="icon">🎯</span>
                     <span class="label">HelpViZion</span>
                 </a>
@@ -64,25 +64,20 @@
         </header>
 
         <!-- Hero Section -->
-        <section class="hero" id="utilities">
+        <section class="hero" id="helpvizion">
             <div class="hero-content">
-                <h2>⚙️ Utilities Essentielles</h2>
-                <p>Maîtrise les lineups et utility des cartes compétitives</p>
+                <h2>🎯 HelpViZion des Cartes</h2>
+                <p>Retrouve les repères HelpViZion pour chaque carte compétitive</p>
             </div>
         </section>
 
         <div class="container">
-            <!-- UTILITIES Section -->
+            <!-- CALLOUTS Section -->
             <section class="category-section">
-                <h2 class="category-title">⚙️ UTILITIES</h2>
-                <p class="category-desc">Utility setups et lineups essentielles par cartes</p>
-                
-                <!-- Utilities Subsection -->
-                <div class="subsection">
-                    <h3 class="subsection-title">Utilities avec Vidéos</h3>
-                    <div class="items-grid" id="utilities-grid">
-                        <!-- Utilities will be loaded here by JavaScript -->
-                    </div>
+                <h2 class="category-title">🎯 HELPVIZION</h2>
+                <p class="category-desc">Repères visuels HelpViZion pour toutes les cartes compétitives</p>
+                <div class="items-grid" id="helpvizion-grid">
+                    <!-- Items will be loaded here by JavaScript -->
                 </div>
             </section>
         </div>
@@ -98,18 +93,18 @@
 
     <script src="script.js"></script>
     <script>
-        // Load utilities only
-        async function loadUtilitiesPage() {
+        // Load helpvizion specifically
+        async function loadHelpViZionPage() {
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
-                renderUtilities(data.utilities);
+                renderItems('helpvizion', data.helpvizion);
             } catch (error) {
-                console.error('Error loading utilities:', error);
+                console.error('Error loading helpvizion:', error);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadUtilitiesPage);
+        document.addEventListener('DOMContentLoaded', loadHelpViZionPage);
     </script>
 </body>
 </html>

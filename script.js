@@ -5,6 +5,7 @@ async function loadData() {
         const data = await response.json();
         
         renderItems('callouts', data.callouts);
+        renderItems('helpvizion', data.helpvizion);
         renderItems('guides', data.guides);
         renderUtilities(data.utilities);
         renderItems('tutorials', data.tutorials);
@@ -54,7 +55,7 @@ function renderItems(category, items) {
     
     grid.innerHTML = items.map(item => {
         const mapName = getMapName(item.name);
-        const logoUrl = (category === 'callouts' || category === 'widgets') ? mapLogosImages[mapName] : '';
+        const logoUrl = (category === 'callouts' || category === 'helpvizion' || category === 'widgets') ? mapLogosImages[mapName] : '';
         
         return `
             <div class="item-card">
@@ -141,6 +142,25 @@ function renderTeams(teams) {
             <div class="team-rating">${team.rating}</div>
         </div>
     `).join('');
+}
+
+function initializeSidebarToggle() {
+    document.querySelectorAll('.sidebar-nav').forEach(sidebarNav => {
+        const toggleButton = sidebarNav.querySelector('.sidebar-nav-toggle');
+        if (!toggleButton) return;
+
+        const setExpanded = (expanded) => {
+            sidebarNav.classList.toggle('collapsed', !expanded);
+            toggleButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        };
+
+        setExpanded(true);
+
+        toggleButton.addEventListener('click', () => {
+            const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
+            setExpanded(!expanded);
+        });
+    });
 }
 
 // Load Pro Matches from HLTV-inspired data (June 2026)
@@ -234,7 +254,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // Load everything when page is ready
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', () => {
+    initializeSidebarToggle();
+    loadData();
+});
 
 // Optional: Refresh matches every 5 minutes
 setInterval(loadProMatches, 5 * 60 * 1000);
