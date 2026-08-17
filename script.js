@@ -147,14 +147,24 @@ function renderTeams(teams) {
 function initializeSidebarToggle() {
     document.querySelectorAll('.sidebar-nav').forEach(sidebarNav => {
         const toggleButton = sidebarNav.querySelector('.sidebar-nav-toggle');
-        if (!toggleButton) return;
+        const linksContainer = sidebarNav.querySelector('.sidebar-nav-links');
+        if (!toggleButton || !linksContainer) return;
+
+        const updateExpandedHeight = () => {
+            sidebarNav.style.setProperty('--sidebar-nav-links-height', `${linksContainer.scrollHeight}px`);
+        };
 
         const setExpanded = (expanded) => {
+            if (expanded) {
+                updateExpandedHeight();
+            }
             sidebarNav.classList.toggle('collapsed', !expanded);
             toggleButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         };
 
+        updateExpandedHeight();
         setExpanded(true);
+        window.addEventListener('resize', updateExpandedHeight);
 
         toggleButton.addEventListener('click', () => {
             const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
