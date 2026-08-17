@@ -6,6 +6,7 @@ async function loadData() {
         
         renderItems('callouts', data.callouts);
         renderItems('helpvizion', data.helpvizion);
+        renderHelpVizionMapMenu(data.helpvizion);
         renderItems('guides', data.guides);
         renderUtilities(data.utilities);
         renderItems('tutorials', data.tutorials);
@@ -47,6 +48,85 @@ function getMapName(itemName) {
     
     // Otherwise, get the first word
     return itemName.split(' ')[0];
+}
+
+// Render HelpViZion map selection menu + per-map detail view
+function renderHelpVizionMapMenu(items) {
+    const menuGrid = document.getElementById('helpvizion-map-menu');
+    const detailSection = document.getElementById('helpvizion-map-detail');
+    if (!menuGrid || !detailSection) return;
+
+    // Desired display order
+    const mapOrder = ['Dust 2', 'Mirage', 'Inferno', 'Nuke', 'Ancient', 'Train', 'Cache', 'Anubis', 'Overpass', 'Vertigo'];
+
+    // Build a lookup by map name
+    const itemByMap = {};
+    items.forEach(item => {
+        const mapName = getMapName(item.name);
+        itemByMap[mapName] = item;
+    });
+
+    // Render map thumbnail cards
+    menuGrid.innerHTML = mapOrder.map(mapName => {
+        const imgUrl = mapLogosImages[mapName] || '';
+        const slug = mapName.toLowerCase().replace(/\s+/g, '-');
+        return `
+            <a class="map-menu-item" href="#map-${slug}" data-map="${mapName}" aria-label="Voir HelpViZion pour ${mapName}">
+                <div class="map-menu-bg" style="background-image: url('${imgUrl}')"></div>
+                <div class="map-menu-overlay">${mapName}</div>
+            </a>
+        `;
+    }).join('');
+
+    // Handle thumbnail click: show detail section for selected map
+    menuGrid.querySelectorAll('.map-menu-item').forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const mapName = card.getAttribute('data-map');
+            showMapDetail(mapName);
+        });
+    });
+
+    // Handle hash on page load
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#map-')) {
+        const slugFromHash = hash.slice(5);
+        const mapFromHash = mapOrder.find(m => m.toLowerCase().replace(/\s+/g, '-') === slugFromHash);
+        if (mapFromHash) showMapDetail(mapFromHash);
+    }
+
+    function showMapDetail(mapName) {
+        const item = itemByMap[mapName];
+        if (!item) return;
+
+        const videoId = item.links && item.links.length > 0 ? extractYouTubeId(item.links[0].url) : null;
+        const imgUrl = mapLogosImages[mapName] || '';
+
+        detailSection.innerHTML = `
+            <button class="map-detail-back" id="helpvizion-back-btn">← Retour aux cartes</button>
+            <div class="item-card">
+                ${imgUrl ? `<div class="map-logo" style="background-image: url('${imgUrl}')"></div>` : ''}
+                <span class="item-type">${item.type}</span>
+                <h3>${item.name}</h3>
+                <p>${item.description}</p>
+                ${videoId ? `<div class="utility-video"><iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe></div>` : ''}
+                <div class="item-links">
+                    ${item.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="item-link">${link.text}</a>`).join('')}
+                </div>
+            </div>
+        `;
+        detailSection.classList.add('active');
+        menuGrid.style.display = 'none';
+        detailSection.querySelector('#helpvizion-back-btn').addEventListener('click', () => {
+            detailSection.classList.remove('active');
+            detailSection.innerHTML = '';
+            menuGrid.style.display = '';
+            history.pushState(null, '', window.location.pathname);
+        });
+        const slug = mapName.toLowerCase().replace(/\s+/g, '-');
+        history.pushState(null, '', `#map-${slug}`);
+        detailSection.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // Render items in grid
