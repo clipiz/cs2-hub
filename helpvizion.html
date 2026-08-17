@@ -58,7 +58,7 @@
             <div class="container">
                 <div class="logo">
                     <h1>HelpStrike</h1>
-                    <p class="tagline">Les aides essentiels de CS2</p>
+                    <p class="tagline">Les aides essentielles de CS2</p>
                 </div>
             </div>
         </header>
@@ -72,7 +72,7 @@
         </section>
 
         <div class="container">
-            <!-- CALLOUTS Section -->
+            <!-- HELPVIZION Section -->
             <section class="category-section">
                 <h2 class="category-title">🎯 HELPVIZION</h2>
                 <p class="category-desc">Repères visuels HelpViZion pour toutes les cartes compétitives</p>
@@ -86,25 +86,11 @@
         <footer class="footer">
             <div class="container">
                 <p>&copy; 2026 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
-                <p class="disclaimer">Ce site a été créer par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
+                <p class="disclaimer">Ce site a été créé par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
             </div>
         </footer>
     </main>
 
     <script src="script.js"></script>
-    <script>
-        // Load helpvizion specifically
-        async function loadHelpViZionPage() {
-            try {
-                const response = await fetch('data.json');
-                const data = await response.json();
-                renderItems('helpvizion', data.helpvizion);
-            } catch (error) {
-                console.error('Error loading helpvizion:', error);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', loadHelpViZionPage);
-    </script>
 </body>
 </html>

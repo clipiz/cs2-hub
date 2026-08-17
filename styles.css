@@ -119,7 +119,7 @@ body {
     flex-direction: column;
     gap: 10px;
     overflow: hidden;
-    max-height: 520px;
+    max-height: 1000px;
     opacity: 1;
     transition: max-height 0.35s ease, opacity 0.25s ease;
 }
