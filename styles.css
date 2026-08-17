@@ -119,7 +119,7 @@ body {
     flex-direction: column;
     gap: 10px;
     overflow: hidden;
-    max-height: var(--sidebar-nav-links-height, 100vh);
+    max-height: var(--sidebar-nav-links-height, 600px);
     opacity: 1;
     transition: max-height 0.35s ease, opacity 0.25s ease;
 }
