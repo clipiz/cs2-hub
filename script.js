@@ -35,6 +35,34 @@ const mapLogosImages = {
     'Yprac': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/ypraclogo.png'
 };
 
+// HelpViZion map images (HZ versions)
+const helpVizionImages = {
+    'Dust 2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Dust2HZ.jpg',
+    'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/MirageHZ.jpg',
+    'Inferno': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/InfernoHZ.jpeg',
+    'Nuke': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/NukeHZ.png',
+    'Ancient': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/AncientHZ.jpg',
+    'Train': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/TrainHZ.jpg',
+    'Cache': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/CacheHZ.png',
+    'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/AnubisHZ.jpg',
+    'Overpass': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/OverpassHZ.jpg',
+    'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/VertigoHZ.jpg'
+};
+
+// HelpViZion URLs
+const helpVizionURLs = {
+    'Dust 2': 'https://www.cs2util.com/dust2',
+    'Mirage': 'https://www.cs2util.com/mirage',
+    'Inferno': 'https://www.cs2util.com/inferno',
+    'Nuke': 'https://www.cs2util.com/nuke',
+    'Ancient': 'https://www.cs2util.com/ancient',
+    'Train': 'https://www.cs2util.com/train',
+    'Cache': 'https://www.cs2util.com/cache',
+    'Anubis': 'https://www.cs2util.com/anubis',
+    'Overpass': 'https://www.cs2util.com/overpass',
+    'Vertigo': 'https://www.cs2util.com/vertigo'
+};
+
 // Extract map name from item name (handles both "MapName" and "Map Name" formats)
 function getMapName(itemName) {
     // Check for Yprac first
@@ -68,64 +96,36 @@ function renderHelpVizionMapMenu(items) {
 
     // Render map thumbnail cards
     menuGrid.innerHTML = mapOrder.map(mapName => {
-        const imgUrl = mapLogosImages[mapName] || '';
+        const imgUrl = helpVizionImages[mapName] || '';
         const slug = mapName.toLowerCase().replace(/\s+/g, '-');
+        const widgetUrl = helpVizionURLs[mapName] || '#';
         return `
-            <a class="map-menu-item" href="#map-${slug}" data-map="${mapName}" aria-label="Voir HelpViZion pour ${mapName}">
+            <a class="map-menu-item helpvizion-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="Voir HelpViZion pour ${mapName}">
                 <div class="map-menu-bg" style="background-image: url('${imgUrl}')"></div>
                 <div class="map-menu-overlay">${mapName}</div>
+                <div class="metallic-shine"></div>
             </a>
         `;
     }).join('');
 
-    // Handle thumbnail click: show detail section for selected map
+    // Remove old click handlers and add new ones
     menuGrid.querySelectorAll('.map-menu-item').forEach(card => {
         card.addEventListener('click', (e) => {
-            e.preventDefault();
-            const mapName = card.getAttribute('data-map');
-            showMapDetail(mapName);
+            // Direct link opening is handled by href/target
+            // Optional: you can add analytics or other tracking here
         });
     });
 
-    // Handle hash on page load
+    // Handle hash on page load (for backward compatibility)
     const hash = window.location.hash;
     if (hash && hash.startsWith('#map-')) {
         const slugFromHash = hash.slice(5);
         const mapFromHash = mapOrder.find(m => m.toLowerCase().replace(/\s+/g, '-') === slugFromHash);
-        if (mapFromHash) showMapDetail(mapFromHash);
-    }
-
-    function showMapDetail(mapName) {
-        const item = itemByMap[mapName];
-        if (!item) return;
-
-        const videoId = item.links && item.links.length > 0 ? extractYouTubeId(item.links[0].url) : null;
-        const imgUrl = mapLogosImages[mapName] || '';
-
-        detailSection.innerHTML = `
-            <button class="map-detail-back" id="helpvizion-back-btn">← Retour aux cartes</button>
-            <div class="item-card">
-                ${imgUrl ? `<div class="map-logo" style="background-image: url('${imgUrl}')"></div>` : ''}
-                <span class="item-type">${item.type}</span>
-                <h3>${item.name}</h3>
-                <p>${item.description}</p>
-                ${videoId ? `<div class="utility-video"><iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe></div>` : ''}
-                <div class="item-links">
-                    ${item.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="item-link">${link.text}</a>`).join('')}
-                </div>
-            </div>
-        `;
-        detailSection.classList.add('active');
-        menuGrid.style.display = 'none';
-        detailSection.querySelector('#helpvizion-back-btn').addEventListener('click', () => {
-            detailSection.classList.remove('active');
-            detailSection.innerHTML = '';
-            menuGrid.style.display = '';
-            history.pushState(null, '', window.location.pathname);
-        });
-        const slug = mapName.toLowerCase().replace(/\s+/g, '-');
-        history.pushState(null, '', `#map-${slug}`);
-        detailSection.scrollIntoView({ behavior: 'smooth' });
+        if (mapFromHash) {
+            // For backward compatibility, open the URL
+            const url = helpVizionURLs[mapFromHash];
+            if (url) window.open(url, '_blank');
+        }
     }
 }
 
@@ -138,7 +138,13 @@ function renderItems(category, items) {
     
     grid.innerHTML = items.map(item => {
         const mapName = getMapName(item.name);
-        const logoUrl = (category === 'callouts' || category === 'helpvizion' || category === 'widgets') ? mapLogosImages[mapName] : '';
+        let logoUrl = '';
+        
+        if (category === 'helpvizion') {
+            logoUrl = helpVizionImages[mapName] || '';
+        } else if (category === 'callouts' || category === 'widgets') {
+            logoUrl = mapLogosImages[mapName] || '';
+        }
         
         return `
             <div class="item-card">
