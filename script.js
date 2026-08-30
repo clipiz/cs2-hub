@@ -5,8 +5,10 @@ async function loadData() {
         const data = await response.json();
         
         renderItems('callouts', data.callouts);
-        renderItems('helpvizion', data.helpvizion);
-        renderHelpVizionMapMenu(data.helpvizion);
+        renderItems('quickutil', data.quickutil);
+        renderQuickUtilMapMenu(data.quickutil);
+        renderItems('prefire', data.prefire);
+        renderPrefireMapMenu(data.prefire);
         renderItems('guides', data.guides);
         renderUtilities(data.utilities);
         renderItems('tutorials', data.tutorials);
@@ -35,8 +37,8 @@ const mapLogosImages = {
     'Yprac': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/ypraclogo.png'
 };
 
-// HelpViZion map images (HZ versions)
-const helpVizionImages = {
+// QuickUtil map images (HZ versions)
+const quickUtilImages = {
     'Dust 2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Dust2HZ.jpg',
     'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/MirageHZ.jpg',
     'Inferno': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/InfernoHZ.jpeg',
@@ -49,8 +51,8 @@ const helpVizionImages = {
     'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/VertigoHZ.jpg'
 };
 
-// HelpViZion URLs
-const helpVizionURLs = {
+// QuickUtil URLs (cs2util.com)
+const quickUtilURLs = {
     'Dust 2': 'https://www.cs2util.com/dust2',
     'Mirage': 'https://www.cs2util.com/mirage',
     'Inferno': 'https://www.cs2util.com/inferno',
@@ -61,6 +63,34 @@ const helpVizionURLs = {
     'Anubis': 'https://www.cs2util.com/anubis',
     'Overpass': 'https://www.cs2util.com/overpass',
     'Vertigo': 'https://www.cs2util.com/vertigo'
+};
+
+// Prefire map images (same as QuickUtil)
+const prefireImages = {
+    'Dust 2': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/Dust2HZ.jpg',
+    'Mirage': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/MirageHZ.jpg',
+    'Inferno': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/InfernoHZ.jpeg',
+    'Nuke': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/NukeHZ.png',
+    'Ancient': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/AncientHZ.jpg',
+    'Train': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/TrainHZ.jpg',
+    'Cache': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/CacheHZ.png',
+    'Anubis': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/AnubisHZ.jpg',
+    'Overpass': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/OverpassHZ.jpg',
+    'Vertigo': 'https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/VertigoHZ.jpg'
+};
+
+// Prefire Steam Community URLs
+const prefireURLs = {
+    'Dust 2': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3295650711',
+    'Mirage': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3267302800',
+    'Inferno': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3289507717',
+    'Nuke': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3318295422',
+    'Anubis': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3307639951',
+    'Train': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3562576256',
+    'Vertigo': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3274138705',
+    'Cache': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3770489042',
+    'Ancient': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3282067356',
+    'Overpass': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3328383138'
 };
 
 // Extract map name from item name (handles both "MapName" and "Map Name" formats)
@@ -78,55 +108,48 @@ function getMapName(itemName) {
     return itemName.split(' ')[0];
 }
 
-// Render HelpViZion map selection menu + per-map detail view
-function renderHelpVizionMapMenu(items) {
-    const menuGrid = document.getElementById('helpvizion-map-menu');
-    const detailSection = document.getElementById('helpvizion-map-detail');
-    if (!menuGrid || !detailSection) return;
+// Render QuickUtil map selection menu
+function renderQuickUtilMapMenu(items) {
+    const menuGrid = document.getElementById('quickutil-map-menu');
+    if (!menuGrid) return;
 
     // Desired display order
     const mapOrder = ['Dust 2', 'Mirage', 'Inferno', 'Nuke', 'Ancient', 'Train', 'Cache', 'Anubis', 'Overpass', 'Vertigo'];
 
-    // Build a lookup by map name
-    const itemByMap = {};
-    items.forEach(item => {
-        const mapName = getMapName(item.name);
-        itemByMap[mapName] = item;
-    });
-
     // Render map thumbnail cards
     menuGrid.innerHTML = mapOrder.map(mapName => {
-        const imgUrl = helpVizionImages[mapName] || '';
-        const slug = mapName.toLowerCase().replace(/\s+/g, '-');
-        const widgetUrl = helpVizionURLs[mapName] || '#';
+        const imgUrl = quickUtilImages[mapName] || '';
+        const widgetUrl = quickUtilURLs[mapName] || '#';
         return `
-            <a class="map-menu-item helpvizion-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="Voir HelpViZion pour ${mapName}">
+            <a class="map-menu-item quickutil-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="Voir QuickUtil pour ${mapName}">
                 <div class="map-menu-bg" style="background-image: url('${imgUrl}')"></div>
                 <div class="map-menu-overlay">${mapName}</div>
                 <div class="metallic-shine"></div>
             </a>
         `;
     }).join('');
+}
 
-    // Remove old click handlers and add new ones
-    menuGrid.querySelectorAll('.map-menu-item').forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Direct link opening is handled by href/target
-            // Optional: you can add analytics or other tracking here
-        });
-    });
+// Render Prefire map selection menu
+function renderPrefireMapMenu(items) {
+    const menuGrid = document.getElementById('prefire-map-menu');
+    if (!menuGrid) return;
 
-    // Handle hash on page load (for backward compatibility)
-    const hash = window.location.hash;
-    if (hash && hash.startsWith('#map-')) {
-        const slugFromHash = hash.slice(5);
-        const mapFromHash = mapOrder.find(m => m.toLowerCase().replace(/\s+/g, '-') === slugFromHash);
-        if (mapFromHash) {
-            // For backward compatibility, open the URL
-            const url = helpVizionURLs[mapFromHash];
-            if (url) window.open(url, '_blank');
-        }
-    }
+    // Desired display order
+    const mapOrder = ['Dust 2', 'Mirage', 'Inferno', 'Nuke', 'Ancient', 'Train', 'Cache', 'Anubis', 'Overpass', 'Vertigo'];
+
+    // Render map thumbnail cards
+    menuGrid.innerHTML = mapOrder.map(mapName => {
+        const imgUrl = prefireImages[mapName] || '';
+        const widgetUrl = prefireURLs[mapName] || '#';
+        return `
+            <a class="map-menu-item prefire-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="Voir Prefire pour ${mapName}">
+                <div class="map-menu-bg" style="background-image: url('${imgUrl}')"></div>
+                <div class="map-menu-overlay">${mapName}</div>
+                <div class="metallic-shine"></div>
+            </a>
+        `;
+    }).join('');
 }
 
 // Render items in grid
@@ -140,8 +163,8 @@ function renderItems(category, items) {
         const mapName = getMapName(item.name);
         let logoUrl = '';
         
-        if (category === 'helpvizion') {
-            logoUrl = helpVizionImages[mapName] || '';
+        if (category === 'quickutil' || category === 'prefire') {
+            logoUrl = category === 'quickutil' ? quickUtilImages[mapName] : prefireImages[mapName];
         } else if (category === 'callouts' || category === 'widgets') {
             logoUrl = mapLogosImages[mapName] || '';
         }
