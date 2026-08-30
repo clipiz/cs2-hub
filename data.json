@@ -91,6 +91,190 @@
       ]
     }
   ],
+  "quickutil": [
+    {
+      "id": 1,
+      "name": "Mirage QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Mirage.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/mirage" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Inferno QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Inferno.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/inferno" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Dust 2 QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Dust 2.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/dust2" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Ancient QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Ancient.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/ancient" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Nuke QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Nuke.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/nuke" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Vertigo QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Vertigo.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/vertigo" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Train QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Train.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/train" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Overpass QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Overpass.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/overpass" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Anubis QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Anubis.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/anubis" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Cache QuickUtil",
+      "type": "QuickUtil",
+      "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Cache.",
+      "links": [
+        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/cache" }
+      ]
+    }
+  ],
+  "prefire": [
+    {
+      "id": 1,
+      "name": "Dust 2 Prefire",
+      "type": "Prefire",
+      "description": "Guide complet des préfires pour Dust 2. Positions clés et angles d'attaque.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3295650711" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mirage Prefire",
+      "type": "Prefire",
+      "description": "Maîtrise les préfires de Mirage avec des positions détaillées.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3267302800" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Inferno Prefire",
+      "type": "Prefire",
+      "description": "Préfires essentiels d'Inferno pour améliorer ton jeu.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3289507717" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Nuke Prefire",
+      "type": "Prefire",
+      "description": "Apprenez les préfires complexes de Nuke avec des diagrammes détaillés.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3318295422" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Anubis Prefire",
+      "type": "Prefire",
+      "description": "Guide complet des préfires stratégiques pour Anubis.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3307639951" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Train Prefire",
+      "type": "Prefire",
+      "description": "Maîtrise les préfires complexes de Train et les angles critiques.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3562576256" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Vertigo Prefire",
+      "type": "Prefire",
+      "description": "Système de préfires vertical pour la carte Vertigo.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3274138705" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Cache Prefire",
+      "type": "Prefire",
+      "description": "Guide complet des préfires de Cache avec les positions clés.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3770489042" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Ancient Prefire",
+      "type": "Prefire",
+      "description": "Apprenez les positions uniques et les préfires d'Ancient.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3282067356" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Overpass Prefire",
+      "type": "Prefire",
+      "description": "Apprenez les préfires d'Overpass et le système de positions clés.",
+      "links": [
+        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3328383138" }
+      ]
+    }
+  ],
   "guides": [
     {
       "id": 1,
@@ -190,98 +374,6 @@
       "type": "Utility",
       "description": "Cache utility setups and execute lineups.",
       "videoUrl": "https://www.youtube.com/watch?v=RYfNzitAeOY"
-    }
-  ],
-  "helpvizion": [
-    {
-      "id": 1,
-      "name": "Mirage HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Mirage.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Inferno HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Inferno.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Dust 2 HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Dust 2.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Ancient HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Ancient.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Nuke HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Nuke.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Vertigo HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Vertigo.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" }
-      ]
-    },
-    {
-      "id": 7,
-      "name": "Train HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Train.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" }
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Overpass HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Overpass.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" }
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Anubis HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés d'Anubis.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" }
-      ]
-    },
-    {
-      "id": 10,
-      "name": "Cache HelpViZion",
-      "type": "HelpViZion",
-      "description": "Repères visuels HelpViZion pour mieux lire les positions clés de Cache.",
-      "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=DDNPT2Xb98c" }
-      ]
     }
   ],
   "teams": [
