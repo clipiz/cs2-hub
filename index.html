@@ -63,139 +63,200 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
         }
+
+        .match-card {
+            background-color: rgba(19, 25, 30, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--hs-link);
+            transition: all 0.3s ease;
+        }
+
+        .match-card:hover {
+            background-color: rgba(35, 47, 52, 0.8);
+            border-left-color: var(--hs-highlight);
+            transform: translateX(5px);
+        }
     </style>
 </head>
 <body>
-    <div id="disclaimer-modal" class="disclaimer-modal active">
+    <!-- Top Logo -->
+    <div class="top-logo">HelpStrike</div>
+
+    <!-- Disclaimer Modal -->
+    <div class="disclaimer-modal active" id="disclaimerModal">
         <div class="disclaimer-content">
-            <h2>⚠️ Disclaimer</h2>
-            <p>This website is not affiliated with Valve. All trademarks and content are the property of their respective owners.</p>
-            <button class="disclaimer-btn" onclick="closedisclaimer()">I Understand</button>
+            <h2>⚠️ Avis Important</h2>
+            <p>Certaines vidéos sont en français et d'autres en anglais !</p>
+            <button class="disclaimer-btn" onclick="closeDisclaimer()">OK</button>
         </div>
     </div>
 
     <!-- Sidebar Navigation -->
-    <div class="sidebar">
+    <aside class="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-logo-container">
-                <h2 class="sidebar-logo">CS2 HUB</h2>
+                <h1 class="sidebar-logo">HelpStrike</h1>
             </div>
         </div>
         <nav class="sidebar-nav">
             <div class="sidebar-nav-links">
-                <a href="#callouts-section" class="sidebar-link nav-link">
+                <a href="index.html" class="sidebar-link active" data-section="home">
+                    <span class="icon">🏠</span>
+                    <span class="label">Home</span>
+                </a>
+                <a href="callouts.html" class="sidebar-link" data-section="callouts">
                     <span class="icon">📍</span>
                     <span class="label">Callouts</span>
                 </a>
-                <a href="#quickutil-section" class="sidebar-link nav-link">
+                <a href="helpvizion.html" class="sidebar-link" data-section="quickutil">
                     <span class="icon">🎯</span>
                     <span class="label">QuickUtil!</span>
                 </a>
-                <a href="#prefire-section" class="sidebar-link nav-link">
+                <a href="prefire.html" class="sidebar-link" data-section="prefire">
                     <span class="icon">🔫</span>
                     <span class="label">Prefire</span>
                 </a>
-                <a href="#guides-section" class="sidebar-link nav-link">
-                    <span class="icon">📚</span>
+                <a href="guides.html" class="sidebar-link" data-section="guides">
+                    <span class="icon">📖</span>
                     <span class="label">Guides</span>
                 </a>
-                <a href="#utilities-section" class="sidebar-link nav-link">
-                    <span class="icon">💣</span>
-                    <span class="label">Utilities</span>
+                <a href="utility.html" class="sidebar-link" data-section="utility">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Utility</span>
                 </a>
-                <a href="#matches-section" class="sidebar-link nav-link">
+                <a href="#recent-esport" class="sidebar-link" data-section="recent-esport">
                     <span class="icon">🏆</span>
-                    <span class="label">Pro Matches</span>
+                    <span class="label">eSport Results</span>
                 </a>
             </div>
         </nav>
-    </div>
+    </aside>
 
     <!-- Main Content -->
-    <div class="main-content home-page">
-        <!-- Hero Section -->
-        <section class="hero">
+    <main class="main-content home-page">
+        <!-- Hero Section with Banner -->
+        <section class="hero" id="home">
+            <div class="hero-banner">
+                <img src="https://raw.githubusercontent.com/clipiz/cs2-hub/main/images/helpstrike-banner.png" alt="HelpStrike Banner" class="banner-img">
+            </div>
             <div class="hero-content">
-                <h2>🎮 CS2 Resources Hub</h2>
-                <p>Master Counter-Strike 2 with comprehensive guides, utilities, and community resources</p>
+                <h2>Apprends. Maîtrise. Domine.</h2>
+                <p>Tous les outils essentiels pour dominer sur CS2</p>
             </div>
         </section>
 
-        <!-- Callouts Section -->
-        <section id="callouts-section" class="category-section">
-            <div class="container">
-                <h2 class="category-title">📍 Map Callouts</h2>
-                <p class="category-desc">Learn the essential callout names for every map in CS2</p>
-                <div id="callouts-grid" class="items-grid"></div>
-            </div>
-        </section>
-
-        <!-- QuickUtil Section -->
-        <section id="quickutil-section" class="category-section">
-            <div class="container">
-                <h2 class="category-title">🎯 QuickUtil!</h2>
-                <p class="category-desc">Visual references and quick utility guides for every map. Click any widget to view on cs2util.com</p>
-                <div id="quickutil-map-menu" class="map-menu-grid"></div>
-            </div>
-        </section>
-
-        <!-- Prefire Section -->
-        <section id="prefire-section" class="category-section">
-            <div class="container">
-                <h2 class="category-title">🔫 Prefire</h2>
-                <p class="category-desc">Master prefire positions and angles for competitive play. Click any widget to view on Steam</p>
-                <div id="prefire-map-menu" class="map-menu-grid"></div>
-            </div>
-        </section>
-
-        <!-- Guides Section -->
-        <section id="guides-section" class="category-section">
-            <div class="container">
-                <h2 class="category-title">📚 Guides</h2>
-                <p class="category-desc">Comprehensive guides to improve your game</p>
-                <div id="guides-grid" class="items-grid"></div>
-            </div>
-        </section>
-
-        <!-- Utilities Section -->
-        <section id="utilities-section" class="category-section">
-            <div class="container">
-                <h2 class="category-title">💣 Utilities & Lineups</h2>
-                <p class="category-desc">Essential utility setups and smoke lineups for every map</p>
-                <div id="utilities-grid" class="items-grid"></div>
-            </div>
-        </section>
-
-        <!-- Pro Matches Section -->
-        <section id="matches-section" class="category-section">
-            <div class="container">
-                <h2 class="category-title">🏆 Pro Matches</h2>
-                <p class="category-desc">Latest professional CS2 matches and tournaments</p>
-                <div class="pro-teams-container">
-                    <div class="matches-section">
-                        <h3>Recent Matches</h3>
-                        <div id="matches-list" class="matches-list"></div>
+        <div class="container">
+            <!-- Quick Links Section -->
+            <section class="category-section">
+                <h2 class="category-title">🚀 Accès Rapide</h2>
+                <p class="category-desc">Accède à tes ressources favorites</p>
+                <div class="items-grid">
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>📍 Callouts des Cartes</h3>
+                        <p>Maîtrise tous les callouts de chaque carte compétitive</p>
+                        <div class="item-links">
+                            <a href="callouts.html" class="item-link">Voir Tous les Callouts</a>
+                        </div>
                     </div>
-                    <div class="teams-section">
-                        <h3>Top Teams</h3>
-                        <div id="teams-list" class="teams-list"></div>
+
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>🎯 QuickUtil!</h3>
+                        <p>Retrouve les repères visuels essentiels sur chaque carte compétitive</p>
+                        <div class="item-links">
+                            <a href="helpvizion.html" class="item-link">Voir QuickUtil!</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>🔫 Prefire</h3>
+                        <p>Maîtrise les positions et angles de préfire de chaque carte</p>
+                        <div class="item-links">
+                            <a href="prefire.html" class="item-link">Voir Prefire</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>📖 Guides</h3>
+                        <p>Apprends les stratégies et le spray control</p>
+                        <div class="item-links">
+                            <a href="guides.html" class="item-link">Voir Tous les Guides</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>⚙️ Utility</h3>
+                        <p>Maîtrise les lineups et setups essentiels</p>
+                        <div class="item-links">
+                            <a href="utility.html" class="item-link">Voir Toute la Utility</a>
+                        </div>
+                    </div>
+
+                    <div class="item-card quick-link">
+                        <span class="item-type">Navigation</span>
+                        <h3>🏆 Scène Pro</h3>
+                        <p>Suis les derniers matchs compétitifs et classements</p>
+                        <div class="item-links">
+                            <a href="#recent-esport" class="item-link">Voir les Résultats</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <!-- RECENT ESPORT RESULT Section -->
+            <section id="recent-esport" class="category-section">
+                <h2 class="category-title">🏆 RÉSULTATS ESPORT</h2>
+                <p class="category-desc">Suis les derniers résultats et classements de la scène pro</p>
+
+                <div class="pro-teams-container">
+                    <div class="matches-section">
+                        <h3>Derniers Matchs CS2</h3>
+                        <div class="matches-list" id="matches-list">
+                            <div class="loading">⏳ Chargement des matchs...</div>
+                        </div>
+                    </div>
+
+                    <div class="teams-section">
+                        <h3>Meilleures Équipes</h3>
+                        <div class="teams-list" id="teams-list">
+                            <!-- Teams will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2026 CS2 Hub - Community Resources</p>
-            <p class="disclaimer">This site is not affiliated with Valve Corporation or Counter-Strike</p>
+            <div class="container">
+                <p>&copy; 2026 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
+                <p class="disclaimer">Ce site a été créé par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
+            </div>
         </footer>
-    </div>
+    </main>
 
     <script src="script.js"></script>
     <script>
-        function closedisclaimer() {
-            document.getElementById('disclaimer-modal').classList.remove('active');
+        // Close disclaimer and save to localStorage
+        function closeDisclaimer() {
+            const modal = document.getElementById('disclaimerModal');
+            modal.classList.remove('active');
+            localStorage.setItem('disclaimerClosed', 'true');
         }
+
+        // Check if disclaimer was already closed
+        document.addEventListener('DOMContentLoaded', () => {
+            const disclaimerClosed = localStorage.getItem('disclaimerClosed');
+            if (disclaimerClosed === 'true') {
+                const modal = document.getElementById('disclaimerModal');
+                if (modal) modal.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
