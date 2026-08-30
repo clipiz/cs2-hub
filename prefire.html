@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefire - HelpStrike</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Logo -->
+    <div class="top-logo">HelpStrike</div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <h1 class="sidebar-logo">HelpStrike</h1>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-links">
+                <a href="index.html" class="sidebar-link" data-section="home">
+                    <span class="icon">🏠</span>
+                    <span class="label">Home</span>
+                </a>
+                <a href="callouts.html" class="sidebar-link" data-section="callouts">
+                    <span class="icon">📍</span>
+                    <span class="label">Callouts</span>
+                </a>
+                <a href="helpvizion.html" class="sidebar-link" data-section="quickutil">
+                    <span class="icon">🎯</span>
+                    <span class="label">QuickUtil!</span>
+                </a>
+                <a href="prefire.html" class="sidebar-link active" data-section="prefire">
+                    <span class="icon">🔫</span>
+                    <span class="label">Prefire</span>
+                </a>
+                <a href="guides.html" class="sidebar-link" data-section="guides">
+                    <span class="icon">📖</span>
+                    <span class="label">Guides</span>
+                </a>
+                <a href="utility.html" class="sidebar-link" data-section="utility">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Utility</span>
+                </a>
+                <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport">
+                    <span class="icon">🏆</span>
+                    <span class="label">eSport Results</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Navigation Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1>HelpStrike</h1>
+                    <p class="tagline">Les aides essentielles de CS2</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="prefire">
+            <div class="hero-content">
+                <h2>🔫 Prefire des Cartes</h2>
+                <p>Maîtrise les positions et angles de préfire pour chaque carte compétitive</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- PREFIRE Section -->
+            <section class="category-section">
+                <h2 class="category-title">🔫 PREFIRE</h2>
+                <p class="category-desc">Positions de préfire pour toutes les cartes compétitives — clique sur une carte pour accéder au guide Steam.</p>
+                <div class="map-menu-grid" id="prefire-map-menu">
+                    <!-- Map thumbnail cards rendered by JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
+                <p class="disclaimer">Ce site a été créé par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadPrefirePage() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                renderPrefireMapMenu(data.prefire);
+            } catch (error) {
+                console.error('Error loading Prefire:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPrefirePage);
+    </script>
+</body>
+</html>
