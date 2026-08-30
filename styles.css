@@ -612,6 +612,118 @@ body {
     color: #5a6f7f;
 }
 
+/* ===== Map Menu Grid (HelpViZion) ===== */
+.map-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.map-menu-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 16 / 9;
+    background: var(--hs-panel);
+    border: 2px solid var(--hs-border);
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-menu-item:hover {
+    transform: scale(1.05);
+    border-color: var(--hs-highlight);
+    box-shadow: 0 0 30px rgba(254, 192, 6, 0.4), 
+                0 8px 25px rgba(254, 192, 6, 0.25),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.map-menu-item:hover .map-menu-bg {
+    filter: brightness(0.7);
+}
+
+.map-menu-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: filter 0.3s ease;
+}
+
+.map-menu-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 0.8rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    z-index: 2;
+    position: relative;
+}
+
+/* Metallic shine effect */
+.metallic-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 25%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease, left 0.6s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.map-menu-item:hover .metallic-shine {
+    opacity: 1;
+    left: 100%;
+}
+
+/* Map detail section */
+.map-detail-section {
+    display: none;
+    margin-top: 2rem;
+}
+
+.map-detail-section.active {
+    display: block;
+}
+
+.map-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+    background: none;
+    border: 2px solid var(--hs-border);
+    color: var(--hs-highlight);
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.map-detail-back:hover {
+    border-color: var(--hs-highlight);
+    background: rgba(254,192,6,0.08);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .sidebar {
@@ -628,6 +740,10 @@ body {
 
     .pro-teams-container {
         grid-template-columns: 1fr;
+    }
+
+    .map-menu-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -691,100 +807,11 @@ body {
         width: 35px;
         height: 35px;
     }
-}
 
-/* ===== Map Menu Grid (HelpViZion) ===== */
-.map-menu-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-    margin-top: 1.5rem;
-}
-
-.map-menu-item {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 16 / 9;
-    background: var(--hs-panel);
-    border: 2px solid var(--hs-border);
-    text-decoration: none;
-    display: block;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.map-menu-item:hover {
-    transform: scale(1.04);
-    border-color: var(--hs-highlight);
-}
-
-.map-menu-item:hover .map-menu-bg {
-    filter: brightness(0.7);
-}
-
-.map-menu-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    transition: filter 0.2s ease;
-}
-
-.map-menu-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0.5rem 0.8rem;
-    background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-}
-
-/* Map detail section */
-.map-detail-section {
-    display: none;
-    margin-top: 2rem;
-}
-
-.map-detail-section.active {
-    display: block;
-}
-
-.map-detail-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-bottom: 1.2rem;
-    background: none;
-    border: 2px solid var(--hs-border);
-    color: var(--hs-highlight);
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: border-color 0.15s, background 0.15s;
-}
-
-.map-detail-back:hover {
-    border-color: var(--hs-highlight);
-    background: rgba(254,192,6,0.08);
-}
-
-@media (max-width: 1024px) {
-    .map-menu-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
     .map-menu-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .map-menu-overlay {
         font-size: 0.95rem;
     }
