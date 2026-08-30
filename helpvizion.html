@@ -23,29 +23,29 @@
                     <span class="icon">🏠</span>
                     <span class="label">Home</span>
                 </a>
-                <a href="index.html#callouts-section" class="sidebar-link" data-section="callouts">
+                <a href="callouts.html" class="sidebar-link" data-section="callouts">
                     <span class="icon">📍</span>
                     <span class="label">Callouts</span>
                 </a>
-                <a href="index.html#quickutil-section" class="sidebar-link active" data-section="quickutil">
+                <a href="helpvizion.html" class="sidebar-link active" data-section="quickutil">
                     <span class="icon">🎯</span>
                     <span class="label">QuickUtil!</span>
                 </a>
-                <a href="index.html#prefire-section" class="sidebar-link" data-section="prefire">
+                <a href="prefire.html" class="sidebar-link" data-section="prefire">
                     <span class="icon">🔫</span>
                     <span class="label">Prefire</span>
                 </a>
-                <a href="index.html#guides-section" class="sidebar-link" data-section="guides">
+                <a href="guides.html" class="sidebar-link" data-section="guides">
                     <span class="icon">📖</span>
                     <span class="label">Guides</span>
                 </a>
-                <a href="index.html#utilities-section" class="sidebar-link" data-section="utility">
+                <a href="utility.html" class="sidebar-link" data-section="utility">
                     <span class="icon">⚙️</span>
                     <span class="label">Utility</span>
                 </a>
-                <a href="index.html#matches-section" class="sidebar-link" data-section="matches">
+                <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport">
                     <span class="icon">🏆</span>
-                    <span class="label">Pro Matches</span>
+                    <span class="label">eSport Results</span>
                 </a>
             </div>
         </nav>
@@ -92,5 +92,18 @@
     </main>
 
     <script src="script.js"></script>
+    <script>
+        async function loadQuickUtilPage() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                renderQuickUtilMapMenu(data.quickutil);
+            } catch (error) {
+                console.error('Error loading QuickUtil:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadQuickUtilPage);
+    </script>
 </body>
 </html>
