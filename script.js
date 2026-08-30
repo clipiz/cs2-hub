@@ -5,13 +5,10 @@ async function loadData() {
         const data = await response.json();
         
         renderItems('callouts', data.callouts);
-        renderItems('quickutil', data.quickutil);
         renderQuickUtilMapMenu(data.quickutil);
-        renderItems('prefire', data.prefire);
         renderPrefireMapMenu(data.prefire);
         renderItems('guides', data.guides);
         renderUtilities(data.utilities);
-        renderItems('tutorials', data.tutorials);
         renderTeams(data.teams);
         loadProMatches();
     } catch (error) {
@@ -93,18 +90,11 @@ const prefireURLs = {
     'Overpass': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3328383138'
 };
 
-// Extract map name from item name (handles both "MapName" and "Map Name" formats)
+// Extract map name from item name
 function getMapName(itemName) {
-    // Check for Yprac first
     if (itemName.includes('Yprac')) return 'Yprac';
-    
-    // Check for Cache
     if (itemName.includes('Cache')) return 'Cache';
-    
-    // Check for two-word maps
     if (itemName.includes('Dust 2')) return 'Dust 2';
-    
-    // Otherwise, get the first word
     return itemName.split(' ')[0];
 }
 
@@ -113,15 +103,13 @@ function renderQuickUtilMapMenu(items) {
     const menuGrid = document.getElementById('quickutil-map-menu');
     if (!menuGrid) return;
 
-    // Desired display order
     const mapOrder = ['Dust 2', 'Mirage', 'Inferno', 'Nuke', 'Ancient', 'Train', 'Cache', 'Anubis', 'Overpass', 'Vertigo'];
 
-    // Render map thumbnail cards
     menuGrid.innerHTML = mapOrder.map(mapName => {
         const imgUrl = quickUtilImages[mapName] || '';
         const widgetUrl = quickUtilURLs[mapName] || '#';
         return `
-            <a class="map-menu-item quickutil-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="Voir QuickUtil pour ${mapName}">
+            <a class="map-menu-item quickutil-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="View QuickUtil for ${mapName}">
                 <div class="map-menu-bg" style="background-image: url('${imgUrl}')"></div>
                 <div class="map-menu-overlay">${mapName}</div>
                 <div class="metallic-shine"></div>
@@ -135,15 +123,13 @@ function renderPrefireMapMenu(items) {
     const menuGrid = document.getElementById('prefire-map-menu');
     if (!menuGrid) return;
 
-    // Desired display order
     const mapOrder = ['Dust 2', 'Mirage', 'Inferno', 'Nuke', 'Ancient', 'Train', 'Cache', 'Anubis', 'Overpass', 'Vertigo'];
 
-    // Render map thumbnail cards
     menuGrid.innerHTML = mapOrder.map(mapName => {
         const imgUrl = prefireImages[mapName] || '';
         const widgetUrl = prefireURLs[mapName] || '#';
         return `
-            <a class="map-menu-item prefire-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="Voir Prefire pour ${mapName}">
+            <a class="map-menu-item prefire-widget" href="${widgetUrl}" target="_blank" rel="noopener noreferrer" data-map="${mapName}" aria-label="View Prefire for ${mapName}">
                 <div class="map-menu-bg" style="background-image: url('${imgUrl}')"></div>
                 <div class="map-menu-overlay">${mapName}</div>
                 <div class="metallic-shine"></div>
@@ -163,9 +149,7 @@ function renderItems(category, items) {
         const mapName = getMapName(item.name);
         let logoUrl = '';
         
-        if (category === 'quickutil' || category === 'prefire') {
-            logoUrl = category === 'quickutil' ? quickUtilImages[mapName] : prefireImages[mapName];
-        } else if (category === 'callouts' || category === 'widgets') {
+        if (category === 'callouts') {
             logoUrl = mapLogosImages[mapName] || '';
         }
         
@@ -189,22 +173,17 @@ function renderItems(category, items) {
 
 // Extract YouTube video ID from URL
 function extractYouTubeId(url) {
-    // Handle different YouTube URL formats
-    let videoId = null;
-    
-    // Format: https://www.youtube.com/watch?v=VIDEO_ID
     const watchMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
     if (watchMatch && watchMatch[1]) {
-        videoId = watchMatch[1];
+        return watchMatch[1];
     }
     
-    // Format: https://www.youtube.com/embed/VIDEO_ID
     const embedMatch = url.match(/youtube\.com\/embed\/([^&\n?#]+)/);
     if (embedMatch && embedMatch[1]) {
-        videoId = embedMatch[1];
+        return embedMatch[1];
     }
     
-    return videoId;
+    return null;
 }
 
 // Render utilities with video embeds
@@ -256,46 +235,7 @@ function renderTeams(teams) {
     `).join('');
 }
 
-function initializeSidebarToggle() {
-    sidebarNavHeightUpdaters.length = 0;
-
-    document.querySelectorAll('.sidebar-nav').forEach(sidebarNav => {
-        const toggleButton = sidebarNav.querySelector('.sidebar-nav-toggle');
-        const linksContainer = sidebarNav.querySelector('.sidebar-nav-links');
-        if (!toggleButton || !linksContainer) return;
-
-        const updateExpandedHeight = () => {
-            sidebarNav.style.setProperty('--sidebar-nav-links-height', `${linksContainer.scrollHeight}px`);
-        };
-
-        sidebarNavHeightUpdaters.push(updateExpandedHeight);
-
-        const setExpanded = (expanded) => {
-            if (expanded) {
-                updateExpandedHeight();
-            }
-            sidebarNav.classList.toggle('collapsed', !expanded);
-            toggleButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        };
-
-        updateExpandedHeight();
-        setExpanded(true);
-
-        toggleButton.addEventListener('click', () => {
-            const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
-            setExpanded(!expanded);
-        });
-    });
-
-    if (!hasSidebarNavResizeListener) {
-        window.addEventListener('resize', () => {
-            sidebarNavHeightUpdaters.forEach(updateExpandedHeight => updateExpandedHeight());
-        });
-        hasSidebarNavResizeListener = true;
-    }
-}
-
-// Load Pro Matches from HLTV-inspired data (June 2026)
+// Load Pro Matches
 function loadProMatches() {
     const matchesList = document.getElementById('matches-list');
     
@@ -387,9 +327,8 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 // Load everything when page is ready
 document.addEventListener('DOMContentLoaded', () => {
-    initializeSidebarToggle();
     loadData();
 });
 
-// Optional: Refresh matches every 5 minutes
+// Refresh matches every 5 minutes
 setInterval(loadProMatches, 5 * 60 * 1000);
