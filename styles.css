@@ -82,19 +82,7 @@ body {
     padding: 0 10px;
 }
 
-.sidebar-nav-toggle {
-    display: none;
-}
 
-.sidebar-nav-toggle-chevron {
-    font-size: 0.95em;
-    transition: transform 0.3s ease;
-    transform: rotate(0deg);
-}
-
-.sidebar-nav.collapsed .sidebar-nav-toggle-chevron {
-    transform: rotate(-90deg);
-}
 
 .sidebar-nav-links {
     display: flex;
@@ -104,11 +92,6 @@ body {
     max-height: 600px;
     opacity: 1;
     transition: max-height 0.35s ease, opacity 0.25s ease;
-}
-
-.sidebar-nav.collapsed .sidebar-nav-links {
-    max-height: 0;
-    opacity: 0;
 }
 
 .sidebar-link {
@@ -741,11 +724,6 @@ body {
         overflow-x: auto;
         max-height: 120px;
         padding-bottom: 6px;
-    }
-
-    .sidebar-nav.collapsed .sidebar-nav-links {
-        max-height: 0;
-        padding-bottom: 0;
     }
 
     .sidebar-link {
