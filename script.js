@@ -1,4 +1,5 @@
 const FAVORITES_STORAGE_KEY = 'helpstrike_favorites';
+const LEETIFY_MATCH_CACHE_KEY = 'helpstrike_leetify_match_cache';
 
 // Load and render items from data.json
 async function loadData() {
@@ -103,6 +104,18 @@ function getAllFavorites() {
         return Array.isArray(parsed) ? parsed : [];
     } catch (error) {
         console.error('Error reading favorites:', error);
+        return [];
+    }
+}
+
+function getLeetifyFavoriteItems() {
+    try {
+        const raw = localStorage.getItem(LEETIFY_MATCH_CACHE_KEY);
+        const parsed = raw ? JSON.parse(raw) : {};
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return [];
+        return Object.values(parsed);
+    } catch (error) {
+        console.error('Error reading Leetify favorites cache:', error);
         return [];
     }
 }
@@ -713,7 +726,8 @@ function renderFavoritesPage(data) {
         { type: 'guides', label: 'Guides', items: data.guides || [] },
         { type: 'utilities', label: 'Utility', items: data.utilities || [] },
         { type: 'crosshairs', label: 'Crosshairs', items: data.crosshairs || [] },
-        { type: 'proConfigs', label: 'Configs Pro', items: data.proConfigs || [] }
+        { type: 'proConfigs', label: 'Configs Pro', items: data.proConfigs || [] },
+        { type: 'leetifyMatches', label: 'Matchs Leetify', items: getLeetifyFavoriteItems() }
     ];
 
     const sections = categories.map(category => {
