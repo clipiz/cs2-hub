@@ -180,7 +180,7 @@ function getFriendlyErrorMessage(error) {
 
 async function fetchLeetifyJson(path, steamId64, apiKey) {
     const url = new URL(`${LEETIFY_API_BASE_URL}${path}`);
-    url.searchParams.set('steamId64', steamId64);
+    url.searchParams.set('steam64_id', steamId64);
 
     const headers = {};
     if (apiKey) {
