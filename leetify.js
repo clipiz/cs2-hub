@@ -1,4 +1,4 @@
-const LEETIFY_API_BASE_URL = 'https://api-public-docs.cs-prod.leetify.com';
+const LEETIFY_API_BASE_URL = 'https://api-public.cs-prod.leetify.com';
 const LEETIFY_API_KEY_STORAGE = 'helpstrike_leetify_apikey';
 const LEETIFY_STEAM_ID_STORAGE = 'helpstrike_leetify_steamid';
 const LEETIFY_REMEMBER_STORAGE = 'helpstrike_leetify_remember';
