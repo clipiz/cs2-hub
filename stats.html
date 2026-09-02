@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats Leetify - HelpStrike</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-logo">HelpStrike</div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <h1 class="sidebar-logo">HelpStrike</h1>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-links">
+                <a href="index.html" class="sidebar-link" data-section="home"><span class="icon">🏠</span><span class="label">Home</span></a>
+                <a href="callouts.html" class="sidebar-link" data-section="callouts"><span class="icon">📍</span><span class="label">Callouts</span></a>
+                <a href="helpvizion.html" class="sidebar-link" data-section="quickutil"><span class="icon">🎯</span><span class="label">QuickUtil!</span></a>
+                <a href="prefire.html" class="sidebar-link" data-section="prefire"><span class="icon">🔫</span><span class="label">Prefire</span></a>
+                <a href="guides.html" class="sidebar-link" data-section="guides"><span class="icon">📖</span><span class="label">Guides</span></a>
+                <a href="utility.html" class="sidebar-link" data-section="utility"><span class="icon">⚙️</span><span class="label">Utility</span></a>
+                <a href="crosshair.html" class="sidebar-link" data-section="crosshair"><span class="icon">✚</span><span class="label">Crosshair</span></a>
+                <a href="configs.html" class="sidebar-link" data-section="configs"><span class="icon">🖥️</span><span class="label">Configs Pro</span></a>
+                <a href="favorites.html" class="sidebar-link" data-section="favorites"><span class="icon">⭐</span><span class="label">Favoris</span></a>
+                <a href="stats.html" class="sidebar-link active" data-section="stats"><span class="icon">📊</span><span class="label">Stats Leetify</span></a>
+                <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport"><span class="icon">🏆</span><span class="label">eSport Results</span></a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <section class="hero" id="stats">
+            <div class="hero-content">
+                <h2>📊 Stats Leetify</h2>
+                <p>Récupère ton profil CS2 et tes matchs récents en un clic</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="category-section">
+                <h2 class="category-title">🔎 Recherche de profil</h2>
+                <p class="category-desc">Entre ton SteamID64, un lien Steam ou Leetify. La clé API est optionnelle mais recommandée pour limiter les blocages.</p>
+
+                <div class="leetify-search-panel">
+                    <form id="leetify-search-form" class="leetify-form-grid">
+                        <div class="form-group leetify-form-wide">
+                            <label for="leetify-player-input">SteamID64 ou lien de profil</label>
+                            <input id="leetify-player-input" type="text" placeholder="Ex: 7656119... ou https://steamcommunity.com/profiles/..." required>
+                        </div>
+                        <div class="form-group leetify-form-wide">
+                            <label for="leetify-apikey-input">Clé API Leetify (optionnel)</label>
+                            <input id="leetify-apikey-input" type="password" placeholder="Votre clé API Leetify (optionnelle)" autocomplete="off">
+                            <p class="leetify-help-text">
+                                Obtiens ta clé ici :
+                                <a href="https://leetify.com/app/developer" target="_blank" rel="noopener noreferrer">leetify.com/app/developer</a>
+                                <span class="leetify-tooltip" title="Sans clé API, les requêtes Leetify fonctionnent mais sont limitées par un rate-limit plus strict.">ⓘ</span>
+                            </p>
+                        </div>
+                        <div class="leetify-form-actions">
+                            <label class="checkbox-group" for="leetify-remember">
+                                <input id="leetify-remember" type="checkbox">
+                                <span>Se souvenir de mon SteamID / clé API</span>
+                            </label>
+                            <button type="submit" class="item-link leetify-submit-btn">Rechercher mes stats</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="category-section">
+                <h2 class="category-title">📈 Résultats</h2>
+                <div id="leetify-status" class="loading">Saisis un SteamID64 pour lancer une recherche.</div>
+                <div id="leetify-results" class="leetify-results" hidden>
+                    <div class="leetify-results-grid" id="leetify-profile-grid"></div>
+                    <section class="subsection">
+                        <h3 class="subsection-title">Matchs récents</h3>
+                        <div id="leetify-matches" class="leetify-matches-list"></div>
+                    </section>
+                    <section class="subsection">
+                        <h3 class="subsection-title">Coéquipiers récents</h3>
+                        <div id="leetify-teammates" class="items-grid"></div>
+                    </section>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
+                <p class="disclaimer">Ce site a été créé par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="leetify.js"></script>
+</body>
+</html>

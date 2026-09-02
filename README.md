@@ -9,6 +9,7 @@ A modern, responsive website for Counter-Strike 2 players to access utilities, g
 - **Guides** - Comprehensive gameplay guides and strategies
 - **Tutorials** - Video tutorials from content creators
 - **Pro Teams & Matches** - Follow professional scene results and team standings
+- **Stats Leetify** - Lookup player stats (SteamID64) with optional personal Leetify API key
 - **Modern Design** - Clean, dark-themed UI optimized for desktop
 - **Fast & Lightweight** - No backend required, fully static HTML/CSS/JS
 - **Easy Customization** - Simple JSON data structure for content management
@@ -20,6 +21,8 @@ cs2-hub/
 ├── index.html      # Main HTML structure
 ├── styles.css      # Complete styling with responsive design
 ├── script.js       # JavaScript for loading and rendering content
+├── stats.html      # Leetify stats page
+├── leetify.js      # Leetify API integration logic (client-side)
 ├── data.json       # Content data for all categories
 └── README.md       # This file
 ```
@@ -118,6 +121,10 @@ async function loadProMatches() {
     // ... render matches
 }
 ```
+
+### Leetify API Key (optional)
+- Generate your personal key from https://leetify.com/app/developer
+- Enter it in `stats.html` (stored only in browser `localStorage`, never in `data.json`)
 
 ### Browser Support
 - Chrome 90+

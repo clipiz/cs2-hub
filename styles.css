@@ -955,8 +955,125 @@ body {
     color: #9fb3c6;
 }
 
+.leetify-search-panel {
+    background: linear-gradient(135deg, var(--hs-panel) 0%, var(--hs-bg-alt) 100%);
+    border: 2px solid var(--hs-border);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.leetify-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.leetify-form-wide {
+    grid-column: 1 / -1;
+}
+
+.leetify-form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leetify-help-text {
+    margin-top: 8px;
+    color: #95afc7;
+    font-size: 0.9rem;
+}
+
+.leetify-help-text a {
+    color: var(--hs-link);
+}
+
+.leetify-help-text a:hover {
+    color: var(--hs-link-hover);
+}
+
+.leetify-tooltip {
+    margin-left: 6px;
+    cursor: help;
+    color: var(--hs-highlight);
+}
+
+.leetify-submit-btn {
+    border: none;
+    cursor: pointer;
+}
+
+.leetify-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.leetify-profile-card {
+    grid-column: span 2;
+    min-height: auto;
+}
+
+.leetify-profile-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.leetify-avatar {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    border: 2px solid var(--hs-highlight);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.leetify-stat-card,
+.leetify-match-card,
+.leetify-teammate-card {
+    min-height: auto;
+}
+
+.leetify-stat-value {
+    font-size: 1.8rem;
+    color: var(--hs-highlight);
+    font-weight: 700;
+}
+
+.leetify-matches-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.leetify-status {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--hs-border);
+    background: rgba(19, 25, 30, 0.55);
+}
+
+.leetify-status--error {
+    color: #ff9980;
+    border-color: rgba(255, 107, 53, 0.6);
+}
+
+.leetify-status--success {
+    color: #9df1c4;
+    border-color: rgba(77, 179, 255, 0.45);
+}
+
 @media (max-width: 900px) {
     .crosshair-layout {
         grid-template-columns: 1fr;
+    }
+
+    .leetify-profile-card {
+        grid-column: span 1;
     }
 }
