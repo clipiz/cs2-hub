@@ -6,7 +6,10 @@
       "type": "Guide de Carte",
       "description": "Guide complet des callouts de Mirage avec les noms détaillés des positions.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=cMEJ7j-GNWw&list=PLnoP1uTCmQ7TaoEqRTE_zjA4FmEQeO9P9&index=2"
+        }
       ]
     },
     {
@@ -15,7 +18,10 @@
       "type": "Guide de Carte",
       "description": "Maîtrise les callouts d'Inferno avec des guides visuels.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=pzhNnZsYwWw&list=PLnoP1uTCmQ7R8Tbph-Xu0uz_i71uanUq_&index=2"
+        }
       ]
     },
     {
@@ -24,7 +30,10 @@
       "type": "Guide de Carte",
       "description": "Callouts essentiels de Dust 2 pour la communication.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=f4RI4MbvcVQ"
+        }
       ]
     },
     {
@@ -33,7 +42,10 @@
       "type": "Guide de Carte",
       "description": "Apprends les positions uniques et le système de callouts d'Ancient.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=clZQGmx88Yc&list=PLnoP1uTCmQ7SFxvJgIuPzJWH5VC_2t6iT&index=2"
+        }
       ]
     },
     {
@@ -42,7 +54,10 @@
       "type": "Guide de Carte",
       "description": "Callouts complexes de Nuke expliqués avec des diagrammes.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=5EEeP37HX5g&list=PLnoP1uTCmQ7TjbjbpD1m1JlYFlzgDTC-b&index=2"
+        }
       ]
     },
     {
@@ -51,7 +66,10 @@
       "type": "Guide de Carte",
       "description": "Système de callouts vertical pour la carte Vertigo.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=ZxgAXDOsStk&list=PLnoP1uTCmQ7TjPsq8W78YBJWXnKCdCn0F&index=2"
+        }
       ]
     },
     {
@@ -60,7 +78,10 @@
       "type": "Guide de Carte",
       "description": "Maîtrise les callouts complexes de Train et les positions.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=ovFPUg3Jq_0&list=PLnoP1uTCmQ7QMNa-Q6aVeKhO7OqZuBkHi&index=2"
+        }
       ]
     },
     {
@@ -69,7 +90,10 @@
       "type": "Guide de Carte",
       "description": "Apprends les positions d'Overpass et le système de callouts.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=aLslZ96TIVI&list=PLnoP1uTCmQ7Ss5fnwcnNFc2Tatacvda4_"
+        }
       ]
     },
     {
@@ -78,7 +102,10 @@
       "type": "Guide de Carte",
       "description": "Guide des callouts et positions stratégiques de la carte Anubis.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=roO0Ipz0UjE&list=PLnoP1uTCmQ7ROvU3V6vQQmRGXovZCbMBx&index=2"
+        }
       ]
     },
     {
@@ -87,7 +114,10 @@
       "type": "Guide de Carte",
       "description": "Guide complet des callouts de Cache avec les positions clés.",
       "links": [
-        { "text": "Tutoriel Vidéo", "url": "https://www.youtube.com/watch?v=DDNPT2Xb98c" }
+        {
+          "text": "Tutoriel Vidéo",
+          "url": "https://www.youtube.com/watch?v=DDNPT2Xb98c"
+        }
       ]
     }
   ],
@@ -98,7 +128,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Mirage.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/mirage" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/mirage"
+        }
       ]
     },
     {
@@ -107,7 +140,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Inferno.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/inferno" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/inferno"
+        }
       ]
     },
     {
@@ -116,7 +152,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Dust 2.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/dust2" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/dust2"
+        }
       ]
     },
     {
@@ -125,7 +164,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Ancient.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/ancient" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/ancient"
+        }
       ]
     },
     {
@@ -134,7 +176,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Nuke.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/nuke" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/nuke"
+        }
       ]
     },
     {
@@ -143,7 +188,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Vertigo.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/vertigo" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/vertigo"
+        }
       ]
     },
     {
@@ -152,7 +200,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Train.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/train" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/train"
+        }
       ]
     },
     {
@@ -161,7 +212,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Overpass.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/overpass" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/overpass"
+        }
       ]
     },
     {
@@ -170,7 +224,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés d'Anubis.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/anubis" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/anubis"
+        }
       ]
     },
     {
@@ -179,7 +236,10 @@
       "type": "QuickUtil",
       "description": "Repères visuels QuickUtil pour mieux lire les positions clés de Cache.",
       "links": [
-        { "text": "Voir sur cs2util.com", "url": "https://www.cs2util.com/cache" }
+        {
+          "text": "Voir sur cs2util.com",
+          "url": "https://www.cs2util.com/cache"
+        }
       ]
     }
   ],
@@ -190,7 +250,10 @@
       "type": "Prefire",
       "description": "Guide complet des préfires pour Dust 2. Positions clés et angles d'attaque.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3295650711" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3295650711"
+        }
       ]
     },
     {
@@ -199,7 +262,10 @@
       "type": "Prefire",
       "description": "Maîtrise les préfires de Mirage avec des positions détaillées.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3267302800" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3267302800"
+        }
       ]
     },
     {
@@ -208,7 +274,10 @@
       "type": "Prefire",
       "description": "Préfires essentiels d'Inferno pour améliorer ton jeu.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3289507717" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3289507717"
+        }
       ]
     },
     {
@@ -217,7 +286,10 @@
       "type": "Prefire",
       "description": "Apprenez les préfires complexes de Nuke avec des diagrammes détaillés.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3318295422" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3318295422"
+        }
       ]
     },
     {
@@ -226,7 +298,10 @@
       "type": "Prefire",
       "description": "Guide complet des préfires stratégiques pour Anubis.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3307639951" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3307639951"
+        }
       ]
     },
     {
@@ -235,7 +310,10 @@
       "type": "Prefire",
       "description": "Maîtrise les préfires complexes de Train et les angles critiques.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3562576256" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3562576256"
+        }
       ]
     },
     {
@@ -244,7 +322,10 @@
       "type": "Prefire",
       "description": "Système de préfires vertical pour la carte Vertigo.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3274138705" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3274138705"
+        }
       ]
     },
     {
@@ -253,7 +334,10 @@
       "type": "Prefire",
       "description": "Guide complet des préfires de Cache avec les positions clés.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3770489042" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3770489042"
+        }
       ]
     },
     {
@@ -262,7 +346,10 @@
       "type": "Prefire",
       "description": "Apprenez les positions uniques et les préfires d'Ancient.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3282067356" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3282067356"
+        }
       ]
     },
     {
@@ -271,7 +358,10 @@
       "type": "Prefire",
       "description": "Apprenez les préfires d'Overpass et le système de positions clés.",
       "links": [
-        { "text": "Voir sur Steam", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3328383138" }
+        {
+          "text": "Voir sur Steam",
+          "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3328383138"
+        }
       ]
     }
   ],
@@ -282,7 +372,10 @@
       "type": "Guide",
       "description": "Maîtrise les bases de Counter-Strike 2 avec une couverture complète du Recoil Control, Economy Management, Utility Usage et Positioning & Angles.",
       "links": [
-        { "text": "Regarder la vidéo", "url": "https://www.youtube.com/watch?v=2ssBLr8i52E&list=LL&index=1&t=652s" }
+        {
+          "text": "Regarder la vidéo",
+          "url": "https://www.youtube.com/watch?v=2ssBLr8i52E&list=LL&index=1&t=652s"
+        }
       ]
     },
     {
@@ -291,7 +384,10 @@
       "type": "Strategy",
       "description": "Master les retakes et regagner le terrain grâce à une stratégie efficace.",
       "links": [
-        { "text": "Regarde le Tutoriel", "url": "https://www.youtube.com/watch?v=2hfxssHVYr0" }
+        {
+          "text": "Regarde le Tutoriel",
+          "url": "https://www.youtube.com/watch?v=2hfxssHVYr0"
+        }
       ]
     },
     {
@@ -300,7 +396,10 @@
       "type": "Outil d'Entraînement",
       "description": "Entraîne-toi avec Yprac, le mod CS2 d'entraînement ultime pour améliorer ton aim, spray control et gestion des nades.",
       "links": [
-        { "text": "Aller sur Yprac", "url": "https://yprac.com/" }
+        {
+          "text": "Aller sur Yprac",
+          "url": "https://yprac.com/"
+        }
       ]
     }
   ],
@@ -406,6 +505,384 @@
       "name": "Virtus.pro",
       "rating": "8.7/10",
       "region": "CIS"
+    }
+  ],
+  "crosshairs": [
+    {
+      "id": 1,
+      "player": "s1mple",
+      "team": "NAVI",
+      "name": "s1mple Classic",
+      "code": "CSGO-9jvBf-YuM3X-o8hRK-vmQf2-Pa9sO",
+      "description": "Crosshair classique polyvalent, très lisible sur la plupart des maps.",
+      "settings": {
+        "style": 4,
+        "length": 2.0,
+        "thickness": 1.0,
+        "gap": -3.0,
+        "r": 0,
+        "g": 255,
+        "b": 170,
+        "alpha": 255,
+        "outline": 1,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 7
+      }
+    },
+    {
+      "id": 2,
+      "player": "ZywOo",
+      "team": "Vitality",
+      "name": "ZywOo Stable",
+      "code": "CSGO-W8s7V-kpr4m-z9f3Q-bqL2R-nYx8A",
+      "description": "Réglage stable avec bon compromis précision/visibilité.",
+      "settings": {
+        "style": 4,
+        "length": 2.5,
+        "thickness": 0.8,
+        "gap": -2.0,
+        "r": 0,
+        "g": 255,
+        "b": 255,
+        "alpha": 230,
+        "outline": 1,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 7
+      }
+    },
+    {
+      "id": 3,
+      "player": "NiKo",
+      "team": "Falcons",
+      "name": "NiKo Precision",
+      "code": "CSGO-Y4mN2-hsT8q-2pQdE-vb4JX-tR1kM",
+      "description": "Petit crosshair sec orienté rifling précis.",
+      "settings": {
+        "style": 4,
+        "length": 1.8,
+        "thickness": 1.0,
+        "gap": -3.5,
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "alpha": 255,
+        "outline": 1,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 6
+      }
+    },
+    {
+      "id": 4,
+      "player": "donk",
+      "team": "Spirit",
+      "name": "donk Aggro",
+      "code": "CSGO-qS2mL-9xD4V-pW7fK-ae3NP-6uHjR",
+      "description": "Crosshair agressif avec bonne visibilité en entry.",
+      "settings": {
+        "style": 4,
+        "length": 2.2,
+        "thickness": 0.9,
+        "gap": -2.5,
+        "r": 50,
+        "g": 255,
+        "b": 50,
+        "alpha": 255,
+        "outline": 1,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 7
+      }
+    },
+    {
+      "id": 5,
+      "player": "m0NESY",
+      "team": "Falcons",
+      "name": "m0NESY AWP/Rifle",
+      "code": "CSGO-rN5gP-3kV7x-QL9mD-p2aFY-H8uTs",
+      "description": "Setup équilibré entre AWP et rifle.",
+      "settings": {
+        "style": 4,
+        "length": 2.0,
+        "thickness": 0.8,
+        "gap": -2.0,
+        "r": 255,
+        "g": 220,
+        "b": 0,
+        "alpha": 255,
+        "outline": 1,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 7
+      }
+    },
+    {
+      "id": 6,
+      "player": "ropz",
+      "team": "Vitality",
+      "name": "ropz Minimal",
+      "code": "CSGO-pL8vQ-zD2sN-4kR7m-uX1fE-aT6hC",
+      "description": "Crosshair minimaliste pour tracking propre.",
+      "settings": {
+        "style": 4,
+        "length": 2.0,
+        "thickness": 0.7,
+        "gap": -3.0,
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "alpha": 220,
+        "outline": 0,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 5
+      }
+    },
+    {
+      "id": 7,
+      "player": "sh1ro",
+      "team": "Spirit",
+      "name": "sh1ro Clean",
+      "code": "CSGO-fQ4wB-7pV2J-km9XD-Rt5nH-zE3yL",
+      "description": "Crosshair propre, net et facile à garder centré.",
+      "settings": {
+        "style": 4,
+        "length": 2.1,
+        "thickness": 0.8,
+        "gap": -2.7,
+        "r": 0,
+        "g": 180,
+        "b": 255,
+        "alpha": 255,
+        "outline": 1,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 6
+      }
+    },
+    {
+      "id": 8,
+      "player": "degster",
+      "team": "Falcons",
+      "name": "degster Focus",
+      "code": "CSGO-xV7kD-u2QmR-5pN9a-Ce4tH-bY8wF",
+      "description": "Crosshair visible pour fights rapides et multi-kills.",
+      "settings": {
+        "style": 4,
+        "length": 2.4,
+        "thickness": 1.0,
+        "gap": -2.0,
+        "r": 255,
+        "g": 100,
+        "b": 80,
+        "alpha": 255,
+        "outline": 1,
+        "outlineThickness": 1,
+        "followRecoil": 0,
+        "tStyle": 0,
+        "splitDistance": 7
+      }
+    }
+  ],
+  "proConfigs": [
+    {
+      "id": 1,
+      "player": "s1mple",
+      "team": "NAVI",
+      "region": "Europe",
+      "sensitivity": 3.09,
+      "dpi": 400,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "105%",
+        "antiAliasing": "8x MSAA",
+        "shadow": "High",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_fov 68\ncl_crosshair_recoil 0\nsensitivity 3.09\nzoom_sensitivity_ratio 1\nrate 786432"
+    },
+    {
+      "id": 2,
+      "player": "ZywOo",
+      "team": "Vitality",
+      "region": "Europe",
+      "sensitivity": 2.0,
+      "dpi": 400,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "240Hz",
+      "videoSettings": {
+        "brightness": "100%",
+        "antiAliasing": "4x MSAA",
+        "shadow": "Low",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_offset_x 2\nviewmodel_offset_y 2\nsensitivity 2.0\ncl_bob_lower_amt 5\nfps_max 0"
+    },
+    {
+      "id": 3,
+      "player": "NiKo",
+      "team": "Falcons",
+      "region": "Europe",
+      "sensitivity": 1.35,
+      "dpi": 800,
+      "resolution": "1600x1024",
+      "aspectRatio": "16:10 Stretched",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "100%",
+        "antiAliasing": "2x MSAA",
+        "shadow": "Low",
+        "texture": "Medium",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_fov 68\ncl_crosshair_sniper_width 1\nsensitivity 1.35\nmat_queue_mode -1\nrate 786432"
+    },
+    {
+      "id": 4,
+      "player": "donk",
+      "team": "Spirit",
+      "region": "CIS",
+      "sensitivity": 1.25,
+      "dpi": 800,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "110%",
+        "antiAliasing": "8x MSAA",
+        "shadow": "Very Low",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_offset_z -2\ncl_crosshairgap -3\nsensitivity 1.25\ncl_teamid_overhead_mode 2\ncl_showloadout 1"
+    },
+    {
+      "id": 5,
+      "player": "m0NESY",
+      "team": "Falcons",
+      "region": "CIS",
+      "sensitivity": 1.9,
+      "dpi": 400,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "100%",
+        "antiAliasing": "8x MSAA",
+        "shadow": "Low",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_presetpos 2\ncl_crosshaircolor 5\nsensitivity 1.9\nzoom_sensitivity_ratio 1\nfps_max 0"
+    },
+    {
+      "id": 6,
+      "player": "ropz",
+      "team": "Vitality",
+      "region": "Europe",
+      "sensitivity": 1.77,
+      "dpi": 400,
+      "resolution": "1920x1080",
+      "aspectRatio": "16:9 Native",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "93%",
+        "antiAliasing": "None",
+        "shadow": "Low",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_fov 68\ncl_bobamt_lat 0.1\nsensitivity 1.77\ncl_autowepswitch 0\ncl_hud_color 10"
+    },
+    {
+      "id": 7,
+      "player": "sh1ro",
+      "team": "Spirit",
+      "region": "CIS",
+      "sensitivity": 1.04,
+      "dpi": 800,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "95%",
+        "antiAliasing": "2x MSAA",
+        "shadow": "Low",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_recoil 0\ncl_crosshairstyle 4\nsensitivity 1.04\ncl_interp 0\nrate 786432"
+    },
+    {
+      "id": 8,
+      "player": "degster",
+      "team": "Falcons",
+      "region": "CIS",
+      "sensitivity": 1.6,
+      "dpi": 400,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "100%",
+        "antiAliasing": "4x MSAA",
+        "shadow": "Low",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\ncl_crosshairsize 2\ncl_crosshairthickness 0.8\nsensitivity 1.6\nzoom_sensitivity_ratio 1\ncl_showfps 0"
+    },
+    {
+      "id": 9,
+      "player": "broky",
+      "team": "FaZe",
+      "region": "Europe",
+      "sensitivity": 1.9,
+      "dpi": 400,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "240Hz",
+      "videoSettings": {
+        "brightness": "100%",
+        "antiAliasing": "8x MSAA",
+        "shadow": "High",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_fov 68\ncl_crosshairdot 0\nsensitivity 1.9\ncl_hud_radar_scale 1.15\ncl_radar_always_centered 0"
+    },
+    {
+      "id": 10,
+      "player": "Twistzz",
+      "team": "Liquid",
+      "region": "NA",
+      "sensitivity": 1.5,
+      "dpi": 400,
+      "resolution": "1280x960",
+      "aspectRatio": "4:3 Stretched",
+      "refreshRate": "360Hz",
+      "videoSettings": {
+        "brightness": "110%",
+        "antiAliasing": "8x MSAA",
+        "shadow": "Low",
+        "texture": "Low",
+        "boostPlayerContrast": "Enabled"
+      },
+      "autoexec": "cl_righthand 1\nviewmodel_presetpos 1\ncl_crosshair_drawoutline 1\nsensitivity 1.5\ncl_use_opens_buy_menu 0\ncl_teammate_colors_show 1"
     }
   ]
 }
