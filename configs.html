@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configs Pro - HelpStrike</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-logo">HelpStrike</div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <h1 class="sidebar-logo">HelpStrike</h1>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-links">
+                <a href="index.html" class="sidebar-link" data-section="home"><span class="icon">🏠</span><span class="label">Home</span></a>
+                <a href="callouts.html" class="sidebar-link" data-section="callouts"><span class="icon">📍</span><span class="label">Callouts</span></a>
+                <a href="helpvizion.html" class="sidebar-link" data-section="quickutil"><span class="icon">🎯</span><span class="label">QuickUtil!</span></a>
+                <a href="prefire.html" class="sidebar-link" data-section="prefire"><span class="icon">🔫</span><span class="label">Prefire</span></a>
+                <a href="guides.html" class="sidebar-link" data-section="guides"><span class="icon">📖</span><span class="label">Guides</span></a>
+                <a href="utility.html" class="sidebar-link" data-section="utility"><span class="icon">⚙️</span><span class="label">Utility</span></a>
+                <a href="crosshair.html" class="sidebar-link" data-section="crosshair"><span class="icon">✚</span><span class="label">Crosshair</span></a>
+                <a href="configs.html" class="sidebar-link active" data-section="configs"><span class="icon">🖥️</span><span class="label">Configs Pro</span></a>
+                <a href="favorites.html" class="sidebar-link" data-section="favorites"><span class="icon">⭐</span><span class="label">Favoris</span></a>
+                <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport"><span class="icon">🏆</span><span class="label">eSport Results</span></a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <section class="hero" id="configs">
+            <div class="hero-content">
+                <h2>🖥️ Configs Pro CS2</h2>
+                <p>Trouve les réglages de joueurs pros et filtre-les rapidement</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="category-section">
+                <h2 class="category-title">🖥️ Base de données de Configs Pro</h2>
+                <p class="category-desc">Recherche par joueur, équipe et région.</p>
+
+                <div class="filters-panel">
+                    <div class="filters-grid">
+                        <div class="form-group">
+                            <label for="configs-search">Joueur</label>
+                            <input id="configs-search" type="text" placeholder="Ex: NiKo, ZywOo...">
+                        </div>
+                        <div class="form-group">
+                            <label for="configs-team">Équipe</label>
+                            <select id="configs-team"><option value="">Toutes les équipes</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="configs-region">Région</label>
+                            <select id="configs-region"><option value="">Toutes les régions</option></select>
+                        </div>
+                    </div>
+                    <p id="configs-result-count" class="filter-results"></p>
+                </div>
+
+                <div class="items-grid" id="configs-grid"></div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
+                <p class="disclaimer">Ce site a été créé par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', loadConfigsPage);
+    </script>
+</body>
+</html>

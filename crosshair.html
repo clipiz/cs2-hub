@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crosshair - HelpStrike</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-logo">HelpStrike</div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <h1 class="sidebar-logo">HelpStrike</h1>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-links">
+                <a href="index.html" class="sidebar-link" data-section="home"><span class="icon">🏠</span><span class="label">Home</span></a>
+                <a href="callouts.html" class="sidebar-link" data-section="callouts"><span class="icon">📍</span><span class="label">Callouts</span></a>
+                <a href="helpvizion.html" class="sidebar-link" data-section="quickutil"><span class="icon">🎯</span><span class="label">QuickUtil!</span></a>
+                <a href="prefire.html" class="sidebar-link" data-section="prefire"><span class="icon">🔫</span><span class="label">Prefire</span></a>
+                <a href="guides.html" class="sidebar-link" data-section="guides"><span class="icon">📖</span><span class="label">Guides</span></a>
+                <a href="utility.html" class="sidebar-link" data-section="utility"><span class="icon">⚙️</span><span class="label">Utility</span></a>
+                <a href="crosshair.html" class="sidebar-link active" data-section="crosshair"><span class="icon">✚</span><span class="label">Crosshair</span></a>
+                <a href="configs.html" class="sidebar-link" data-section="configs"><span class="icon">🖥️</span><span class="label">Configs Pro</span></a>
+                <a href="favorites.html" class="sidebar-link" data-section="favorites"><span class="icon">⭐</span><span class="label">Favoris</span></a>
+                <a href="index.html#recent-esport" class="sidebar-link" data-section="recent-esport"><span class="icon">🏆</span><span class="label">eSport Results</span></a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <section class="hero" id="crosshair">
+            <div class="hero-content">
+                <h2>✚ Crosshair Generator</h2>
+                <p>Crée, prévisualise et partage ton crosshair CS2</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="category-section">
+                <h2 class="category-title">🎯 Générateur de Crosshair</h2>
+                <p class="category-desc">Ajuste les paramètres et copie le code instantanément.</p>
+
+                <div class="crosshair-layout">
+                    <div class="crosshair-panel">
+                        <form id="crosshair-form" class="crosshair-form-grid">
+                            <div class="form-group"><label for="crosshair-style">Style <span class="crosshair-value" data-source="crosshair-style">4</span></label><select id="crosshair-style"><option value="0">0 - Default</option><option value="2">2 - Classic</option><option value="4" selected>4 - Classic Static</option><option value="5">5 - Legacy</option></select></div>
+                            <div class="form-group"><label for="crosshair-length">Length <span class="crosshair-value" data-source="crosshair-length">2</span></label><input id="crosshair-length" type="range" min="0" max="10" step="0.1" value="2"></div>
+                            <div class="form-group"><label for="crosshair-thickness">Thickness <span class="crosshair-value" data-source="crosshair-thickness">1</span></label><input id="crosshair-thickness" type="range" min="0.3" max="2" step="0.1" value="1"></div>
+                            <div class="form-group"><label for="crosshair-gap">Gap <span class="crosshair-value" data-source="crosshair-gap">-3</span></label><input id="crosshair-gap" type="range" min="-10" max="10" step="0.1" value="-3"></div>
+                            <div class="form-group"><label for="crosshair-r">Red <span class="crosshair-value" data-source="crosshair-r">0</span></label><input id="crosshair-r" type="range" min="0" max="255" step="1" value="0"></div>
+                            <div class="form-group"><label for="crosshair-g">Green <span class="crosshair-value" data-source="crosshair-g">255</span></label><input id="crosshair-g" type="range" min="0" max="255" step="1" value="255"></div>
+                            <div class="form-group"><label for="crosshair-b">Blue <span class="crosshair-value" data-source="crosshair-b">0</span></label><input id="crosshair-b" type="range" min="0" max="255" step="1" value="0"></div>
+                            <div class="form-group"><label for="crosshair-alpha">Opacity <span class="crosshair-value" data-source="crosshair-alpha">255</span></label><input id="crosshair-alpha" type="range" min="0" max="255" step="1" value="255"></div>
+                            <div class="form-group"><label for="crosshair-outline-thickness">Outline thickness <span class="crosshair-value" data-source="crosshair-outline-thickness">1</span></label><input id="crosshair-outline-thickness" type="range" min="0" max="3" step="0.5" value="1"></div>
+                            <div class="form-group"><label for="crosshair-split-distance">Split distance <span class="crosshair-value" data-source="crosshair-split-distance">7</span></label><input id="crosshair-split-distance" type="range" min="0" max="16" step="1" value="7"></div>
+                            <div class="form-group checkbox-group"><input id="crosshair-outline" type="checkbox" checked><label for="crosshair-outline">Outline</label></div>
+                            <div class="form-group checkbox-group"><input id="crosshair-recoil" type="checkbox"><label for="crosshair-recoil">Follow recoil</label></div>
+                            <div class="form-group checkbox-group"><input id="crosshair-tstyle" type="checkbox"><label for="crosshair-tstyle">T-Style</label></div>
+                        </form>
+                    </div>
+
+                    <div class="crosshair-preview-panel">
+                        <h3 class="subsection-title" style="margin-left:0;">Aperçu</h3>
+                        <div class="crosshair-preview-box">
+                            <div class="crosshair-preview" id="crosshair-preview">
+                                <span class="crosshair-line top"></span>
+                                <span class="crosshair-line right"></span>
+                                <span class="crosshair-line bottom"></span>
+                                <span class="crosshair-line left"></span>
+                            </div>
+                        </div>
+                        <textarea id="crosshair-share-output" class="code-output" readonly aria-label="Crosshair share code"></textarea>
+                        <textarea id="crosshair-code-output" class="code-output" readonly aria-label="Crosshair commands"></textarea>
+                        <div class="code-actions">
+                            <button id="copy-crosshair-share" type="button" class="item-link">Copier le share code</button>
+                            <button id="copy-crosshair-commands" type="button" class="item-link">Copier le code</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="category-section">
+                <h2 class="category-title">🔥 Crosshairs Pros</h2>
+                <p class="category-desc">Clique sur une carte pour charger instantanément ses réglages.</p>
+                <div class="items-grid" id="crosshair-pros-grid"></div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 HelpStrike - Tous droits réservés | Construit pour la communauté CS2</p>
+                <p class="disclaimer">Ce site a été créé par Clipiz et n'est pas affilié à Valve ou Counter-Strike</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', loadCrosshairPage);
+    </script>
+</body>
+</html>
