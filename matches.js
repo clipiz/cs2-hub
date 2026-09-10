@@ -430,9 +430,13 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 return;
             }
 
+            const liveRequest = fetchHltvJson(HLTV_API_ENDPOINTS.live);
+            const upcomingRequest = HLTV_API_ENDPOINTS.upcoming === HLTV_API_ENDPOINTS.live
+                ? liveRequest
+                : fetchHltvJson(HLTV_API_ENDPOINTS.upcoming);
             const [liveResult, upcomingResult, resultsResult, rankingsResult] = await Promise.allSettled([
-                fetchHltvJson(HLTV_API_ENDPOINTS.live),
-                fetchHltvJson(HLTV_API_ENDPOINTS.upcoming),
+                liveRequest,
+                upcomingRequest,
                 fetchHltvJson(HLTV_API_ENDPOINTS.results),
                 fetchHltvJson(HLTV_API_ENDPOINTS.rankings, { optional: true })
             ]);
@@ -460,7 +464,12 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 if (allMatchSourcesFailed) {
                     renderMatchesList(CURATED_FALLBACK_MATCHES);
                     if (rankingsResult.status === 'fulfilled') {
-                        renderRankings(normalizeRankings(rankingsResult.value));
+                        const normalizedRankings = normalizeRankings(rankingsResult.value);
+                        if (normalizedRankings.length) {
+                            renderRankings(normalizedRankings);
+                        } else {
+                            ensureFallbackRankings();
+                        }
                     } else {
                         ensureFallbackRankings();
                     }
@@ -472,7 +481,12 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
 
                 renderMatchesList([]);
                 if (rankingsResult.status === 'fulfilled') {
-                    renderRankings(normalizeRankings(rankingsResult.value));
+                    const normalizedRankings = normalizeRankings(rankingsResult.value);
+                    if (normalizedRankings.length) {
+                        renderRankings(normalizedRankings);
+                    } else {
+                        ensureFallbackRankings();
+                    }
                 } else {
                     ensureFallbackRankings();
                 }
@@ -485,7 +499,14 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             renderMatchesList(combinedMatches);
 
             if (rankingsResult.status === 'fulfilled') {
-                renderRankings(normalizeRankings(rankingsResult.value));
+                const normalizedRankings = normalizeRankings(rankingsResult.value);
+                if (normalizedRankings.length) {
+                    renderRankings(normalizedRankings);
+                } else {
+                    ensureFallbackRankings();
+                }
+            } else {
+                ensureFallbackRankings();
             }
 
             setMatchesFeedback(
