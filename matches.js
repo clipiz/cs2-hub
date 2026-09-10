@@ -1,17 +1,54 @@
-const HLTV_API_BASE_URL = 'https://hltv-api.vercel.app/api';
+const HLTV_API_BASE_URL = 'https://api.csapi.de';
 const HLTV_API_ENDPOINTS = {
-    live: '/live-now',
-    upcoming: '/matches.json',
-    results: '/results.json',
-    rankings: '/teams.json'
+    live: '/matches/?limit=30&offset=0',
+    upcoming: '/matches/?limit=30&offset=0',
+    results: '/matches/latest?limit=30&offset=0',
+    rankings: '/rankings/'
 };
 const HLTV_REQUEST_TIMEOUT_MS = 12000;
 const HLTV_LIVE_REFRESH_MS = 90 * 1000;
 const HLTV_MAX_MATCHES = 9;
 const HLTV_MAX_TEAMS = 8;
 
-// Best-effort unofficial integration: community HLTV proxy URLs can disappear or change,
-// so keep the base URL and endpoint paths above easy to swap without touching the rest.
+// Current default source: CSAPI (api.csapi.de), last verified from public docs on 2026-09-10.
+// Community HLTV-derived APIs can change or disappear, so keep base URL and endpoints above swappable.
+// If the live source is unreachable or blocked (network/CORS/rate-limit), curated fallbacks below keep UI usable.
+const CURATED_FALLBACK_MATCHES = [
+    {
+        id: 'fallback-upcoming-hltv',
+        status: 'upcoming',
+        badge: '🕒 À VENIR',
+        team1: { name: 'Top Tier CS2', logo: '' },
+        team2: { name: 'Calendrier HLTV', logo: '' },
+        score: '',
+        event: 'Prochains matchs compétitifs',
+        time: '',
+        format: '',
+        extra: 'Consulte la liste complète directement sur HLTV',
+        sourceUrl: 'https://www.hltv.org/matches'
+    },
+    {
+        id: 'fallback-results-hltv',
+        status: 'completed',
+        badge: '✅ TERMINÉ',
+        team1: { name: 'Derniers matchs', logo: '' },
+        team2: { name: 'Résultats HLTV', logo: '' },
+        score: '',
+        event: 'Résultats récents de la scène pro',
+        time: '',
+        format: '',
+        extra: 'Voir tous les résultats mis à jour',
+        sourceUrl: 'https://www.hltv.org/results'
+    }
+];
+
+const CURATED_FALLBACK_RANKINGS = [
+    { id: 'fallback-team-vitality', name: 'Vitality', ranking: 1, logo: '', subtitle: 'Fallback local' },
+    { id: 'fallback-team-faze', name: 'FaZe', ranking: 2, logo: '', subtitle: 'Fallback local' },
+    { id: 'fallback-team-navi', name: 'NAVI', ranking: 3, logo: '', subtitle: 'Fallback local' },
+    { id: 'fallback-team-spirit', name: 'Spirit', ranking: 4, logo: '', subtitle: 'Fallback local' },
+    { id: 'fallback-team-g2', name: 'G2', ranking: 5, logo: '', subtitle: 'Fallback local' }
+];
 
 let matchesRefreshIntervalId = null;
 let matchesLiveCount = 0;
@@ -113,6 +150,7 @@ async function fetchHltvJson(path, { optional = false } = {}) {
         if (Array.isArray(payload?.matches)) return payload.matches;
         if (Array.isArray(payload?.results)) return payload.results;
         if (Array.isArray(payload?.teams)) return payload.teams;
+        if (Array.isArray(payload?.rankings)) return payload.rankings;
         return [];
     } catch (error) {
         if (error?.code) throw error;
@@ -143,9 +181,70 @@ function getTeamsFromMatch(match) {
         return match.teams;
     }
 
-    const team1 = match?.team1 ? { name: match.team1, logo: match.team1Logo, result: match.score1 } : null;
-    const team2 = match?.team2 ? { name: match.team2, logo: match.team2Logo, result: match.score2 } : null;
+    const rawTeam1 = match?.team1;
+    const rawTeam2 = match?.team2;
+    const team1 = rawTeam1
+        ? (typeof rawTeam1 === 'object'
+            ? { name: rawTeam1.name || rawTeam1.team || '', logo: rawTeam1.logo || rawTeam1.image || '', result: rawTeam1.score ?? rawTeam1.result ?? match.score1 }
+            : { name: rawTeam1, logo: match.team1Logo, result: match.score1 })
+        : null;
+    const team2 = rawTeam2
+        ? (typeof rawTeam2 === 'object'
+            ? { name: rawTeam2.name || rawTeam2.team || '', logo: rawTeam2.logo || rawTeam2.image || '', result: rawTeam2.score ?? rawTeam2.result ?? match.score2 }
+            : { name: rawTeam2, logo: match.team2Logo, result: match.score2 })
+        : null;
     return [team1, team2].filter(Boolean);
+}
+
+function hasMatchResult(match, teams) {
+    return hasDefinedScore(
+        teams[0]?.result ?? match?.score1 ?? match?.team1?.score,
+        teams[1]?.result ?? match?.score2 ?? match?.team2?.score
+    );
+}
+
+function getMatchState(match, teams) {
+    const rawStatus = String(match?.status || match?.state || '').toLowerCase();
+    const hasResult = hasMatchResult(match, teams);
+    const isCompletedStatus = ['completed', 'finished', 'final', 'closed', 'ended', 'over'].some(keyword => rawStatus.includes(keyword));
+    const isLiveStatus = ['live', 'ongoing', 'in_progress', 'running'].some(keyword => rawStatus.includes(keyword));
+
+    if (isCompletedStatus) return 'completed';
+    if (isLiveStatus) return 'live';
+    if (hasResult) return 'completed';
+    return 'upcoming';
+}
+
+function splitFeedMatches(matches) {
+    return matches.reduce((acc, match, index) => {
+        const teams = getTeamsFromMatch(match);
+        if (!teams[0]?.name && !teams[1]?.name) return acc;
+
+        const derivedState = getMatchState(match, teams);
+        const score = hasDefinedScore(teams[0]?.result, teams[1]?.result)
+            ? `${teams[0]?.result} - ${teams[1]?.result}`
+            : '';
+        const baseMatch = {
+            id: match.id || match.matchId || `feed-${index}`,
+            team1: teams[0] || { name: 'TBD', logo: '' },
+            team2: teams[1] || { name: 'TBD', logo: '' },
+            score,
+            event: match?.event?.name || match?.event || 'Match HLTV',
+            time: match.time || match.startTime || match.date || match.datetime || match.startedAt || '',
+            format: match.maps || match.map || match.format || match.bestOf || match.best_of || '',
+            extra: match.series || ''
+        };
+
+        if (derivedState === 'live') {
+            acc.live.push({ ...baseMatch, status: 'live', badge: '🔴 EN DIRECT' });
+        } else if (derivedState === 'completed') {
+            acc.completed.push({ ...baseMatch, status: 'completed', badge: '✅ TERMINÉ' });
+        } else {
+            acc.upcoming.push({ ...baseMatch, status: 'upcoming', badge: '🕒 À VENIR', score: '' });
+        }
+
+        return acc;
+    }, { live: [], upcoming: [], completed: [] });
 }
 
 function normalizeUpcomingMatches(matches) {
@@ -159,11 +258,13 @@ function normalizeUpcomingMatches(matches) {
             team2: teams[1] || { name: 'TBD', logo: '' },
             score: '',
             event: match?.event?.name || match?.event || 'Événement HLTV',
-            time: match.time || match.startTime || match.date || '',
-            format: match.maps || match.format || match.bestOf || '',
-            extra: ''
+            time: match.time || match.startTime || match.date || match.datetime || '',
+            format: match.maps || match.format || match.bestOf || match.best_of || '',
+            extra: '',
+            derivedState: getMatchState(match, teams)
         };
-    }).filter(match => match.team1.name || match.team2.name);
+    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'upcoming')
+        .map(({ derivedState: _derivedState, ...match }) => match);
 }
 
 function normalizeLiveMatches(matches) {
@@ -181,11 +282,13 @@ function normalizeLiveMatches(matches) {
             team2: teams[1] || { name: match.team2 || 'TBD', logo: '' },
             score,
             event: match?.event?.name || match?.event || 'Live HLTV',
-            time: match.time || match.startedAt || '',
-            format: match.maps || match.map || match.format || '',
-            extra: match.series || ''
+            time: match.time || match.startedAt || match.startTime || match.date || '',
+            format: match.maps || match.map || match.format || match.bestOf || match.best_of || '',
+            extra: match.series || '',
+            derivedState: getMatchState(match, teams)
         };
-    }).filter(match => match.team1.name || match.team2.name);
+    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'live')
+        .map(({ derivedState: _derivedState, ...match }) => match);
 }
 
 function normalizeResults(matches) {
@@ -203,11 +306,13 @@ function normalizeResults(matches) {
             team2: teams[1] || { name: 'TBD', logo: '' },
             score,
             event: match?.event?.name || match?.event || 'Résultat HLTV',
-            time: match.time || match.date || '',
-            format: match.maps || match.format || '',
-            extra: ''
+            time: match.time || match.date || match.startedAt || '',
+            format: match.maps || match.format || match.bestOf || match.best_of || '',
+            extra: '',
+            derivedState: getMatchState(match, teams)
         };
-    }).filter(match => match.team1.name || match.team2.name);
+    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'completed')
+        .map(({ derivedState: _derivedState, ...match }) => match);
 }
 
 function renderTeamLine(team) {
@@ -247,6 +352,7 @@ function renderMatchCardHtml(match) {
             </div>
             <div class="match-info">${escapeHtml(match.event)}${match.format ? ` • ${escapeHtml(match.format)}` : ''}</div>
             <div class="match-info">${escapeHtml(formatDateTime(match.time))}${match.extra ? ` • ${escapeHtml(match.extra)}` : ''}</div>
+            ${match.sourceUrl ? `<div class="match-info"><a href="${escapeHtml(match.sourceUrl)}" target="_blank" rel="noopener noreferrer">Voir sur HLTV.org ↗</a></div>` : ''}
         </article>
     `;
 }
@@ -268,7 +374,7 @@ function renderRankings(teams) {
     if (!teamsList) return;
 
     if (!teams.length) {
-        const hasRenderedTeams = /team-item/.test(teamsList.innerHTML);
+        const hasRenderedTeams = Boolean(teamsList.querySelector('.team-item'));
         const stillLoading = /Chargement du classement/i.test(teamsList.textContent || '');
         if (!hasRenderedTeams && stillLoading) {
             teamsList.innerHTML = '<div class="empty-state">Classement HLTV indisponible pour le moment.</div>';
@@ -288,6 +394,13 @@ function renderRankings(teams) {
             <div class="team-rating">Top ${escapeHtml(team.ranking)}</div>
         </div>
     `).join('');
+}
+
+function ensureFallbackRankings() {
+    const teamsList = document.getElementById('teams-list');
+    if (!teamsList) return;
+    if (teamsList.querySelector('.team-item')) return;
+    renderRankings(CURATED_FALLBACK_RANKINGS);
 }
 
 function stopLiveRefresh() {
@@ -349,20 +462,30 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 return;
             }
 
+            const liveRequest = fetchHltvJson(HLTV_API_ENDPOINTS.live);
+            const upcomingRequest = HLTV_API_ENDPOINTS.upcoming === HLTV_API_ENDPOINTS.live
+                ? liveRequest
+                : fetchHltvJson(HLTV_API_ENDPOINTS.upcoming);
             const [liveResult, upcomingResult, resultsResult, rankingsResult] = await Promise.allSettled([
-                fetchHltvJson(HLTV_API_ENDPOINTS.live),
-                fetchHltvJson(HLTV_API_ENDPOINTS.upcoming),
+                liveRequest,
+                upcomingRequest,
                 fetchHltvJson(HLTV_API_ENDPOINTS.results),
                 fetchHltvJson(HLTV_API_ENDPOINTS.rankings, { optional: true })
             ]);
 
-            const liveMatches = normalizeLiveMatches(liveResult.status === 'fulfilled' ? liveResult.value : []);
+            let liveMatches = normalizeLiveMatches(liveResult.status === 'fulfilled' ? liveResult.value : []);
             matchesLiveCount = liveMatches.length;
 
-            const upcomingMatches = normalizeUpcomingMatches(upcomingResult.status === 'fulfilled' ? upcomingResult.value : [])
+            let upcomingMatches = normalizeUpcomingMatches(upcomingResult.status === 'fulfilled' ? upcomingResult.value : [])
                 .sort((a, b) => parseDateValue(a.time) - parseDateValue(b.time));
             const completedMatches = normalizeResults(resultsResult.status === 'fulfilled' ? resultsResult.value : [])
                 .sort((a, b) => parseDateValue(b.time) - parseDateValue(a.time));
+
+            if (HLTV_API_ENDPOINTS.live === HLTV_API_ENDPOINTS.upcoming && liveResult.status === 'fulfilled') {
+                const splitMatches = splitFeedMatches(liveResult.value);
+                liveMatches = splitMatches.live;
+                upcomingMatches = splitMatches.upcoming.sort((a, b) => parseDateValue(a.time) - parseDateValue(b.time));
+            }
 
             currentNonLiveMatches = dedupeMatches([
                 ...upcomingMatches,
@@ -377,13 +500,33 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 const matchSourceResults = [liveResult, upcomingResult, resultsResult];
                 const allMatchSourcesFailed = matchSourceResults.every(result => result.status === 'rejected');
                 if (allMatchSourcesFailed) {
-                    const loadError = matchSourceResults.find(result => result.status === 'rejected');
-                    throw loadError?.reason || createMatchError('EMPTY');
+                    renderMatchesList(CURATED_FALLBACK_MATCHES);
+                    if (rankingsResult.status === 'fulfilled') {
+                        const normalizedRankings = normalizeRankings(rankingsResult.value);
+                        if (normalizedRankings.length) {
+                            renderRankings(normalizedRankings);
+                        } else {
+                            ensureFallbackRankings();
+                        }
+                    } else {
+                        ensureFallbackRankings();
+                    }
+                    setMatchesFeedback('Flux HLTV indisponible pour le moment — fallback activé. Consulte aussi HLTV.org pour le live.', 'error');
+                    setLastUpdatedLabel(new Date(), 'Fallback local');
+                    syncLiveRefreshState();
+                    return;
                 }
 
                 renderMatchesList([]);
                 if (rankingsResult.status === 'fulfilled') {
-                    renderRankings(normalizeRankings(rankingsResult.value));
+                    const normalizedRankings = normalizeRankings(rankingsResult.value);
+                    if (normalizedRankings.length) {
+                        renderRankings(normalizedRankings);
+                    } else {
+                        ensureFallbackRankings();
+                    }
+                } else {
+                    ensureFallbackRankings();
                 }
                 setMatchesFeedback('Aucun match n’est disponible pour le moment sur la source HLTV.');
                 setLastUpdatedLabel();
@@ -394,7 +537,14 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             renderMatchesList(combinedMatches);
 
             if (rankingsResult.status === 'fulfilled') {
-                renderRankings(normalizeRankings(rankingsResult.value));
+                const normalizedRankings = normalizeRankings(rankingsResult.value);
+                if (normalizedRankings.length) {
+                    renderRankings(normalizedRankings);
+                } else {
+                    ensureFallbackRankings();
+                }
+            } else {
+                ensureFallbackRankings();
             }
 
             setMatchesFeedback(
@@ -411,14 +561,18 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             stopLiveRefresh();
             matchesLiveCount = 0;
             if (!refreshLiveOnly) {
-                matchesList.innerHTML = `<div class="empty-state">${escapeHtml(getFriendlyMatchErrorMessage(error))}</div>`;
+                renderMatchesList(CURATED_FALLBACK_MATCHES);
+                ensureFallbackRankings();
             }
             setMatchesFeedback(
                 refreshLiveOnly
                     ? 'Le rafraîchissement live a échoué ; les derniers scores affichés ont été conservés.'
-                    : 'Le service tiers de résultats HLTV est temporairement indisponible. Réessaie plus tard avec le bouton Actualiser.',
+                    : `${getFriendlyMatchErrorMessage(error)} Fallback activé : consulte aussi HLTV.org.`,
                 'error'
             );
+            if (!refreshLiveOnly) {
+                setLastUpdatedLabel(new Date(), 'Fallback local');
+            }
         } finally {
             setRefreshButtonState(false);
             matchesRefreshInFlight = null;
