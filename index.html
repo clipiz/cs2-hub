@@ -228,10 +228,16 @@
             <section id="recent-esport" class="category-section">
                 <h2 class="category-title">🏆 RÉSULTATS ESPORT</h2>
                 <p class="category-desc">Suis les derniers résultats et classements de la scène pro</p>
+                <p class="disclaimer esport-disclaimer">Données fournies via une API tierce basée sur HLTV.org — intégration non officielle et non affiliée à HLTV.</p>
 
                 <div class="pro-teams-container">
                     <div class="matches-section">
-                        <h3>Derniers Matchs CS2</h3>
+                        <div class="matches-section-header">
+                            <h3>Derniers Matchs CS2</h3>
+                            <button id="matches-refresh-btn" class="item-link refresh-button" type="button">🔄 Actualiser</button>
+                        </div>
+                        <p id="matches-feedback" class="esport-feedback" aria-live="polite"></p>
+                        <p id="matches-updated-at" class="disclaimer esport-updated-at" aria-live="polite"></p>
                         <div class="matches-list" id="matches-list">
                             <div class="loading">⏳ Chargement des matchs...</div>
                         </div>
@@ -240,7 +246,7 @@
                     <div class="teams-section">
                         <h3>Meilleures Équipes</h3>
                         <div class="teams-list" id="teams-list">
-                            <!-- Teams will be loaded here -->
+                            <div class="loading">⏳ Chargement du classement...</div>
                         </div>
                     </div>
                 </div>
@@ -257,6 +263,7 @@
     </main>
 
     <script src="script.js"></script>
+    <script src="matches.js"></script>
     <script>
         // Close disclaimer and save to localStorage
         function closeDisclaimer() {

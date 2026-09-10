@@ -476,10 +476,56 @@ body {
     font-size: 1.5em;
 }
 
+.matches-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.matches-section-header h3 {
+    margin-bottom: 0;
+}
+
+.esport-disclaimer {
+    margin: -20px 0 25px 20px;
+}
+
+.esport-feedback,
+.esport-updated-at {
+    margin-bottom: 12px;
+}
+
+.esport-feedback {
+    color: #9fb3c6;
+    min-height: 1.4em;
+}
+
+.esport-feedback--error {
+    color: #ff9980;
+}
+
+.refresh-button {
+    border: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    white-space: nowrap;
+}
+
+.refresh-button:disabled {
+    opacity: 0.75;
+    cursor: wait;
+}
+
 .matches-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.match-card--live {
+    border-left-color: #ff6b35 !important;
 }
 
 .match-header {
@@ -490,8 +536,33 @@ body {
 }
 
 .match-teams {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
     font-weight: 600;
     color: var(--hs-text);
+}
+
+.match-team {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.match-team-logo,
+.team-logo {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.match-versus {
+    color: #7a8fa3;
+    font-size: 0.9em;
+    text-transform: uppercase;
 }
 
 .match-score {
@@ -507,9 +578,38 @@ body {
     color: #7a8fa3;
 }
 
+.match-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background: rgba(77, 179, 255, 0.15);
+    color: var(--hs-link);
+}
+
+.match-badge--live {
+    background: rgba(255, 107, 53, 0.16);
+    color: #ff9980;
+}
+
+.match-badge--completed {
+    background: rgba(254, 192, 6, 0.15);
+    color: var(--hs-highlight);
+}
+
 .teams-list {
     display: flex;
     flex-direction: column;
+    gap: 12px;
+}
+
+.team-summary {
+    display: flex;
+    align-items: center;
     gap: 12px;
 }
 
@@ -531,6 +631,11 @@ body {
 .team-name {
     font-weight: 600;
     color: var(--hs-link);
+}
+
+.team-subtitle {
+    font-size: 0.8em;
+    color: #95afc7;
 }
 
 .team-rating {
@@ -751,6 +856,18 @@ body {
 
     .map-menu-overlay {
         font-size: 0.95rem;
+    }
+
+    .matches-section-header,
+    .match-header,
+    .team-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .refresh-button {
+        width: 100%;
+        text-align: center;
     }
 }
 
