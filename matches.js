@@ -203,6 +203,18 @@ function hasMatchResult(match, teams) {
     );
 }
 
+function getMatchState(match, teams) {
+    const rawStatus = String(match?.status || match?.state || '').toLowerCase();
+    const hasResult = hasMatchResult(match, teams);
+    const isCompletedStatus = ['completed', 'finished', 'final', 'closed', 'ended', 'over'].some(keyword => rawStatus.includes(keyword));
+    const isLiveStatus = ['live', 'ongoing', 'in_progress', 'running'].some(keyword => rawStatus.includes(keyword));
+
+    if (isCompletedStatus) return 'completed';
+    if (isLiveStatus) return 'live';
+    if (hasResult) return 'completed';
+    return 'upcoming';
+}
+
 function normalizeUpcomingMatches(matches) {
     return matches.map((match, index) => {
         const teams = getTeamsFromMatch(match);
@@ -216,25 +228,16 @@ function normalizeUpcomingMatches(matches) {
             event: match?.event?.name || match?.event || 'Événement HLTV',
             time: match.time || match.startTime || match.date || match.datetime || '',
             format: match.maps || match.format || match.bestOf || match.best_of || '',
-            extra: ''
+            extra: '',
+            derivedState: getMatchState(match, teams)
         };
-    }).filter(match => (match.team1.name || match.team2.name) && !hasMatchResult(match, [match.team1, match.team2]));
+    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'upcoming')
+        .map(({ derivedState: _derivedState, ...match }) => match);
 }
 
 function normalizeLiveMatches(matches) {
     return matches.map((match, index) => {
         const teams = getTeamsFromMatch(match);
-        const rawStatus = String(match.status || match.state || '').toLowerCase();
-        const hasPartialScore = hasDefinedScore(teams[0]?.result, teams[1]?.result) && !match?.winner;
-        const isLive = Boolean(
-            match.live
-            || match.isLive
-            || rawStatus.includes('live')
-            || rawStatus.includes('ongoing')
-            || rawStatus.includes('in_progress')
-            || rawStatus.includes('running')
-            || hasPartialScore
-        );
         const score = match.score || (hasDefinedScore(teams[0]?.result, teams[1]?.result)
             ? `${teams[0]?.result} - ${teams[1]?.result}`
             : '');
@@ -250,10 +253,10 @@ function normalizeLiveMatches(matches) {
             time: match.time || match.startedAt || match.startTime || match.date || '',
             format: match.maps || match.map || match.format || match.bestOf || match.best_of || '',
             extra: match.series || '',
-            isLive
+            derivedState: getMatchState(match, teams)
         };
-    }).filter(match => (match.team1.name || match.team2.name) && match.isLive)
-        .map(({ isLive: _isLive, ...match }) => match);
+    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'live')
+        .map(({ derivedState: _derivedState, ...match }) => match);
 }
 
 function normalizeResults(matches) {
@@ -273,9 +276,11 @@ function normalizeResults(matches) {
             event: match?.event?.name || match?.event || 'Résultat HLTV',
             time: match.time || match.date || match.startedAt || '',
             format: match.maps || match.format || match.bestOf || match.best_of || '',
-            extra: ''
+            extra: '',
+            derivedState: getMatchState(match, teams)
         };
-    }).filter(match => (match.team1.name || match.team2.name) && Boolean(match.score));
+    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'completed' && Boolean(match.score))
+        .map(({ derivedState: _derivedState, ...match }) => match);
 }
 
 function renderTeamLine(team) {
