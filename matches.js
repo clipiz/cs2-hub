@@ -279,7 +279,7 @@ function normalizeResults(matches) {
             extra: '',
             derivedState: getMatchState(match, teams)
         };
-    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'completed' && Boolean(match.score))
+    }).filter(match => (match.team1.name || match.team2.name) && match.derivedState === 'completed')
         .map(({ derivedState: _derivedState, ...match }) => match);
 }
 
