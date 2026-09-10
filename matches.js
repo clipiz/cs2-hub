@@ -1,6 +1,6 @@
 const HLTV_API_BASE_URL = 'https://api.csapi.de';
 const HLTV_API_ENDPOINTS = {
-    live: '/matches/latest?limit=20&offset=0',
+    live: '/matches/?limit=30&offset=0',
     upcoming: '/matches/?limit=30&offset=0',
     results: '/matches/latest?limit=30&offset=0',
     rankings: '/rankings/'
@@ -225,7 +225,16 @@ function normalizeLiveMatches(matches) {
     return matches.map((match, index) => {
         const teams = getTeamsFromMatch(match);
         const rawStatus = String(match.status || match.state || '').toLowerCase();
-        const isLive = Boolean(match.live || match.isLive || rawStatus.includes('live') || rawStatus.includes('ongoing'));
+        const hasPartialScore = hasDefinedScore(teams[0]?.result, teams[1]?.result) && !match?.winner;
+        const isLive = Boolean(
+            match.live
+            || match.isLive
+            || rawStatus.includes('live')
+            || rawStatus.includes('ongoing')
+            || rawStatus.includes('in_progress')
+            || rawStatus.includes('running')
+            || hasPartialScore
+        );
         const score = match.score || (hasDefinedScore(teams[0]?.result, teams[1]?.result)
             ? `${teams[0]?.result} - ${teams[1]?.result}`
             : '');
@@ -328,7 +337,7 @@ function renderRankings(teams) {
     if (!teamsList) return;
 
     if (!teams.length) {
-        const hasRenderedTeams = /team-item/.test(teamsList.innerHTML);
+        const hasRenderedTeams = Boolean(teamsList.querySelector('.team-item'));
         const stillLoading = /Chargement du classement/i.test(teamsList.textContent || '');
         if (!hasRenderedTeams && stillLoading) {
             teamsList.innerHTML = '<div class="empty-state">Classement HLTV indisponible pour le moment.</div>';
@@ -353,7 +362,7 @@ function renderRankings(teams) {
 function ensureFallbackRankings() {
     const teamsList = document.getElementById('teams-list');
     if (!teamsList) return;
-    if (/team-item/.test(teamsList.innerHTML)) return;
+    if (teamsList.querySelector('.team-item')) return;
     renderRankings(CURATED_FALLBACK_RANKINGS);
 }
 
