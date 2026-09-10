@@ -130,7 +130,7 @@ async function fetchHltvJson(path, { optional = false } = {}) {
 function dedupeMatches(matches) {
     const seen = new Set();
     return matches.filter(match => {
-        const key = `${match.status}:${match.id}:${match.team1.name}:${match.team2.name}:${match.time}`;
+        const key = `${match.id}:${match.team1.name}:${match.team2.name}:${match.time}`;
         if (seen.has(key)) return false;
         seen.add(key);
         return true;
@@ -212,7 +212,7 @@ function normalizeResults(matches) {
 function renderTeamLine(team) {
     return `
         <span class="match-team">
-            ${team?.logo ? `<img src="${escapeHtml(team.logo)}" alt="" class="match-team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
+            ${team?.logo ? `<img src="${escapeHtml(team.logo)}" alt="${escapeHtml(team?.name || 'Équipe')} logo" class="match-team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
             <span>${escapeHtml(team?.name || 'TBD')}</span>
         </span>
     `;
@@ -269,7 +269,7 @@ function renderRankings(teams) {
     teamsList.innerHTML = teams.slice(0, HLTV_MAX_TEAMS).map(team => `
         <div class="team-item">
             <div class="team-summary">
-                ${team.logo ? `<img src="${escapeHtml(team.logo)}" alt="" class="team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
+                ${team.logo ? `<img src="${escapeHtml(team.logo)}" alt="${escapeHtml(team.name)} logo" class="team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
                 <div>
                     <div class="team-name">#${escapeHtml(team.ranking)} ${escapeHtml(team.name)}</div>
                     <div class="team-subtitle">${escapeHtml(team.subtitle)}</div>
@@ -322,7 +322,7 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 const liveMatchesRaw = await fetchHltvJson(HLTV_API_ENDPOINTS.live);
                 const liveMatches = normalizeLiveMatches(liveMatchesRaw);
                 matchesLiveCount = liveMatches.length;
-                renderMatchesList([...liveMatches, ...currentNonLiveMatches].slice(0, HLTV_MAX_MATCHES));
+                renderMatchesList(dedupeMatches([...liveMatches, ...currentNonLiveMatches]).slice(0, HLTV_MAX_MATCHES));
 
                 setLastUpdatedLabel(new Date(), liveMatches.length ? 'Scores live actualisés' : 'Vérification live');
                 syncLiveRefreshState();
@@ -340,17 +340,16 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             matchesLiveCount = liveMatches.length;
 
             const upcomingMatches = normalizeUpcomingMatches(upcomingResult.status === 'fulfilled' ? upcomingResult.value : [])
-                .sort((a, b) => parseDateValue(a.time) - parseDateValue(b.time))
-                .slice(0, 3);
+                .sort((a, b) => parseDateValue(a.time) - parseDateValue(b.time));
             const completedMatches = normalizeResults(resultsResult.status === 'fulfilled' ? resultsResult.value : [])
-                .sort((a, b) => parseDateValue(b.time) - parseDateValue(a.time))
-                .slice(0, 3);
-            currentNonLiveMatches = [...upcomingMatches, ...completedMatches];
+                .sort((a, b) => parseDateValue(b.time) - parseDateValue(a.time));
 
             const combinedMatches = dedupeMatches([
                 ...liveMatches,
-                ...currentNonLiveMatches
+                ...upcomingMatches,
+                ...completedMatches
             ]).slice(0, HLTV_MAX_MATCHES);
+            currentNonLiveMatches = combinedMatches.filter(match => match.status !== 'live');
 
             if (!combinedMatches.length) {
                 const loadError = [liveResult, upcomingResult, resultsResult].find(result => result.status === 'rejected');
@@ -362,11 +361,6 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             const rankings = normalizeRankings(rankingsResult.status === 'fulfilled' ? rankingsResult.value : []);
             if (rankings.length) {
                 renderRankings(rankings);
-            } else {
-                const teamsList = document.getElementById('teams-list');
-                if (teamsList && /Chargement/i.test(teamsList.textContent || '')) {
-                    teamsList.innerHTML = '<div class="empty-state">Classement HLTV indisponible pour le moment.</div>';
-                }
             }
 
             setMatchesFeedback(
