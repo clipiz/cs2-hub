@@ -16,7 +16,6 @@ async function loadData() {
         renderCrosshairPros(data.crosshairs || []);
         renderProConfigs(data.proConfigs || []);
         renderFavoritesPage(data);
-        loadProMatches();
     } catch (error) {
         console.error('Error loading data:', error);
     }
@@ -765,84 +764,6 @@ async function loadFavoritesPage() {
     }
 }
 
-// Load Pro Matches
-function loadProMatches() {
-    const matchesList = document.getElementById('matches-list');
-
-    if (!matchesList) return;
-
-    const matches = [
-        {
-            team1: 'Spirit',
-            team2: 'Falcons',
-            score1: 1,
-            score2: 2,
-            map: 'Inferno',
-            date: 'IEM Cologne 2026',
-            event: 'BO3'
-        },
-        {
-            team1: 'Falcons',
-            team2: 'Vitality',
-            score1: 2,
-            score2: 1,
-            map: 'Dust 2',
-            date: 'IEM Cologne 2026',
-            event: 'BO3'
-        },
-        {
-            team1: 'Aurora',
-            team2: 'FURIA',
-            score1: 0,
-            score2: 2,
-            map: 'Mirage',
-            date: 'IEM Cologne 2026',
-            event: 'BO3'
-        },
-        {
-            team1: 'G2',
-            team2: 'Spirit',
-            score1: 1,
-            score2: 2,
-            map: 'Ancient',
-            date: 'CCT Europe 2026',
-            event: 'BO3'
-        },
-        {
-            team1: 'Virtus.pro',
-            team2: '100 Thieves',
-            score1: 2,
-            score2: 0,
-            map: 'Nuke',
-            date: 'CCT Europe 2026',
-            event: 'BO3'
-        },
-        {
-            team1: 'Fire Flux',
-            team2: 'NAVI Junior',
-            score1: 2,
-            score2: 0,
-            map: 'Vertigo',
-            date: 'ESEA Season 57',
-            event: 'BO3'
-        }
-    ];
-
-    matchesList.innerHTML = matches.map(match => `
-        <div class="match-card">
-            <div class="match-header">
-                <div class="match-teams">
-                    <strong>${match.team1}</strong> vs <strong>${match.team2}</strong>
-                </div>
-                <div class="match-score">${match.score1} - ${match.score2}</div>
-            </div>
-            <div class="match-info">
-                📍 ${match.map} • ${match.event} • ${match.date}
-            </div>
-        </div>
-    `).join('');
-}
-
 document.addEventListener('click', event => {
     const favoriteButton = event.target.closest('.favorite-btn');
     if (!favoriteButton) return;
@@ -874,9 +795,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadData();
     refreshFavoriteButtons();
 });
-
-// Refresh matches every 5 minutes
-setInterval(loadProMatches, 5 * 60 * 1000);
 
 window.toggleFavorite = toggleFavorite;
 window.isFavorite = isFavorite;

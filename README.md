@@ -8,7 +8,7 @@ A modern, responsive website for Counter-Strike 2 players to access utilities, g
 - **Callouts** - Interactive map callouts and positioning guides
 - **Guides** - Comprehensive gameplay guides and strategies
 - **Tutorials** - Video tutorials from content creators
-- **Pro Teams & Matches** - Follow professional scene results and team standings
+- **Pro Teams & Matches** - Follow professional scene results, live scores and team standings via a configurable HLTV community proxy
 - **Stats Leetify** - Lookup player stats (SteamID64) with optional personal Leetify API key
 - **Modern Design** - Clean, dark-themed UI optimized for desktop
 - **Fast & Lightweight** - No backend required, fully static HTML/CSS/JS
@@ -23,6 +23,7 @@ cs2-hub/
 ├── script.js       # JavaScript for loading and rendering content
 ├── stats.html      # Leetify stats page
 ├── leetify.js      # Leetify API integration logic (client-side)
+├── matches.js      # HLTV community API integration for the homepage esport section
 ├── data.json       # Content data for all categories
 └── README.md       # This file
 ```
@@ -62,18 +63,8 @@ All content is stored in `data.json`. To add or modify items:
 }
 ```
 
-### Add a new match result:
-Edit the `loadProMatches()` function in `script.js`:
-```javascript
-{
-    team1: 'Team Name',
-    team2: 'Team Name',
-    score1: 2,
-    score2: 0,
-    map: 'Mirage',
-    date: 'Today'
-}
-```
+### Update the esport data source:
+Edit the configurable constants at the top of `matches.js` to swap the unofficial HLTV community proxy or endpoint paths if they change over time.
 
 ## 🎨 Customization
 
@@ -113,13 +104,15 @@ Replace placeholder URLs in `data.json` with real links:
 ## 🛠️ Development Tips
 
 ### Add External API Integration
-To use real match data, modify `loadProMatches()` to fetch from an API:
+To use or replace the current real match data integration, adjust `matches.js`:
 ```javascript
-async function loadProMatches() {
-    const response = await fetch('https://api.example.com/matches');
-    const matches = await response.json();
-    // ... render matches
-}
+const HLTV_API_BASE_URL = 'https://api.example.com';
+const HLTV_API_ENDPOINTS = {
+    live: '/live-now',
+    upcoming: '/matches.json',
+    results: '/results.json',
+    rankings: '/teams.json'
+};
 ```
 
 ### Leetify API Key (optional)
