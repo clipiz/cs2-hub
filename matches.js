@@ -18,6 +18,7 @@ let matchesLiveCount = 0;
 let matchesRefreshInFlight = null;
 let matchesPageInitialized = false;
 let currentNonLiveMatches = [];
+let pendingFullRefresh = false;
 
 function escapeHtml(value) {
     return String(value || '').replace(/[&<>"']/g, character => {
@@ -78,6 +79,7 @@ function setLastUpdatedLabel(date = new Date(), messagePrefix = 'Dernière mise 
     const label = document.getElementById('matches-updated-at');
     if (!label) return;
 
+    label.hidden = false;
     label.textContent = `${messagePrefix} : ${new Intl.DateTimeFormat('fr-FR', {
         dateStyle: 'short',
         timeStyle: 'short'
@@ -126,7 +128,10 @@ async function fetchHltvJson(path, { optional = false } = {}) {
 function dedupeMatches(matches) {
     const seen = new Set();
     return matches.filter(match => {
-        const key = `${match.id}:${match.team1.name}:${match.team2.name}:${match.time}`;
+        const hasGeneratedId = /^(upcoming|live|result)-\d+$/.test(String(match.id || ''));
+        const key = hasGeneratedId
+            ? `${match.team1.name}:${match.team2.name}:${match.time}:${match.event}`
+            : String(match.id);
         if (seen.has(key)) return false;
         seen.add(key);
         return true;
@@ -310,7 +315,17 @@ function syncLiveRefreshState() {
 }
 
 async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
-    if (matchesRefreshInFlight) return matchesRefreshInFlight;
+    if (matchesRefreshInFlight) {
+        if (!refreshLiveOnly) {
+            pendingFullRefresh = true;
+            return matchesRefreshInFlight.finally(() => {
+                if (!pendingFullRefresh || matchesRefreshInFlight) return undefined;
+                pendingFullRefresh = false;
+                return loadEsportMatches();
+            });
+        }
+        return matchesRefreshInFlight;
+    }
 
     const matchesList = document.getElementById('matches-list');
     if (!matchesList) return Promise.resolve();
