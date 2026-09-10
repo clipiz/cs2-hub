@@ -1,6 +1,6 @@
 const HLTV_API_BASE_URL = 'https://api.csapi.de';
 const HLTV_API_ENDPOINTS = {
-    live: '/matches/latest?limit=20&offset=0',
+    live: '/matches/?limit=30&offset=0',
     upcoming: '/matches/?limit=30&offset=0',
     results: '/matches/latest?limit=30&offset=0',
     rankings: '/rankings/'
@@ -213,6 +213,38 @@ function getMatchState(match, teams) {
     if (isLiveStatus) return 'live';
     if (hasResult) return 'completed';
     return 'upcoming';
+}
+
+function splitFeedMatches(matches) {
+    return matches.reduce((acc, match, index) => {
+        const teams = getTeamsFromMatch(match);
+        if (!teams[0]?.name && !teams[1]?.name) return acc;
+
+        const derivedState = getMatchState(match, teams);
+        const score = hasDefinedScore(teams[0]?.result, teams[1]?.result)
+            ? `${teams[0]?.result} - ${teams[1]?.result}`
+            : '';
+        const baseMatch = {
+            id: match.id || match.matchId || `feed-${index}`,
+            team1: teams[0] || { name: 'TBD', logo: '' },
+            team2: teams[1] || { name: 'TBD', logo: '' },
+            score,
+            event: match?.event?.name || match?.event || 'Match HLTV',
+            time: match.time || match.startTime || match.date || match.datetime || match.startedAt || '',
+            format: match.maps || match.map || match.format || match.bestOf || match.best_of || '',
+            extra: match.series || ''
+        };
+
+        if (derivedState === 'live') {
+            acc.live.push({ ...baseMatch, status: 'live', badge: '🔴 EN DIRECT' });
+        } else if (derivedState === 'completed') {
+            acc.completed.push({ ...baseMatch, status: 'completed', badge: '✅ TERMINÉ' });
+        } else {
+            acc.upcoming.push({ ...baseMatch, status: 'upcoming', badge: '🕒 À VENIR', score: '' });
+        }
+
+        return acc;
+    }, { live: [], upcoming: [], completed: [] });
 }
 
 function normalizeUpcomingMatches(matches) {
@@ -441,13 +473,19 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 fetchHltvJson(HLTV_API_ENDPOINTS.rankings, { optional: true })
             ]);
 
-            const liveMatches = normalizeLiveMatches(liveResult.status === 'fulfilled' ? liveResult.value : []);
+            let liveMatches = normalizeLiveMatches(liveResult.status === 'fulfilled' ? liveResult.value : []);
             matchesLiveCount = liveMatches.length;
 
-            const upcomingMatches = normalizeUpcomingMatches(upcomingResult.status === 'fulfilled' ? upcomingResult.value : [])
+            let upcomingMatches = normalizeUpcomingMatches(upcomingResult.status === 'fulfilled' ? upcomingResult.value : [])
                 .sort((a, b) => parseDateValue(a.time) - parseDateValue(b.time));
             const completedMatches = normalizeResults(resultsResult.status === 'fulfilled' ? resultsResult.value : [])
                 .sort((a, b) => parseDateValue(b.time) - parseDateValue(a.time));
+
+            if (HLTV_API_ENDPOINTS.live === HLTV_API_ENDPOINTS.upcoming && liveResult.status === 'fulfilled') {
+                const splitMatches = splitFeedMatches(liveResult.value);
+                liveMatches = splitMatches.live;
+                upcomingMatches = splitMatches.upcoming.sort((a, b) => parseDateValue(a.time) - parseDateValue(b.time));
+            }
 
             currentNonLiveMatches = dedupeMatches([
                 ...upcomingMatches,
