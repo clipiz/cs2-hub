@@ -1,6 +1,6 @@
 const HLTV_API_BASE_URL = 'https://api.csapi.de';
 const HLTV_API_ENDPOINTS = {
-    live: '/matches/?limit=30&offset=0',
+    live: '/matches/latest?limit=20&offset=0',
     upcoming: '/matches/?limit=30&offset=0',
     results: '/matches/latest?limit=30&offset=0',
     rankings: '/rankings/'
