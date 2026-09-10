@@ -102,7 +102,6 @@ async function fetchHltvJson(path, { optional = false } = {}) {
         if (optional && response.status === 404) return [];
         if (response.status === 429) throw createMatchError('RATE_LIMIT');
         if (!response.ok) {
-            if (optional) return [];
             throw createMatchError('HTTP_ERROR', `Erreur API HLTV (${response.status}).`);
         }
 
@@ -114,9 +113,6 @@ async function fetchHltvJson(path, { optional = false } = {}) {
         if (Array.isArray(payload?.teams)) return payload.teams;
         return [];
     } catch (error) {
-        if (optional && (error?.name === 'AbortError' || error instanceof TypeError || error?.code === 'HTTP_ERROR')) {
-            return [];
-        }
         if (error?.code) throw error;
         if (error?.name === 'AbortError' || error instanceof TypeError) {
             throw createMatchError('NETWORK');
@@ -212,7 +208,7 @@ function normalizeResults(matches) {
 function renderTeamLine(team) {
     return `
         <span class="match-team">
-            ${team?.logo ? `<img src="${escapeHtml(team.logo)}" alt="${escapeHtml(team?.name || 'Équipe')} logo" class="match-team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
+            ${team?.logo ? `<img src="${escapeHtml(team.logo)}" alt="" class="match-team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
             <span>${escapeHtml(team?.name || 'TBD')}</span>
         </span>
     `;
@@ -278,7 +274,7 @@ function renderRankings(teams) {
     teamsList.innerHTML = teams.slice(0, HLTV_MAX_TEAMS).map(team => `
         <div class="team-item">
             <div class="team-summary">
-                ${team.logo ? `<img src="${escapeHtml(team.logo)}" alt="${escapeHtml(team.name)} logo" class="team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
+                ${team.logo ? `<img src="${escapeHtml(team.logo)}" alt="" class="team-logo" loading="lazy" referrerpolicy="no-referrer">` : ''}
                 <div>
                     <div class="team-name">#${escapeHtml(team.ranking)} ${escapeHtml(team.name)}</div>
                     <div class="team-subtitle">${escapeHtml(team.subtitle)}</div>
@@ -353,12 +349,14 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             const completedMatches = normalizeResults(resultsResult.status === 'fulfilled' ? resultsResult.value : [])
                 .sort((a, b) => parseDateValue(b.time) - parseDateValue(a.time));
 
-            const combinedMatches = dedupeMatches([
-                ...liveMatches,
+            currentNonLiveMatches = dedupeMatches([
                 ...upcomingMatches,
                 ...completedMatches
+            ]);
+            const combinedMatches = dedupeMatches([
+                ...liveMatches,
+                ...currentNonLiveMatches
             ]).slice(0, HLTV_MAX_MATCHES);
-            currentNonLiveMatches = combinedMatches.filter(match => match.status !== 'live');
 
             if (!combinedMatches.length) {
                 const matchSourceResults = [liveResult, upcomingResult, resultsResult];
@@ -369,7 +367,9 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 }
 
                 renderMatchesList([]);
-                renderRankings(normalizeRankings(rankingsResult.status === 'fulfilled' ? rankingsResult.value : []));
+                if (rankingsResult.status === 'fulfilled') {
+                    renderRankings(normalizeRankings(rankingsResult.value));
+                }
                 setMatchesFeedback('Aucun match n’est disponible pour le moment sur la source HLTV.');
                 setLastUpdatedLabel();
                 syncLiveRefreshState();
@@ -378,7 +378,9 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
 
             renderMatchesList(combinedMatches);
 
-            renderRankings(normalizeRankings(rankingsResult.status === 'fulfilled' ? rankingsResult.value : []));
+            if (rankingsResult.status === 'fulfilled') {
+                renderRankings(normalizeRankings(rankingsResult.value));
+            }
 
             setMatchesFeedback(
                 [liveResult, upcomingResult, resultsResult].some(result => result.status === 'rejected')
