@@ -264,7 +264,16 @@ function normalizeRankings(teams) {
 
 function renderRankings(teams) {
     const teamsList = document.getElementById('teams-list');
-    if (!teamsList || !teams.length) return;
+    if (!teamsList) return;
+
+    if (!teams.length) {
+        const hasRenderedTeams = /team-item/.test(teamsList.innerHTML);
+        const stillLoading = /Chargement du classement/i.test(teamsList.textContent || '');
+        if (!hasRenderedTeams && stillLoading) {
+            teamsList.innerHTML = '<div class="empty-state">Classement HLTV indisponible pour le moment.</div>';
+        }
+        return;
+    }
 
     teamsList.innerHTML = teams.slice(0, HLTV_MAX_TEAMS).map(team => `
         <div class="team-item">
@@ -330,7 +339,7 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             }
 
             const [liveResult, upcomingResult, resultsResult, rankingsResult] = await Promise.allSettled([
-                fetchHltvJson(HLTV_API_ENDPOINTS.live, { optional: true }),
+                fetchHltvJson(HLTV_API_ENDPOINTS.live),
                 fetchHltvJson(HLTV_API_ENDPOINTS.upcoming),
                 fetchHltvJson(HLTV_API_ENDPOINTS.results),
                 fetchHltvJson(HLTV_API_ENDPOINTS.rankings, { optional: true })
@@ -352,16 +361,24 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             currentNonLiveMatches = combinedMatches.filter(match => match.status !== 'live');
 
             if (!combinedMatches.length) {
-                const loadError = [liveResult, upcomingResult, resultsResult].find(result => result.status === 'rejected');
-                throw loadError?.reason || createMatchError('EMPTY');
+                const matchSourceResults = [liveResult, upcomingResult, resultsResult];
+                const allMatchSourcesFailed = matchSourceResults.every(result => result.status === 'rejected');
+                if (allMatchSourcesFailed) {
+                    const loadError = matchSourceResults.find(result => result.status === 'rejected');
+                    throw loadError?.reason || createMatchError('EMPTY');
+                }
+
+                renderMatchesList([]);
+                renderRankings(normalizeRankings(rankingsResult.status === 'fulfilled' ? rankingsResult.value : []));
+                setMatchesFeedback('Aucun match n’est disponible pour le moment sur la source HLTV.');
+                setLastUpdatedLabel();
+                syncLiveRefreshState();
+                return;
             }
 
             renderMatchesList(combinedMatches);
 
-            const rankings = normalizeRankings(rankingsResult.status === 'fulfilled' ? rankingsResult.value : []);
-            if (rankings.length) {
-                renderRankings(rankings);
-            }
+            renderRankings(normalizeRankings(rankingsResult.status === 'fulfilled' ? rankingsResult.value : []));
 
             setMatchesFeedback(
                 [liveResult, upcomingResult, resultsResult].some(result => result.status === 'rejected')
@@ -409,6 +426,7 @@ function initializeMatchesPage() {
 
     document.addEventListener('visibilitychange', syncLiveRefreshState);
     window.addEventListener('pagehide', stopLiveRefresh);
+    window.addEventListener('pageshow', syncLiveRefreshState);
     window.addEventListener('beforeunload', stopLiveRefresh);
 
     loadEsportMatches().catch(error => {
