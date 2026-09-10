@@ -16,6 +16,8 @@ const HLTV_MAX_TEAMS = 8;
 let matchesRefreshIntervalId = null;
 let matchesLiveCount = 0;
 let matchesRefreshInFlight = null;
+let matchesPageInitialized = false;
+let currentNonLiveMatches = [];
 
 function escapeHtml(value) {
     return String(value || '').replace(/[&<>"']/g, character => {
@@ -320,17 +322,7 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
                 const liveMatchesRaw = await fetchHltvJson(HLTV_API_ENDPOINTS.live);
                 const liveMatches = normalizeLiveMatches(liveMatchesRaw);
                 matchesLiveCount = liveMatches.length;
-                const currentCards = document.querySelectorAll('#matches-list .match-card');
-                const existingNonLive = Array.from(currentCards)
-                    .filter(card => card.classList.contains('match-card--upcoming') || card.classList.contains('match-card--completed'))
-                    .map(card => card.outerHTML);
-
-                const liveMarkup = liveMatches.map(renderMatchCardHtml).join('');
-                matchesList.innerHTML = liveMarkup + existingNonLive.join('');
-
-                if (!matchesList.innerHTML.trim()) {
-                    renderMatchesList([]);
-                }
+                renderMatchesList([...liveMatches, ...currentNonLiveMatches].slice(0, HLTV_MAX_MATCHES));
 
                 setLastUpdatedLabel(new Date(), liveMatches.length ? 'Scores live actualisés' : 'Vérification live');
                 syncLiveRefreshState();
@@ -353,11 +345,11 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             const completedMatches = normalizeResults(resultsResult.status === 'fulfilled' ? resultsResult.value : [])
                 .sort((a, b) => parseDateValue(b.time) - parseDateValue(a.time))
                 .slice(0, 3);
+            currentNonLiveMatches = [...upcomingMatches, ...completedMatches];
 
             const combinedMatches = dedupeMatches([
                 ...liveMatches,
-                ...upcomingMatches,
-                ...completedMatches
+                ...currentNonLiveMatches
             ]).slice(0, HLTV_MAX_MATCHES);
 
             if (!combinedMatches.length) {
@@ -396,7 +388,7 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
             setMatchesFeedback(
                 refreshLiveOnly
                     ? 'Le rafraîchissement live a échoué ; les derniers scores affichés ont été conservés.'
-                    : 'Le service tiers HLTV est best-effort : si le proxy tombe, il faudra mettre à jour l’URL dans `matches.js`.',
+                    : 'Le service tiers de résultats HLTV est temporairement indisponible. Réessaie plus tard avec le bouton Actualiser.',
                 'error'
             );
         } finally {
@@ -409,7 +401,8 @@ async function loadEsportMatches({ refreshLiveOnly = false } = {}) {
 }
 
 function initializeMatchesPage() {
-    if (!document.getElementById('matches-list')) return;
+    if (!document.getElementById('matches-list') || matchesPageInitialized) return;
+    matchesPageInitialized = true;
 
     const refreshButton = document.getElementById('matches-refresh-btn');
     if (refreshButton) {
